@@ -10,7 +10,7 @@ def get_user_data(character_name):
     soup = BeautifulSoup(response.text, 'html.parser')
     profile = soup.select_one('div.profile-ingame')
     if profile.select_one('div.profile-attention'):
-        print(f'{character_name} 캐럭터 정보가 없습니다')
+        # print(f'{character_name} 캐럭터 정보가 없습니다')
         return
 
     character_class = profile.select_one('div.profile-equipment__character > img')['alt']
@@ -71,7 +71,7 @@ def member_data_tocsv(guild_members):
         member_data = get_user_data(member)
         if member_data:
             member_data_list.append(member_data)
-            print(member, 'complete')
+            # print(member, 'complete')
     df_memberlist = pd.DataFrame(data=member_data_list)
     df_memberlist.to_csv('./_data/memberlist.csv', index=False)
 
