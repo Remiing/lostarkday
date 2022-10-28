@@ -34,7 +34,7 @@ def get_user_data(name):
     for gem in gems:
         if gem in counter: counter[gem] += 1
         else: counter[gem] = 1
-    gem_simple = [f'{key} x{value}' for key, value in counter.items()]
+    gem_simple = ','.join(f'{key} x{value}' for key, value in counter.items())
 
     equipmentLV = re.findall(r"\+.+(?=</FONT></P>)", response.text)
     equipmentLV = ','.join(equipmentLV).replace('+', '')
@@ -45,15 +45,15 @@ def get_user_data(name):
     character_data = {
         'name': name,
         'class': _class,
-        'item_level': float(itemLV),
-        'battle_level': int(battleLV),
-        'expedition_level': int(expeditionLV),
+        'itemLV': float(itemLV),
+        'battleLV': int(battleLV),
+        'expeditionLV': int(expeditionLV),
         'engraving_simple': engraving_simple,
         'engraving_detail': engraving_detail,
         'stat': stat,
         'card': card,
         'gem_simple': gem_simple,
-        'equipment_level': equipmentLV,
+        'equipmentLV': equipmentLV,
         'power': int(power),
         'vitality': int(vitality)
     }
