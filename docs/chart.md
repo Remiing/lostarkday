@@ -8,17 +8,8 @@ nav_order: 2
 
 Day guild members chart
 
-| head1        | head two          | three |
-|:-------------|:------------------|:------|
-| ok           | good swedish fish | nice  |
-| out of stock | good and plenty   | nice  |
-| ok           | good `oreos`      | hmm   |
-| ok           | good `zoute` drop | yumm  |
-
-Day guild members chart using _data guild_member.csv
-
 | 닉네임 | 클래스 | 아이템 | 전투 | 원정대 | 각인 | 특성 | 카드 | 보석 | 무기 | 공격력 | 체력 | update |
-|:------|:------|:-----|:----|:------|:------|:------|:------|:------|:------|:------|:------|:------|
+|:-------|:---|:-----|:----|:------|:------|:------|:------|:------|:------|:------|:------|:------|
 {%- for member in site.data.guild_member %}
 |{{member.character_name-}}
 |{{member.character_class-}}
