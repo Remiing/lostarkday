@@ -6,7 +6,7 @@ $pink-300: #dd2cd4;
 th,
 td {
   @include fs-2;
-  min-width: 80px;
+  min-width: 0px;
 }
 
 .site-nav,
@@ -25,7 +25,7 @@ td {
   }
 }
 
-.detail{
+.detail {
   display: none;
   position: absolute;
   transform: translate(-10%);
@@ -37,6 +37,14 @@ td {
   -moz-border-radius: 8px;
 }
 
-td:hover + div.detail {
+td {
+
+  p {
+    margin-top: 0;
+    margin-bottom: 0;
+  }
+}
+
+p:hover + .detail {
   display: block;
 }
