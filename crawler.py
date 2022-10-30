@@ -2,6 +2,7 @@ import requests
 from bs4 import BeautifulSoup
 import re
 import pandas as pd
+from datetime import datetime
 
 
 def get_user_data(name):
@@ -62,7 +63,7 @@ def get_user_data(name):
 
 
 def read_guild_members():
-    f = open('./guild_members.txt', 'r', encoding='UTF-8')
+    f = open('./_data/guild_members.txt', 'r', encoding='UTF-8')
     members = f.read().split('\n')
     return members
 
@@ -76,8 +77,9 @@ def member_data_tocsv(guild_members):
             print(member, 'complete')
         else:
             print(member, 'fail')
+    path = './_data/' + datetime.now().strftime('%y-%m-%d') + '.csv'
     df_memberlist = pd.DataFrame(data=member_data_list)
-    df_memberlist.to_csv('./_data/memberlist.csv', index=False)
+    df_memberlist.to_csv(path, index=False)
 
 
 if __name__ == '__main__':

@@ -17,6 +17,10 @@ Day guild members chart
 |{{member.battleLV-}}
 |{{member.expeditionLV-}}
 |{{member.engraving_simple-}}
+<div class="detail" markdown="1">
+{%- for engraving in member.engraving_detail | split: ',' -%}
+{{-engraving-}}
+{%- endfor -%}</div>
 |{{member.stat | split: ','-}}
 |{{member.card-}}
 |{{member.gem_simple | split: ','-}}
