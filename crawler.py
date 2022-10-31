@@ -78,8 +78,9 @@ def member_data_tocsv(guild_members):
             print(member, 'complete')
         else:
             print(member, 'fail')
-    path = './_data/' + datetime.now().strftime('%y-%m-%d') + '.csv'
+    path = './_data/chart/' + datetime.now().strftime('%y-%m-%d') + '.csv'
     df_memberlist = pd.DataFrame(data=member_data_list)
+    df_memberlist.sort_values(by=['itemLV'], ascending=False)
     df_memberlist.to_csv(path, index=False)
 
 

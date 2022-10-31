@@ -4,6 +4,10 @@ title: chart
 nav_order: 2
 ---
 
+{% for item in site.data %}
+{{item[0]}}
+{% endfor %}
+
 # Chart
 
 Day guild members chart
