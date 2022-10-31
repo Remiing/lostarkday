@@ -28,6 +28,7 @@ def get_user_data(name):
     stat = ','.join(stat)
 
     card = profile.select('div.profile-card__text > div > ul > li > div.card-effect__title')[-1].text
+    card = ','.join(card.replace(')', '').split(' ('))
 
     gems = re.findall(r"\d{,2}레벨 ..(?=의 보석)", response.text)
     gems = sorted(gems, key=lambda x: (-int(re.search(r'\d+', x).group()), x.split()[1]))
