@@ -3,10 +3,28 @@ $pink-100: #f967f1;
 $pink-200: #e94ee1;
 $pink-300: #dd2cd4;
 
+$nav-width: 164px;
+$content-width: 1000px;
+
 th,
 td {
   @include fs-2;
   min-width: 0px;
+  padding-top: $sp-2;
+  padding-right: $sp-2;
+  padding-bottom: $sp-2;
+  padding-left: $sp-2;
+  background-color: $table-background-color;
+  border-bottom: $border rgba($border-color, 0.5);
+  border-left: $border $border-color;
+
+  &:first-of-type {
+    border-left: 0;
+  }
+  p {
+    margin-top: 0;
+    margin-bottom: 0;
+  }
 }
 
 .site-nav,
@@ -21,7 +39,22 @@ td {
 
 .main {
   @include mq(md) {
-    max-width: 1000px;
+    max-width: $content-width;
+  }
+}
+
+.side-bar {
+  @include mq(lg) {
+    width: calc((100% - #{$nav-width + $content-width}) / 2 + #{$nav-width});
+    min-width: $nav-width;
+  }
+}
+
+.main {
+  @include mq(lg) {
+    margin-left: calc(
+      (100% - #{$nav-width + $content-width}) / 2 + #{$nav-width}
+    );
   }
 }
 
@@ -30,19 +63,12 @@ td {
   position: absolute;
   transform: translate(-10%);
   padding: 8px;
+  text-align: left;
   color: #fff;
   background-color: #333;
   border-radius: 8px;
   -webkit-border-radius: 8px;
   -moz-border-radius: 8px;
-}
-
-td {
-
-  p {
-    margin-top: 0;
-    margin-bottom: 0;
-  }
 }
 
 p:hover + .detail {
