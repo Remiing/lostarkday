@@ -4,17 +4,13 @@ title: chart
 nav_order: 2
 ---
 
-{% for item in site.data %}
-{{item[0]}}
-{% endfor %}
-
 # Chart
 
 Day guild members chart
 
 | 닉네임 | 클래스 | 아이템 | 원정대 | 각인 | 특성 | 카드 | 보석 | 무기 | 공격력 | 체력 |
 |:---|:---|:-:|:-:|:-:|:---|:-|:-|:-:|:-:|:-:|
-{% for member in site.data.first[1] -%}
+{% for member in site.data.member_chart -%}
 |{{member.name-}}
 |{{member.class-}}
 |{{member.itemLV-}}

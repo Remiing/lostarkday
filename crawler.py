@@ -82,6 +82,7 @@ def member_data_tocsv(guild_members):
     df_memberlist = pd.DataFrame(data=member_data_list)
     df_memberlist.sort_values(by=['itemLV'], ascending=False)
     df_memberlist.to_csv(path, index=False)
+    df_memberlist.to_csv('./_data/member_chart.csv', index=False)
 
 
 if __name__ == '__main__':
