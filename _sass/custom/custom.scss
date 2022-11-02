@@ -2,13 +2,93 @@ $pink-000: #f77ef1;
 $pink-100: #f967f1;
 $pink-200: #e94ee1;
 $pink-300: #dd2cd4;
-
 $nav-width: 164px;
 $content-width: 1000px;
+
+.side-bar {
+  z-index: 0;
+  display: flex;
+  flex-wrap: wrap;
+  background-color: $sidebar-color;
+
+  @include mq(md) {
+    flex-wrap: nowrap;
+    position: fixed;
+    width: $nav-width-md;
+    height: 100%;
+    flex-direction: column;
+    border-right: $border $border-color;
+    align-items: flex-end;
+  }
+
+  @include mq(lg) {
+    width: calc((100% - #{$nav-width + $content-width}) / 2 + #{$nav-width});
+    min-width: $nav-width;
+  }
+}
+
+.main {
+  @include mq(md) {
+    position: relative;
+    max-width: $content-width;
+    margin-left: $nav-width-md;
+  }
+
+  @include mq(lg) {
+    margin-left: calc(
+      (100% - #{$nav-width + $content-width}) / 2 + #{$nav-width}
+    );
+  }
+}
+
+.main-content-wrap {
+  @include container;
+
+  padding-top: $gutter-spacing-sm;
+  padding-bottom: $gutter-spacing-sm;
+
+  @include mq(md) {
+    padding-top: $gutter-spacing;
+    padding-bottom: $gutter-spacing;
+  }
+}
+
+.main-header {
+  z-index: 0;
+  display: none;
+  background-color: $sidebar-color;
+
+  @include mq(md) {
+    display: flex;
+    justify-content: space-between;
+    height: $header-height;
+    background-color: $body-background-color;
+    border-bottom: $border $border-color;
+  }
+
+  &.nav-open {
+    display: block;
+
+    @include mq(md) {
+      display: flex;
+    }
+  }
+}
+
+.site-nav,
+.site-header,
+.site-footer {
+  width: 100%;
+
+  @include mq(lg) {
+    width: $nav-width;
+  }
+}
 
 th,
 td {
   @include fs-2;
+
   min-width: 0px;
   padding-top: $sp-2;
   padding-right: $sp-2;
@@ -21,40 +101,10 @@ td {
   &:first-of-type {
     border-left: 0;
   }
+
   p {
     margin-top: 0;
     margin-bottom: 0;
-  }
-}
-
-.site-nav,
-.site-header,
-.site-footer {
-  width: 100%;
-
-  @include mq(lg) {
-    width: 161px;
-  }
-}
-
-.main {
-  @include mq(md) {
-    max-width: $content-width;
-  }
-}
-
-.side-bar {
-  @include mq(lg) {
-    width: calc((100% - #{$nav-width + $content-width}) / 2 + #{$nav-width});
-    min-width: $nav-width;
-  }
-}
-
-.main {
-  @include mq(lg) {
-    margin-left: calc(
-      (100% - #{$nav-width + $content-width}) / 2 + #{$nav-width}
-    );
   }
 }
 
@@ -73,4 +123,16 @@ td {
 
 p:hover + .detail {
   display: block;
+}
+
+.pl-high {
+  padding-left: 50%;
+}
+
+.pl-avg {
+  padding-left: 35%;
+}
+
+.pl-low {
+  padding-left: 20%;
 }

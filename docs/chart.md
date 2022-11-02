@@ -1,6 +1,6 @@
 ---
 layout: default
-title: chart
+title: Chart
 nav_order: 2
 ---
 
@@ -9,7 +9,7 @@ nav_order: 2
 Day guild members chart
 
 | 닉네임 | 클래스 | 아이템 | 원정대 | 각인 | 특성 | 카드 | 보석 | 무기 | 공격력 | 체력 |
-|:---|:---|:-:|:-:|:-:|:---|:-|:-|:-:|:-:|:-:|
+|:-|:-|:-:|:-:|:-:|:-|:-|:-|:-:|:-:|:-:|
 {% for member in site.data.member_chart -%}
 |{{member.name-}}
 |{{member.class-}}
@@ -24,12 +24,19 @@ Day guild members chart
 {%- for stat in stats -%}
 {::nomarkdown}<p>{{-stat-}}</p>{:/}
 {%- endfor -%}{{-raw-}}
-|{{member.card-}}
+|{% assign card_data = member.card | split: ',' -%}
+{%- for card in card_data -%}
+{::nomarkdown}<p>{{-card -}}</p>{:/}
+{%- endfor -%}{{-raw-}}
 |{%- assign gems = member.gem_simple | split: ',' -%}
 {%- for gem in gems -%}
 {::nomarkdown}<p>{{-gem-}}</p>{:/}
 {%- endfor -%}{{-raw-}}
-|{{member.equipmentLV | split: ' ' | first-}}
+|{::nomarkdown}<p>{{member.equipmentLV | split: ' ' | first-}}</p><div class="detail">
+{%- assign equipmentLV = member.equipmentLV | split: ',' -%}
+{%- for equipment in equipmentLV -%}
+<p>{{-equipment-}}</p>
+{%- endfor -%}</div>{:/}{{-raw-}}
 |{{member.power-}}
 |{{member.vitality-}}|
 {% endfor %}
