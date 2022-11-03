@@ -8,11 +8,10 @@ nav_order: 2
 
 Day guild members chart
 
-| 닉네임 | 클래스 | 아이템 | 원정대 | 각인 | 특성 | 카드 | 보석 | 무기 | 공격력 | 체력 |
-|:-|:-|:-:|:-:|:-:|:-|:-|:-|:-:|:-:|:-:|
+| 닉네임<br/>클래스 | 아이템 | 원정대 | 각인 | 특성 | 카드 | 보석 | 무기 | 공격력 | 체력 |
+|:-|:-:|:-:|:-:|:-|:-|:-|:-:|:-:|:-:|
 {% for member in site.data.member_chart -%}
-|{{member.name-}}
-|{{member.class-}}
+|{{member.name-}}<br/>{{member.class-}}
 |{{member.itemLV-}}
 |{{member.expeditionLV-}}
 |{::nomarkdown}<p>{{member.engraving_simple-}}</p><div class="detail">

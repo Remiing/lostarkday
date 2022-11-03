@@ -14,27 +14,7 @@ Day guild information.
 
 총인원 80
 
-<div class="level" markdown="1">
-최고
-{: .label .fs-6}
-
-1234
-{: .label .fs-6 .pl-high}
-</div>
-<div class="level" markdown="1">
-평균
-{: .label .fs-6}
-
-1666
-{: .label .fs-6 .pl-avg}
-</div>
-<div class="level" markdown="1">
-최저
-{: .label .fs-6}
-
-1666
-{: .label .fs-6 .pl-low}
-</div>
+<canvas id="myChart1"></canvas>
 
 1600대 몇명, 1590대 몇명
 
@@ -44,3 +24,48 @@ Day guild information.
 
 직업군(전사, 무도가, 헌터, 마법사, 암살자, 스페셜리스트)
 
+<script>
+var ctx = document.getElementById("myChart1");
+
+var data1 = [1615, 1555, 1444];
+var labels = ["High", "Avg", "Low"];
+var data = {
+    labels: labels,
+    datasets: [{
+        label: 'Level',
+        data: data1,
+        backgroundColor: [
+          "rgba(54, 162, 235, 0.2)",
+          "rgba(75, 192, 192, 0.2)",
+          "rgba(153, 102, 255, 0.2)"
+        ],
+        borderColor: [
+          "rgba(54, 162, 235, 1)",
+          "rgba(75, 192, 192, 1)",
+          "rgba(153, 102, 255, 1)"
+        ],
+        borderWidth: 1
+      }
+    ]
+  };
+var options = {
+    indexAxis: 'y',
+    responsive: true,
+    events: [], 
+    animations: {
+        duration: 0
+    }, 
+    scales: {
+        x: {
+            min: 1400, 
+            max: 1655
+        }
+    }
+};
+
+new Chart(ctx, {
+  type: "bar",
+  data: data, 
+  options: options
+});
+</script>
