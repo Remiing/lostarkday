@@ -5,13 +5,17 @@ nav_order: 2
 ---
 
 # Chart
+{: .fs-9 }
 
 Day guild members chart
+{: .fs-6 .fw-300 }
 
-| 닉네임<br/>클래스 | 아이템 | 원정대 | 각인 | 특성 | 카드 | 보석 | 무기 | 공격력 | 체력 |
+---
+
+| {::nomarkdown}<p>닉네임</p><p>클래스</p>{:/} | 아이템 | 원정대 | 각인 | 특성 | 카드 | 보석 | 무기 | 공격력 | 체력 |
 |:-|:-:|:-:|:-:|:-|:-|:-|:-:|:-:|:-:|
 {% for member in site.data.member_chart -%}
-|{{member.name-}}<br/>{{member.class-}}
+|{::nomarkdown}<p>{{member.name-}}</p><p>{{member.class-}}</p>{:/}{{-raw-}}
 |{{member.itemLV-}}
 |{{member.expeditionLV-}}
 |{::nomarkdown}<p>{{member.engraving_simple-}}</p><div class="detail">

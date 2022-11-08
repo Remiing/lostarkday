@@ -14,30 +14,60 @@ permalink: /
 Day guild information.
 {: .fs-6 .fw-300 }
 
-총인원 80
+---
 
-<canvas id="representative_value" style="height:20vh"></canvas>
+## 최고 평균 최저 레벨
 
-1600대 몇명, 1590대 몇명
+<canvas id="representative_value" style="width: 100vh; height:20vh"></canvas>
+
+---
+
+## 레벨대 분포
 
 <canvas id="variance"></canvas>
 
-각 직업 인원수
+---
 
-|{{data.class_num.Berserker}}|{{data.class_num.Destroyer}}|{{data.class_num.Gunlancer}}|{{data.class_num.Paladin}}||
-|{{data.class_num.Arcanist}}|{{data.class_num.Summoner}}|{{data.class_num.Bard}}|{{data.class_num.Sorceress}}||
-|{{data.class_num.Wardancer}}|{{data.class_num.Scrapper}}|{{data.class_num.Soulfist}}|{{data.class_num.Glaivier}}|{{data.class_num.Striker}}|
-|{{data.class_num.Deathblade}}|{{data.class_num.Shadowhunter}}|{{data.class_num.Reaper}}|||
-|{{data.class_num.Sharpshooter}}|{{data.class_num.Deadeye}}|{{data.class_num.Artillerist}}|{{data.class_num.Machinist}}|{{data.class_num.Gunslinger}}|
-|{{data.class_num.Artist}}|{{data.class_num.Aeromancer}}||||
+## 직업별 인원수
 
-직업군(전사, 무도가, 헌터, 마법사, 암살자, 스페셜리스트)
+|![](./assets/images/class_images/emblem_berserker.png){{data.class_num.Berserker-}}
+|![](./assets/images/class_images/emblem_destroyer.png){{data.class_num.Destroyer-}}
+|![](./assets/images/class_images/emblem_warlord.png){{data.class_num.Gunlancer-}}
+|![](./assets/images/class_images/emblem_holyknight.png){{data.class_num.Paladin-}}||
+|![](./assets/images/class_images/emblem_arcana.png){{data.class_num.Arcanist-}}
+|![](./assets/images/class_images/emblem_summoner.png){{data.class_num.Summoner-}}
+|![](./assets/images/class_images/emblem_bard.png){{data.class_num.Bard-}}
+|![](./assets/images/class_images/emblem_elemental_master.png){{data.class_num.Sorceress-}}||
+|![](./assets/images/class_images/emblem_battle_master.png){{data.class_num.Wardancer-}}
+|![](./assets/images/class_images/emblem_infighter.png){{data.class_num.Scrapper-}}
+|![](./assets/images/class_images/emblem_force_master.png){{data.class_num.Soulfist-}}
+|![](./assets/images/class_images/emblem_lance_master.png){{data.class_num.Glaivier-}}
+|![](./assets/images/class_images/emblem_battle_master_male.png){{data.class_num.Striker-}}|
+|![](./assets/images/class_images/emblem_blade.png){{data.class_num.Deathblade-}}
+|![](./assets/images/class_images/emblem_demonic.png){{data.class_num.Shadowhunter-}}
+|![](./assets/images/class_images/emblem_reaper.png){{data.class_num.Reaper-}}|||
+|![](./assets/images/class_images/emblem_hawk_eye.png){{data.class_num.Sharpshooter-}}
+|![](./assets/images/class_images/emblem_devil_hunter.png){{data.class_num.Deadeye-}}
+|![](./assets/images/class_images/emblem_blaster.png){{data.class_num.Artillerist-}}
+|![](./assets/images/class_images/emblem_scouter.png){{data.class_num.Machinist-}}
+|![](./assets/images/class_images/emblem_devil_hunter_female.png){{data.class_num.Gunslinger-}}|
+|![](./assets/images/class_images/emblem_yinyangshi.png){{data.class_num.Artist-}}
+|![](./assets/images/class_images/emblem_weather_artist.png){{data.class_num.Aeromancer-}}||||
+{: .class_table .text-grey-lt-000 .text-center}
+
+---
+
+## 직업군 인원수
 
 <canvas id="class_num"></canvas>
 
-딜러, 서포터 수
+---
 
-<canvas id="position"></canvas>
+## 포지션 인원수
+
+<canvas id="position" style="width: 100vh; height:20vh"></canvas>
+
+---
 
 
 <script>
@@ -51,22 +81,28 @@ var data = {
         label: 'Level',
         data: chart_data,
         backgroundColor: [
-          "rgba(54, 162, 235, 0.2)",
-          "rgba(75, 192, 192, 0.2)",
-          "rgba(153, 102, 255, 0.2)"
+          "rgba(138, 43, 226, 0.2)",
+          "rgba(240, 169, 87, 0.2)",
+          "rgba(0, 0, 128, 0.2)",
+          "rgba(128, 0, 128, 0.2)",
+          "rgba(70, 126, 198, 0.2)",
+          "rgba(133, 172, 32, 0.2)"
         ],
         borderColor: [
-          "rgba(54, 162, 235, 1)",
-          "rgba(75, 192, 192, 1)",
-          "rgba(153, 102, 255, 1)"
+          "rgba(138, 43, 226, 1)",
+          "rgba(240, 169, 87, 1)",
+          "rgba(0, 0, 128, 1)",
+          "rgba(128, 0, 128, 1)",
+          "rgba(70, 126, 198, 1)",
+          "rgba(133, 172, 32, 1)"
         ],
-        borderWidth: 0.5
+        borderWidth: 1
       }
     ]
   };
 var options = {
     indexAxis: 'y',
-    responsive: true,
+    responsive: false,
     events: ['mousemove'], 
     animations: {
         duration: 0
@@ -98,6 +134,22 @@ var data = {
     datasets: [{
         label: 'variance',
         data: chart_data,
+        backgroundColor: [
+          "rgba(138, 43, 226, 0.2)",
+          "rgba(240, 169, 87, 0.2)",
+          "rgba(0, 0, 128, 0.2)",
+          "rgba(128, 0, 128, 0.2)",
+          "rgba(70, 126, 198, 0.2)",
+          "rgba(133, 172, 32, 0.2)"
+        ],
+        borderColor: [
+          "rgba(138, 43, 226, 1)",
+          "rgba(240, 169, 87, 1)",
+          "rgba(0, 0, 128, 1)",
+          "rgba(128, 0, 128, 1)",
+          "rgba(70, 126, 198, 1)",
+          "rgba(133, 172, 32, 1)"
+        ],
         borderWidth: 1
       }
     ]
@@ -130,6 +182,22 @@ var data = {
     datasets: [{
         label: 'class_num',
         data: chart_data,
+        backgroundColor: [
+          "rgba(138, 43, 226, 0.2)",
+          "rgba(240, 169, 87, 0.2)",
+          "rgba(0, 0, 128, 0.2)",
+          "rgba(128, 0, 128, 0.2)",
+          "rgba(70, 126, 198, 0.2)",
+          "rgba(133, 172, 32, 0.2)"
+        ],
+        borderColor: [
+          "rgba(138, 43, 226, 1)",
+          "rgba(240, 169, 87, 1)",
+          "rgba(0, 0, 128, 1)",
+          "rgba(128, 0, 128, 1)",
+          "rgba(70, 126, 198, 1)",
+          "rgba(133, 172, 32, 1)"
+        ],
         borderWidth: 1
       }
     ]
@@ -162,13 +230,29 @@ var data = {
     datasets: [{
         label: 'position',
         data: chart_data,
+        backgroundColor: [
+          "rgba(138, 43, 226, 0.2)",
+          "rgba(240, 169, 87, 0.2)",
+          "rgba(0, 0, 128, 0.2)",
+          "rgba(128, 0, 128, 0.2)",
+          "rgba(70, 126, 198, 0.2)",
+          "rgba(133, 172, 32, 0.2)"
+        ],
+        borderColor: [
+          "rgba(138, 43, 226, 1)",
+          "rgba(240, 169, 87, 1)",
+          "rgba(0, 0, 128, 1)",
+          "rgba(128, 0, 128, 1)",
+          "rgba(70, 126, 198, 1)",
+          "rgba(133, 172, 32, 1)"
+        ],
         borderWidth: 1
       }
     ]
   };
 var options = {
     indexAxis: 'y',
-    responsive: true,
+    responsive: false,
     events: [], 
     animations: {
         duration: 0
