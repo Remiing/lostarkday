@@ -1,13 +1,13 @@
 ---
 layout: default
-title: Chart
+title: Ranking
 nav_order: 2
 ---
 
-# Chart
+# Ranking
 {: .fs-9 }
 
-Day guild members chart
+Day guild members ranking
 {: .fs-6 .fw-300 }
 
 ---
