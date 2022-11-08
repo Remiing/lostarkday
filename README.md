@@ -1,7 +1,7 @@
 <p align="center">
     <h1 align="center">Day</h1>
-    <p align="center">LostARK Day 길드 입니다. <br>Easily hosted on GitHub Pages with few dependencies.</p>
-    <p align="center"><strong><a href="https://just-the-docs.github.io/just-the-docs/">See it in action!</a></strong></p>
+    <p align="center">LostARK Day 길드 입니다. <br></p>
+    <p align="center"><strong><a href="https://remiing.github.io/lostarkday/">See it in action!</a></strong></p>
     <br><br><br>
 </p>
 
