@@ -18,13 +18,13 @@ Day guild information.
 
 ## 최고 평균 최저 레벨
 
-<canvas id="representative_value" style="width: 100vh; height:20vh"></canvas>
+<canvas id="representative_value" style="box-sizing: border-box; width: 100%; height: 50%;"></canvas>
 
 ---
 
 ## 레벨대 분포
 
-<canvas id="variance"></canvas>
+<canvas id="variance" style="box-sizing: border-box; width: 100%;"></canvas>
 
 ---
 
@@ -59,13 +59,13 @@ Day guild information.
 
 ## 직업군 인원수
 
-<canvas id="class_num"></canvas>
+<canvas id="class_num" style="box-sizing: border-box; width: 100%;"></canvas>
 
 ---
 
 ## 포지션 인원수
 
-<canvas id="position" style="width: 100vh; height:20vh"></canvas>
+<canvas id="position" style="box-sizing: border-box; width: 100%; height: 50%;"></canvas>
 
 ---
 
@@ -156,7 +156,7 @@ var data = {
   };
 var options = {
     indexAxis: 'x',
-    responsive: true,
+    responsive: false,
     events: [], 
     animations: {
         duration: 0
@@ -204,7 +204,7 @@ var data = {
   };
 var options = {
     indexAxis: 'y',
-    responsive: true,
+    responsive: false,
     events: [], 
     animations: {
         duration: 0

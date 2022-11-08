@@ -133,7 +133,7 @@ p:hover + .detail {
 .class_table {
   background-color: #555;
   th,td {
-    @include fs-7;
+    font-size: 2vw !important;
     background-color: #555;
     border-bottom: 0;
     border-left: 0;
