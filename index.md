@@ -18,7 +18,7 @@ Day guild information.
 
 ## 최고 평균 최저 레벨
 
-<canvas id="representative_value" style="box-sizing: border-box; width: 100%; height: 50%;"></canvas>
+<canvas id="representative_value" style="box-sizing: border-box; width: 100%; height: 100%;"></canvas>
 
 ---
 

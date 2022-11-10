@@ -11,6 +11,9 @@ nav_order: 1
 일간 템레벨 변화
 {: .fs-6 .fw-300 }
 
+{{site.data.update_time[-2].update_time}} ~ {{site.data.update_time[-1].update_time}}
+{: .text-right }
+
 ---
 
 {% assign before_data = site.data.update_time[-2].filename | remove: ".csv" %}

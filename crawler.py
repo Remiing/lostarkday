@@ -2,7 +2,7 @@ import requests
 from bs4 import BeautifulSoup
 import re
 import pandas as pd
-from datetime import datetime
+from datetime import datetime, timezone, timedelta
 import yaml
 
 
@@ -159,9 +159,9 @@ def data_to_yaml(df):
     return data
 
 
-def update_log():
-    filename = datetime.now().strftime('%y-%m-%d') + '.csv'
-    update_time = datetime.now().strftime('%y-%m-%d %H:%M:%S')
+def update_log(filename):
+    KST = timezone(timedelta(hours=9))
+    update_time = datetime.now(KST).strftime('%y-%m-%d %H:%M:%S')
     log = {
         'filename': filename,
         'update_time': update_time
@@ -171,13 +171,14 @@ def update_log():
 
 def data_to_file(df):
     path = './_data/chart/'
-    filename = datetime.now().strftime('%y-%m-%d') + '.csv'
+    KST = timezone(timedelta(days=-1, hours=9))
+    filename = datetime.now(KST).strftime('%y-%m-%d') + '.csv'
     df.to_csv(path + filename, index=False)
     df.to_csv('./_data/member_chart.csv', index=False)
     with open('./_data/total_info.yml', 'w') as file:
         yaml.dump(data_to_yaml(df), file, default_flow_style=False)
     with open('./_data/update_time.yml', 'a') as file:
-        yaml.dump(update_log(), file, default_flow_style=False)
+        yaml.dump(update_log(filename), file, default_flow_style=False)
 
 
 if __name__ == '__main__':
