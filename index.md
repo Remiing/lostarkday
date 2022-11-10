@@ -53,7 +53,7 @@ Day guild information.
 |![](./assets/images/class_images/emblem_devil_hunter_female.png){{data.class_num.Gunslinger-}}|
 |![](./assets/images/class_images/emblem_yinyangshi.png){{data.class_num.Artist-}}
 |![](./assets/images/class_images/emblem_weather_artist.png){{data.class_num.Aeromancer-}}||||
-{: .class_table .text-grey-lt-000 .text-center}
+{: .class-table .text-grey-lt-000 .text-center}
 
 ---
 
