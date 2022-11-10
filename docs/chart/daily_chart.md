@@ -26,6 +26,7 @@ nav_order: 1
 {% for member in site.data.guild_members -%}
 {%- assign before = before_data | where:"name", member | first -%}
 {%- assign after = after_data | where:"name", member | first -%}
+{%- unless before and after -%}{%- continue -%}{%- endunless -%}
 {%- if before.itemLV == after.itemLV -%}{%- continue -%}{%- endif -%}
 |{::nomarkdown}<p>{{after.name-}}</p><p>{{after.class-}}</p>{:/}{{-raw-}}
 |{{before.itemLV}} > {{after.itemLV-}}

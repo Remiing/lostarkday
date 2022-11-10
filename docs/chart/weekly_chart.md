@@ -11,6 +11,9 @@ nav_order: 2
 주간 템레벨 변화
 {: .fs-6 .fw-300 }
 
+{{site.data.update_time[-8].update_time}} ~ {{site.data.update_time[-1].update_time}}
+{: .text-right }
+
 ---
 
 {% assign before_data = site.data.update_time[-8].filename | remove: ".csv" %}
@@ -23,6 +26,7 @@ nav_order: 2
 {% for member in site.data.guild_members -%}
 {%- assign before = before_data | where:"name", member | first -%}
 {%- assign after = after_data | where:"name", member | first -%}
+{%- unless before and after -%}{%- continue -%}{%- endunless -%}
 {%- if before.itemLV == after.itemLV -%}{%- continue -%}{%- endif -%}
 |{::nomarkdown}<p>{{after.name-}}</p><p>{{after.class-}}</p>{:/}{{-raw-}}
 |{{before.itemLV}} > {{after.itemLV-}}
