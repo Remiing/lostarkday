@@ -65,8 +65,8 @@ def get_user_data(name):
 
 
 def read_guild_members():
-    f = open('./_data/guild_members.yml', 'r', encoding='UTF-8')
-    members = f.read().split('\n')
+    with open('./_data/guild_members.yml', encoding='utf-8') as file:
+        members = yaml.load(file, Loader=yaml.FullLoader)
     return members
 
 
