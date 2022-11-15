@@ -13,8 +13,20 @@ nav_order: 4
 # 강화 확률 4%
 {: .fs-9 }
 
-16, 17 단계 도전
-{: .fs-6 .fw-300 }
+- [ ] T3 1302 레벨 제한 아이템 12, 13, 14강
+- [ ] T3 1340 레벨 제한 아이템 
+- [ ] T3 1390 레벨 제한 아이템 16, 17
+- [ ] T3 1525 레벨 제한 아이템 16, 17
+{: .fs-5 .fw-300 }
+
+---
+
+{% assign avg = 0 -%}
+{%- for i in (i..try_num.size) -%}
+{%- assign avg = try_num[i] | times: success_this_time[i] | plus: avg -%}
+{%- endfor -%}
+
+## 평균적으로 누르는 횟수 {{avg | round: 1}} 번
 
 ---
 

@@ -13,8 +13,20 @@ nav_order: 1
 # 강화 확률 15%
 {: .fs-9 }
 
-10, 11 단계 도전
-{: .fs-6 .fw-300 }
+- [ ] T3 1302 레벨 제한 아이템 12, 13, 14
+- [ ] T3 1340 레벨 제한 아이템 12, 13, 14
+- [ ] T3 1390 레벨 제한 아이템 
+- [ ] T3 1525 레벨 제한 아이템 10, 11
+{: .fs-5 .fw-300 }
+
+---
+
+{% assign avg = 0 -%}
+{%- for i in (i..try_num.size) -%}
+{%- assign avg = try_num[i] | times: success_this_time[i] | plus: avg -%}
+{%- endfor -%}
+
+## 평균적으로 누르는 횟수 {{avg | round: 1}} 번
 
 ---
 
@@ -30,6 +42,14 @@ nav_order: 1
 
 ---
 
+## 트라이 회차에 따른 확률 데이터
+기본 재련 확률 15%
+
+| 트라이 회차 | 트라이 확률 | N트만에 성공할 확률 | N트안에 성공할 확률 | 장인의 기운 |
+|:-:|:-:|:-:|:-:|:-:|
+{% for i in site.data.refining.refining_15 -%}
+|{{ i.try_num }}|{{ i.change_probability | times:100 }}%|{{ i.success_this_time | times:100 }}%|{{ i.cumulative | times:100 }}%|{{ i.master_energy | times:100 }}%|
+{% endfor %}
 
 <script>
 var ctx = document.getElementById("success_this_time");

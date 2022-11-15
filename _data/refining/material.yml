@@ -1,0 +1,52 @@
+weapon:
+  level_1302:
+    step_12:
+      destruction_stone: 160
+      leapstone: 5
+      fusion: 2
+      honor_Shard: 37
+      gold: 200
+    step_13:
+      destruction_stone: 190
+      leapstone: 5
+      fusion: 3
+      honor_Shard: 44
+      gold: 200
+    step_14:
+      destruction_stone: 190
+      leapstone: 5
+      fusion: 3
+      honor_Shard: 44
+      gold: 200
+    step_15:
+      destruction_stone: 190
+      leapstone: 5
+      fusion: 3
+      honor_Shard: 44
+      gold: 200
+  level_1340:
+    step_12:
+      destruction_stone: 332
+      leapstone: 7
+      fusion: 3
+      honor_Shard: 77
+      gold: 264
+    step_13:
+      destruction_stone: 394
+      leapstone: 7
+      fusion: 4
+      honor_Shard: 91
+      gold: 264
+    step_14:
+      destruction_stone: 394
+      leapstone: 8
+      fusion: 4
+      honor_Shard: 91
+      gold: 264
+    step_15:
+      destruction_stone: 394
+      leapstone: 8
+      fusion: 4
+      honor_Shard: 91
+      gold: 264
+    

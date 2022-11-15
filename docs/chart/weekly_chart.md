@@ -23,11 +23,12 @@ nav_order: 2
 
 | {::nomarkdown}<p>닉네임</p><p>클래스</p>{:/} | 아이템 레벨 변화 | 강화 수치 변화 |
 |:-|:-:|:-:|
-{% for member in site.data.guild_members -%}
+{% assign empty_check = 0 -%}
+{%- for member in site.data.guild_members -%}
 {%- assign before = before_data | where:"name", member | first -%}
 {%- assign after = after_data | where:"name", member | first -%}
 {%- unless before and after -%}{%- continue -%}{%- endunless -%}
-{%- if before.itemLV == after.itemLV -%}{%- continue -%}{%- endif -%}
+{%- if before.itemLV == after.itemLV -%}{%- continue -%}{%- else -%}{%- assign empty_check = 1 -%}{%- endif -%}
 |{::nomarkdown}<p>{{after.name-}}</p><p>{{after.class-}}</p>{:/}{{-raw-}}
 |{{before.itemLV}} > {{after.itemLV-}}
 |{%- assign before_equip = before.equipmentLV | split: ',' -%}
@@ -38,3 +39,4 @@ nav_order: 2
 {%- if before_equip_val == after_equip_val -%}{%- continue -%}{%- endif -%}
 {::nomarkdown}<p>{{before_equip[i]}} > {{after_equip[i]}}</p>{:/}{% endfor -%}|
 {% endfor %}
+{%- if empty_check == 0 -%}||||{%- endif -%}
