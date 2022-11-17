@@ -12,9 +12,15 @@ Day guild members ranking
 
 ---
 
+Last Update {{site.data.update_time[-1].update_time}}
+{: .text-right }
+
+{% assign last_data = site.data.update_time[-1].filename | remove: ".csv" %}
+{% assign members_data = site.data.chart[last_data] %}
+
 | {::nomarkdown}<p>닉네임</p><p>클래스</p>{:/} | 아이템 | 원정대 | 각인 | 특성 | 카드 | 보석 | 무기 | 공격력 | 체력 |
 |:-|:-:|:-:|:-:|:-|:-|:-|:-:|:-:|:-:|
-{% for member in site.data.member_chart -%}
+{% for member in members_data -%}
 |{::nomarkdown}<p>{{member.name-}}</p><p>{{member.class-}}</p>{:/}{{-raw-}}
 |{{member.itemLV-}}
 |{{member.expeditionLV-}}

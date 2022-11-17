@@ -16,7 +16,16 @@ permalink: /docs/refining
 
 ## 강화 확률에 따른 평균 트라이 횟수
 보조 재료(은총, 축복, 가호, 야금술, 단조술 등)는 사용하지 않고 계산
-{: .code-example }
+
+{% assign data = site.data.refining.refining_15 %}
+{% assign try_num = data | map: 'try_num' %}
+{% assign success_this_time = data | map: 'success_this_time' %}
+{% assign avg = 0 -%}
+{%- for i in (i..try_num.size) -%}
+{%- assign avg = try_num[i] | times: success_this_time[i] | plus: avg | round: 1 -%}
+{%- endfor -%}
+
+{{avg}}
 
 | 강화확률 | 평균 트라이 횟수 | 장기백 | 장기백 비율 |
 | :-: | :-: | :-: | :-: |
@@ -28,6 +37,36 @@ permalink: /docs/refining
 | 1.5% | 32.4번 | 76트 | 11.1% |
 | 1% | 47.2번 | 112트 | 11.2% |
 | 0.5% | 91.3번 | 219트 | 11.5% |
+
+---
+
+## 무기 강화 기대값
+T3 1525 레벨 제한 아이템
+
+{% assign price = site.data.refining.price.level_1525 %}
+파괴강석 개당 {{price.basic_stone}}골드, 돌파석 개당 {{price.leap_stone}}골드, 명예의 파편 개당 {{price.honor_shard}}골드, 오레하 개당 {{price.fusion}}골드
+
+{% for i in (10..25) %}
+{% assign step = 'step_' | append: i %}
+{% assign material = site.data.refining.material.level_1525[step] %}
+{% case material.probability %}
+{% when '15' %}{% assign avg = 4.9 %}
+{% when '10' %}{% assign avg = 6.6 %}
+{% when '5' %}{% assign avg = 11.4 %}
+{% when '4' %}{% assign avg = 13.7 %}
+{% when '3' %}{% assign avg = 17.5 %}
+{% when '1.5' %}{% assign avg = 32.4 %}
+{% when '1' %}{% assign avg = 47.2 %}
+{% when '0.5' %}{% assign avg = 91.3 %}
+{% endcase %}
+{% assign basic_stone = material.basic_stone | times: price.basic_stone %}
+{% assign fusion = material.fusion | times: price.fusion %}
+{% assign honor_shard = material.honor_shard | times: price.honor_shard %}
+{% assign leap_stone = material.leap_stone | times: price.leap_stone %}
+{% assign refining_price = basic_stone| plus: fusion | plus: honor_shard | plus: leap_stone | plus: material.gold %}
+
+{{i}}강, 트라이비용: {{refining_price | round}}, 총 {{refining_price | times: avg | round }}골드
+{% endfor %}
 
 ---
 

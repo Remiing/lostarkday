@@ -16,6 +16,7 @@ nav_order: 2
 
 ---
 
+{% assign member_list = site.data.guild_members.main_character | concat: site.data.guild_members.sub_character %}
 {% assign before_data = site.data.update_time[-8].filename | remove: ".csv" %}
 {% assign after_data = site.data.update_time[-1].filename | remove: ".csv" %}
 {% assign before_data = site.data.chart[before_data] %}
@@ -24,7 +25,7 @@ nav_order: 2
 | {::nomarkdown}<p>닉네임</p><p>클래스</p>{:/} | 아이템 레벨 변화 | 강화 수치 변화 |
 |:-|:-:|:-:|
 {% assign empty_check = 0 -%}
-{%- for member in site.data.guild_members -%}
+{%- for member in member_list -%}
 {%- assign before = before_data | where:"name", member | first -%}
 {%- assign after = after_data | where:"name", member | first -%}
 {%- unless before and after -%}{%- continue -%}{%- endunless -%}

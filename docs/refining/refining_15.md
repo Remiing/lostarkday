@@ -21,12 +21,13 @@ nav_order: 1
 
 ---
 
+## 강화 기대값
 {% assign avg = 0 -%}
 {%- for i in (i..try_num.size) -%}
-{%- assign avg = try_num[i] | times: success_this_time[i] | plus: avg -%}
+{%- assign avg = try_num[i] | times: success_this_time[i] | plus: avg | round: 1 -%}
 {%- endfor -%}
 
-## 평균적으로 누르는 횟수 {{avg | round: 1}} 번
+평균적으로 누르는 횟수 {{avg}} 번
 
 ---
 
