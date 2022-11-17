@@ -8,13 +8,13 @@ class_num:
   Deadeye: 0
   Deathblade: 2
   Destroyer: 0
-  Glaivier: 1
+  Glaivier: 2
   Gunlancer: 1
-  Gunslinger: 4
+  Gunslinger: 5
   Machinist: 1
   Paladin: 1
-  Reaper: 2
-  Scrapper: 2
+  Reaper: 3
+  Scrapper: 3
   Shadowhunter: 1
   Sharpshooter: 1
   Sorceress: 5
@@ -23,22 +23,22 @@ class_num:
   Summoner: 0
   Wardancer: 2
 representative_value:
-  average_level: 1565
+  average_level: 1559
   highest_level: 1620
   lowest_level: 1462
 variance:
   above_1490: 0
-  above_1500: 1
+  above_1500: 3
   above_1510: 0
   above_1520: 0
   above_1530: 0
   above_1540: 8
   above_1550: 1
-  above_1560: 3
+  above_1560: 4
   above_1570: 0
   above_1580: 4
   above_1590: 2
   above_1600: 7
   above_1610: 2
   above_1620: 1
-  under_1490: 3
+  under_1490: 4
