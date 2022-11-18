@@ -25,8 +25,6 @@ permalink: /docs/refining
 {%- assign avg = try_num[i] | times: success_this_time[i] | plus: avg | round: 1 -%}
 {%- endfor -%}
 
-{{avg}}
-
 | 강화확률 | 평균 트라이 횟수 | 장기백 | 장기백 비율 |
 | :-: | :-: | :-: | :-: |
 | 15% | 4.9번 | 11트 | 8.5% |
@@ -46,27 +44,33 @@ T3 1525 레벨 제한 아이템
 {% assign price = site.data.refining.price.level_1525 %}
 파괴강석 개당 {{price.basic_stone}}골드, 돌파석 개당 {{price.leap_stone}}골드, 명예의 파편 개당 {{price.honor_shard}}골드, 오레하 개당 {{price.fusion}}골드
 
-{% for i in (10..25) %}
-{% assign step = 'step_' | append: i %}
-{% assign material = site.data.refining.material.level_1525[step] %}
-{% case material.probability %}
-{% when '15' %}{% assign avg = 4.9 %}
-{% when '10' %}{% assign avg = 6.6 %}
-{% when '5' %}{% assign avg = 11.4 %}
-{% when '4' %}{% assign avg = 13.7 %}
-{% when '3' %}{% assign avg = 17.5 %}
-{% when '1.5' %}{% assign avg = 32.4 %}
-{% when '1' %}{% assign avg = 47.2 %}
-{% when '0.5' %}{% assign avg = 91.3 %}
-{% endcase %}
-{% assign basic_stone = material.basic_stone | times: price.basic_stone %}
-{% assign fusion = material.fusion | times: price.fusion %}
-{% assign honor_shard = material.honor_shard | times: price.honor_shard %}
-{% assign leap_stone = material.leap_stone | times: price.leap_stone %}
-{% assign refining_price = basic_stone| plus: fusion | plus: honor_shard | plus: leap_stone | plus: material.gold %}
-
-{{i}}강, 트라이비용: {{refining_price | round}}, 총 {{refining_price | times: avg | round }}골드
+| 강화단계 | 강화확률 | 트라이비용 | 평균기대값 |
+| :-: | :-: | :-: | :-: |
+{% for i in (10..25) -%}
+{%- assign step = 'step_' | append: i -%}
+{%- assign material = site.data.refining.material.level_1525[step] -%}
+{%- case material.probability -%}
+{%- when '15' %}{% assign avg = 4.9 -%}
+{%- when '10' %}{% assign avg = 6.6 -%}
+{%- when '5' %}{% assign avg = 11.4 -%}
+{%- when '4' %}{% assign avg = 13.7 -%}
+{%- when '3' %}{% assign avg = 17.5 -%}
+{%- when '1.5' %}{% assign avg = 32.4 -%}
+{%- when '1' %}{% assign avg = 47.2 -%}
+{%- when '0.5' %}{% assign avg = 91.3 -%}
+{%- endcase -%}
+{%- assign basic_stone = material.basic_stone | times: price.basic_stone -%}
+{%- assign fusion = material.fusion | times: price.fusion -%}
+{%- assign honor_shard = material.honor_shard | times: price.honor_shard -%}
+{%- assign leap_stone = material.leap_stone | times: price.leap_stone -%}
+{%- assign refining_once = basic_stone| plus: fusion | plus: honor_shard | plus: leap_stone | plus: material.gold | round -%}
+{%- assign refining_total = refining_once | times: avg | round -%}
+{%- capture canvas_label %}{{canvas_label}}{{i}},{% endcapture -%}
+{%- capture canvas_data %}{{canvas_data}}{{refining_total}},{% endcapture -%}
+| {{i}} | {{material.probability}}% | {{refining_once}}골드 | {{refining_total}}골드 |
 {% endfor %}
+
+<canvas id="weapon_refining" style="box-sizing: border-box; width: 100%;"></canvas>
 
 ---
 
@@ -122,3 +126,62 @@ N트만에 성공할 확률의 누적 수치입니다.
 따라서, “트라이 확률”은 100%가 되고, “N트만에 성공할 확률”은 100%에서 이전 회차의 누적 사건 발생 확률 수치를 모두 차감한 수치입니다.
 
 당연히 “N트 이하로 누적 성공 확률"은 100%가 됩니다.
+
+<script>
+var ctx = document.getElementById("weapon_refining");
+
+var chart_data = [{{ canvas_data }}];
+var labels = [{{ canvas_label }}];
+var data = {
+    labels: labels,
+    datasets: [{
+        label: 'Level',
+        data: chart_data,
+        backgroundColor: [
+          "rgba(138, 43, 226, 0.2)",
+          "rgba(240, 169, 87, 0.2)",
+          "rgba(0, 0, 128, 0.2)",
+          "rgba(128, 0, 128, 0.2)",
+          "rgba(70, 126, 198, 0.2)",
+          "rgba(133, 172, 32, 0.2)"
+        ],
+        borderColor: [
+          "rgba(138, 43, 226, 1)",
+          "rgba(240, 169, 87, 1)",
+          "rgba(0, 0, 128, 1)",
+          "rgba(128, 0, 128, 1)",
+          "rgba(70, 126, 198, 1)",
+          "rgba(133, 172, 32, 1)"
+        ],
+        borderWidth: 1
+      }
+    ]
+  };
+var options = {
+    indexAxis: 'x',
+    responsive: false,
+    events: ['mousemove'], 
+    animations: {
+        duration: 0
+    }, 
+    plugins: {
+      legend: false, 
+      tooltip: {
+        enabled: false
+      },
+      datalabels: {
+        formatter: function (value, context) {
+            var idx = context.dataIndex;
+            return value;
+          },
+      }
+    }
+};
+
+new Chart(ctx, {
+  type: "bar",
+  data: data, 
+  options: options, 
+  plugins:[ChartDataLabels],
+});
+</script>
