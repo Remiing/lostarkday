@@ -15,59 +15,62 @@ Day guild information.
 {: .fs-6 .fw-300 }
 
 ---
+<div markdown="1" style="overflow: auto;">
+<div markdown="1" style="box-sizing: border-box; width: 50%; float: left;">
+
+## 총인원
+{% for i in site.data.total_info.class_num %}
+{% assign num = num | plus:i[1] %}
+{% endfor %}
+{{num}}
 
 ## 최고 평균 최저 레벨
 
-<canvas id="representative_value" style="box-sizing: border-box; width: 100%; height: 100%;"></canvas>
+<canvas id="representative_value" style="box-sizing: border-box; width: 100%; height: 15vh;"></canvas>
 
----
+## 레벨대
 
-## 레벨대 분포
+<canvas id="variance" style="box-sizing: border-box; width: 100%; height: 60vh;"></canvas>
 
-<canvas id="variance" style="box-sizing: border-box; width: 100%;"></canvas>
+## 클래스
 
----
+<canvas id="class_num" style="box-sizing: border-box; width: 100%; height: 30vh;"></canvas>
+
+## 포지션
+
+<canvas id="position" style="box-sizing: border-box; width: 100%; height: 15vh;"></canvas>
+
+</div>
+<div markdown="1" style="box-sizing: border-box; width: 50%; float: right;">
 
 ## 직업별 인원수
 
-|![](./assets/images/class_images/emblem_berserker.png){{data.class_num.Berserker-}}
+|전사|![](./assets/images/class_images/emblem_berserker.png){{data.class_num.Berserker-}}
 |![](./assets/images/class_images/emblem_destroyer.png){{data.class_num.Destroyer-}}
 |![](./assets/images/class_images/emblem_warlord.png){{data.class_num.Gunlancer-}}
 |![](./assets/images/class_images/emblem_holyknight.png){{data.class_num.Paladin-}}||
-|![](./assets/images/class_images/emblem_arcana.png){{data.class_num.Arcanist-}}
+|마법사|![](./assets/images/class_images/emblem_arcana.png){{data.class_num.Arcanist-}}
 |![](./assets/images/class_images/emblem_summoner.png){{data.class_num.Summoner-}}
 |![](./assets/images/class_images/emblem_bard.png){{data.class_num.Bard-}}
 |![](./assets/images/class_images/emblem_elemental_master.png){{data.class_num.Sorceress-}}||
-|![](./assets/images/class_images/emblem_battle_master.png){{data.class_num.Wardancer-}}
+|무도가|![](./assets/images/class_images/emblem_battle_master.png){{data.class_num.Wardancer-}}
 |![](./assets/images/class_images/emblem_infighter.png){{data.class_num.Scrapper-}}
 |![](./assets/images/class_images/emblem_force_master.png){{data.class_num.Soulfist-}}
 |![](./assets/images/class_images/emblem_lance_master.png){{data.class_num.Glaivier-}}
 |![](./assets/images/class_images/emblem_battle_master_male.png){{data.class_num.Striker-}}|
-|![](./assets/images/class_images/emblem_blade.png){{data.class_num.Deathblade-}}
+|암살자|![](./assets/images/class_images/emblem_blade.png){{data.class_num.Deathblade-}}
 |![](./assets/images/class_images/emblem_demonic.png){{data.class_num.Shadowhunter-}}
 |![](./assets/images/class_images/emblem_reaper.png){{data.class_num.Reaper-}}|||
-|![](./assets/images/class_images/emblem_hawk_eye.png){{data.class_num.Sharpshooter-}}
+|헌터|![](./assets/images/class_images/emblem_hawk_eye.png){{data.class_num.Sharpshooter-}}
 |![](./assets/images/class_images/emblem_devil_hunter.png){{data.class_num.Deadeye-}}
 |![](./assets/images/class_images/emblem_blaster.png){{data.class_num.Artillerist-}}
 |![](./assets/images/class_images/emblem_scouter.png){{data.class_num.Machinist-}}
 |![](./assets/images/class_images/emblem_devil_hunter_female.png){{data.class_num.Gunslinger-}}|
-|![](./assets/images/class_images/emblem_yinyangshi.png){{data.class_num.Artist-}}
+|스페셜리스트|![](./assets/images/class_images/emblem_yinyangshi.png){{data.class_num.Artist-}}
 |![](./assets/images/class_images/emblem_weather_artist.png){{data.class_num.Aeromancer-}}||||
 {: .class-table .text-grey-lt-000 .text-center}
 
----
-
-## 직업군 인원수
-
-<canvas id="class_num" style="box-sizing: border-box; width: 100%;"></canvas>
-
----
-
-## 포지션 인원수
-
-<canvas id="position" style="box-sizing: border-box; width: 100%; height: 50%;"></canvas>
-
----
+</div>
 
 
 <script>
@@ -155,7 +158,7 @@ var data = {
     ]
   };
 var options = {
-    indexAxis: 'x',
+    indexAxis: 'y',
     responsive: false,
     events: [], 
     animations: {
@@ -163,6 +166,7 @@ var options = {
     }, 
     plugins: {
       legend: false, 
+      borderWidth: 5,
     }
 };
 
