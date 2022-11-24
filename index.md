@@ -43,7 +43,7 @@ Day guild information.
 </div>
 <div markdown="1" style="box-sizing: border-box; width: 50%; float: right;">
 
-## 직업별 인원수
+## 직업별
 
 |전사|![](./assets/images/class_images/emblem_berserker.png){{data.class_num.Berserker-}}
 |![](./assets/images/class_images/emblem_destroyer.png){{data.class_num.Destroyer-}}
@@ -69,6 +69,8 @@ Day guild information.
 |스페셜리스트|![](./assets/images/class_images/emblem_yinyangshi.png){{data.class_num.Artist-}}
 |![](./assets/images/class_images/emblem_weather_artist.png){{data.class_num.Aeromancer-}}||||
 {: .class-table .text-grey-lt-000 .text-center}
+
+<canvas id="class_chart" style="box-sizing: border-box; width: 100%; height: 100vh;"></canvas>
 
 </div>
 
@@ -272,7 +274,55 @@ new Chart(ctx, {
   options: options
 });
 </script>
+<script>
+var ctx = document.getElementById("class_chart");
 
+var chart_data = [{% for i in data.class_num %}{{ i[1] }},{% endfor %}];
+var labels = [{% for i in data.class_num %}"{{ i[0] }}",{% endfor %}];
+var data = {
+    labels: labels,
+    datasets: [{
+        label: 'variance',
+        data: chart_data,
+        backgroundColor: [
+          "rgba(138, 43, 226, 0.2)",
+          "rgba(240, 169, 87, 0.2)",
+          "rgba(0, 0, 128, 0.2)",
+          "rgba(128, 0, 128, 0.2)",
+          "rgba(70, 126, 198, 0.2)",
+          "rgba(133, 172, 32, 0.2)"
+        ],
+        borderColor: [
+          "rgba(138, 43, 226, 1)",
+          "rgba(240, 169, 87, 1)",
+          "rgba(0, 0, 128, 1)",
+          "rgba(128, 0, 128, 1)",
+          "rgba(70, 126, 198, 1)",
+          "rgba(133, 172, 32, 1)"
+        ],
+        borderWidth: 1
+      }
+    ]
+  };
+var options = {
+    indexAxis: 'y',
+    responsive: false,
+    events: [], 
+    animations: {
+        duration: 0
+    }, 
+    plugins: {
+      legend: false, 
+      borderWidth: 5,
+    }
+};
+
+new Chart(ctx, {
+  type: "bar",
+  data: data, 
+  options: options
+});
+</script>
 
 
 
