@@ -16,7 +16,7 @@ Day guild information.
 
 ---
 <div markdown="1" style="overflow: auto;">
-<div markdown="1" style="box-sizing: border-box; width: 50%; float: left;">
+<div markdown="1" style="box-sizing: border-box; width: 50%; float: left; padding-right: 1rem; border-right: 1px solid #eeebee">
 
 ## 총인원
 {% for i in site.data.total_info.class_num %}
@@ -41,9 +41,11 @@ Day guild information.
 <canvas id="position" style="box-sizing: border-box; width: 100%; height: 15vh;"></canvas>
 
 </div>
-<div markdown="1" style="box-sizing: border-box; width: 50%; float: right;">
+<div markdown="1" style="box-sizing: border-box; width: 50%; float: right; padding-left: 1rem;">
 
 ## 직업별
+
+<canvas id="class_chart" style="box-sizing: border-box; width: 100%; height: 100vh;"></canvas>
 
 |전사|![](./assets/images/class_images/emblem_berserker.png){{data.class_num.Berserker-}}
 |![](./assets/images/class_images/emblem_destroyer.png){{data.class_num.Destroyer-}}
@@ -70,8 +72,6 @@ Day guild information.
 |![](./assets/images/class_images/emblem_weather_artist.png){{data.class_num.Aeromancer-}}||||
 {: .class-table .text-grey-lt-000 .text-center}
 
-<canvas id="class_chart" style="box-sizing: border-box; width: 100%; height: 100vh;"></canvas>
-
 </div>
 
 
@@ -86,20 +86,10 @@ var data = {
         label: 'Level',
         data: chart_data,
         backgroundColor: [
-          "rgba(138, 43, 226, 0.2)",
-          "rgba(240, 169, 87, 0.2)",
           "rgba(0, 0, 128, 0.2)",
-          "rgba(128, 0, 128, 0.2)",
-          "rgba(70, 126, 198, 0.2)",
-          "rgba(133, 172, 32, 0.2)"
         ],
         borderColor: [
-          "rgba(138, 43, 226, 1)",
-          "rgba(240, 169, 87, 1)",
           "rgba(0, 0, 128, 1)",
-          "rgba(128, 0, 128, 1)",
-          "rgba(70, 126, 198, 1)",
-          "rgba(133, 172, 32, 1)"
         ],
         borderWidth: 1
       }
@@ -108,25 +98,42 @@ var data = {
 var options = {
     indexAxis: 'y',
     responsive: false,
-    events: ['mousemove'], 
+    events: [], 
     animations: {
         duration: 0
     }, 
     scales: {
-        x: {
-            min: 1400, 
-            max: 1655
-        }
+      x: {
+        min: 1400, 
+        max: 1655
+      }
     },
     plugins: {
       legend: false, 
-    }
+      datalabels: {
+        align: 'start', 
+        anchor: 'end', 
+        color: 'black',
+        font: {
+          weight: 'bold'
+        },
+        padding: {
+          right: 10, 
+        },
+        formatter: function (value, context) {
+            var idx = context.dataIndex;
+            return value;
+          },
+      }
+    },
+
 };
 
 new Chart(ctx, {
   type: "bar",
   data: data, 
-  options: options
+  options: options, 
+  plugins:[ChartDataLabels],
 });
 </script>
 <script>
@@ -140,20 +147,10 @@ var data = {
         label: 'variance',
         data: chart_data,
         backgroundColor: [
-          "rgba(138, 43, 226, 0.2)",
-          "rgba(240, 169, 87, 0.2)",
           "rgba(0, 0, 128, 0.2)",
-          "rgba(128, 0, 128, 0.2)",
-          "rgba(70, 126, 198, 0.2)",
-          "rgba(133, 172, 32, 0.2)"
         ],
         borderColor: [
-          "rgba(138, 43, 226, 1)",
-          "rgba(240, 169, 87, 1)",
           "rgba(0, 0, 128, 1)",
-          "rgba(128, 0, 128, 1)",
-          "rgba(70, 126, 198, 1)",
-          "rgba(133, 172, 32, 1)"
         ],
         borderWidth: 1
       }
@@ -285,20 +282,10 @@ var data = {
         label: 'variance',
         data: chart_data,
         backgroundColor: [
-          "rgba(138, 43, 226, 0.2)",
-          "rgba(240, 169, 87, 0.2)",
           "rgba(0, 0, 128, 0.2)",
-          "rgba(128, 0, 128, 0.2)",
-          "rgba(70, 126, 198, 0.2)",
-          "rgba(133, 172, 32, 0.2)"
         ],
         borderColor: [
-          "rgba(138, 43, 226, 1)",
-          "rgba(240, 169, 87, 1)",
           "rgba(0, 0, 128, 1)",
-          "rgba(128, 0, 128, 1)",
-          "rgba(70, 126, 198, 1)",
-          "rgba(133, 172, 32, 1)"
         ],
         borderWidth: 1
       }
@@ -314,7 +301,7 @@ var options = {
     plugins: {
       legend: false, 
       borderWidth: 5,
-    }
+    }, 
 };
 
 new Chart(ctx, {
