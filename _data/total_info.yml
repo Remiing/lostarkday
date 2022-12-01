@@ -28,8 +28,8 @@ representative_value:
   lowest_level: 1462
 variance:
   above_1490: 0
-  above_1500: 3
-  above_1510: 0
+  above_1500: 2
+  above_1510: 1
   above_1520: 0
   above_1530: 0
   above_1540: 6
