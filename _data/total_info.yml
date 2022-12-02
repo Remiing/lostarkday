@@ -6,7 +6,7 @@ class_num:
   Bard: 3
   Berserker: 2
   Deadeye: 0
-  Deathblade: 2
+  Deathblade: 1
   Destroyer: 0
   Glaivier: 2
   Gunlancer: 1
@@ -32,13 +32,13 @@ variance:
   above_1510: 1
   above_1520: 0
   above_1530: 0
-  above_1540: 6
-  above_1550: 3
+  above_1540: 4
+  above_1550: 4
   above_1560: 4
   above_1570: 0
-  above_1580: 4
+  above_1580: 5
   above_1590: 1
   above_1600: 7
-  above_1610: 3
+  above_1610: 2
   above_1620: 1
   under_1490: 4
