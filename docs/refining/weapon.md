@@ -22,7 +22,7 @@ nav_order: 2
 ## T3 1525 레벨 제한 아이템
 
 {% assign price = site.data.refining.price.level_1525 %}
-파괴석 개당 {{price.basic_stone}}골드, 돌파석 개당 {{price.leap_stone}}골드, 명예의 파편 개당 {{price.honor_shard}}골드, 오레하 개당 {{price.fusion}}골드
+파괴석 개당 {{price.destruction_stone}}골드, 돌파석 개당 {{price.leap_stone}}골드, 명예의 파편 개당 {{price.honor_shard}}골드, 오레하 개당 {{price.fusion}}골드
 
 | 강화단계 | 강화확률 | 트라이비용 | 평균기대값 |
 | :-: | :-: | :-: | :-: |
@@ -39,11 +39,11 @@ nav_order: 2
 {%- when '1' %}{% assign avg = 47.2 -%}
 {%- when '0.5' %}{% assign avg = 91.3 -%}
 {%- endcase -%}
-{%- assign basic_stone = material.basic_stone | times: price.basic_stone -%}
+{%- assign destruction_stone = material.destruction_stone | times: price.destruction_stone -%}
 {%- assign fusion = material.fusion | times: price.fusion -%}
 {%- assign honor_shard = material.honor_shard | times: price.honor_shard -%}
 {%- assign leap_stone = material.leap_stone | times: price.leap_stone -%}
-{%- assign refining_once = basic_stone| plus: fusion | plus: honor_shard | plus: leap_stone | plus: material.gold | round -%}
+{%- assign refining_once = destruction_stone| plus: fusion | plus: honor_shard | plus: leap_stone | plus: material.gold | round -%}
 {%- assign refining_total = refining_once | times: avg | round -%}
 {%- capture level_1525_label %}{{level_1525_label}}{{i}},{% endcapture -%}
 {%- capture level_1525_data %}{{level_1525_data}}{{refining_total}},{% endcapture -%}
@@ -57,7 +57,7 @@ nav_order: 2
 ## T3 1390 레벨 제한 아이템
 
 {% assign price = site.data.refining.price.level_1390 %}
-파괴석 개당 {{price.basic_stone}}골드, 돌파석 개당 {{price.leap_stone}}골드, 명예의 파편 개당 {{price.honor_shard}}골드, 오레하 개당 {{price.fusion}}골드
+파괴석 개당 {{price.destruction_stone}}골드, 돌파석 개당 {{price.leap_stone}}골드, 명예의 파편 개당 {{price.honor_shard}}골드, 오레하 개당 {{price.fusion}}골드
 
 | 강화단계 | 강화확률 | 트라이비용 | 평균기대값 |
 | :-: | :-: | :-: | :-: |
@@ -74,11 +74,11 @@ nav_order: 2
 {%- when '1' %}{% assign avg = 47.2 -%}
 {%- when '0.5' %}{% assign avg = 91.3 -%}
 {%- endcase -%}
-{%- assign basic_stone = material.basic_stone | times: price.basic_stone -%}
+{%- assign destruction_stone = material.destruction_stone | times: price.destruction_stone -%}
 {%- assign fusion = material.fusion | times: price.fusion -%}
 {%- assign honor_shard = material.honor_shard | times: price.honor_shard -%}
 {%- assign leap_stone = material.leap_stone | times: price.leap_stone -%}
-{%- assign refining_once = basic_stone| plus: fusion | plus: honor_shard | plus: leap_stone | plus: material.gold | round -%}
+{%- assign refining_once = destruction_stone| plus: fusion | plus: honor_shard | plus: leap_stone | plus: material.gold | round -%}
 {%- assign refining_total = refining_once | times: avg | round -%}
 {%- capture level_1390_label %}{{level_1390_label}}{{i}},{% endcapture -%}
 {%- capture level_1390_data %}{{level_1390_data}}{{refining_total}},{% endcapture -%}
@@ -92,7 +92,7 @@ nav_order: 2
 ## T3 1340 레벨 제한 아이템
 
 {% assign price = site.data.refining.price.level_1340 %}
-파괴석 개당 {{price.basic_stone}}골드, 돌파석 개당 {{price.leap_stone}}골드, 명예의 파편 개당 {{price.honor_shard}}골드, 오레하 개당 {{price.fusion}}골드
+파괴석 개당 {{price.destruction_stone}}골드, 돌파석 개당 {{price.leap_stone}}골드, 명예의 파편 개당 {{price.honor_shard}}골드, 오레하 개당 {{price.fusion}}골드
 
 | 강화단계 | 강화확률 | 트라이비용 | 평균기대값 |
 | :-: | :-: | :-: | :-: |
@@ -109,11 +109,11 @@ nav_order: 2
 {%- when '1' %}{% assign avg = 47.2 -%}
 {%- when '0.5' %}{% assign avg = 91.3 -%}
 {%- endcase -%}
-{%- assign basic_stone = material.basic_stone | times: price.basic_stone -%}
+{%- assign destruction_stone = material.destruction_stone | times: price.destruction_stone -%}
 {%- assign fusion = material.fusion | times: price.fusion -%}
 {%- assign honor_shard = material.honor_shard | times: price.honor_shard -%}
 {%- assign leap_stone = material.leap_stone | times: price.leap_stone -%}
-{%- assign refining_once = basic_stone| plus: fusion | plus: honor_shard | plus: leap_stone | plus: material.gold | round -%}
+{%- assign refining_once = destruction_stone| plus: fusion | plus: honor_shard | plus: leap_stone | plus: material.gold | round -%}
 {%- assign refining_total = refining_once | times: avg | round -%}
 {%- capture level_1340_label %}{{level_1340_label}}{{i}},{% endcapture -%}
 {%- capture level_1340_data %}{{level_1340_data}}{{refining_total}},{% endcapture -%}
@@ -127,7 +127,7 @@ nav_order: 2
 ## T3 1302 레벨 제한 아이템
 
 {% assign price = site.data.refining.price.level_1302 %}
-파괴석 개당 {{price.basic_stone}}골드, 돌파석 개당 {{price.leap_stone}}골드, 명예의 파편 개당 {{price.honor_shard}}골드, 오레하 개당 {{price.fusion}}골드
+파괴석 개당 {{price.destruction_stone}}골드, 돌파석 개당 {{price.leap_stone}}골드, 명예의 파편 개당 {{price.honor_shard}}골드, 오레하 개당 {{price.fusion}}골드
 
 | 강화단계 | 강화확률 | 트라이비용 | 평균기대값 |
 | :-: | :-: | :-: | :-: |
@@ -144,11 +144,11 @@ nav_order: 2
 {%- when '1' %}{% assign avg = 47.2 -%}
 {%- when '0.5' %}{% assign avg = 91.3 -%}
 {%- endcase -%}
-{%- assign basic_stone = material.basic_stone | times: price.basic_stone -%}
+{%- assign destruction_stone = material.destruction_stone | times: price.destruction_stone -%}
 {%- assign fusion = material.fusion | times: price.fusion -%}
 {%- assign honor_shard = material.honor_shard | times: price.honor_shard -%}
 {%- assign leap_stone = material.leap_stone | times: price.leap_stone -%}
-{%- assign refining_once = basic_stone| plus: fusion | plus: honor_shard | plus: leap_stone | plus: material.gold | round -%}
+{%- assign refining_once = destruction_stone| plus: fusion | plus: honor_shard | plus: leap_stone | plus: material.gold | round -%}
 {%- assign refining_total = refining_once | times: avg | round -%}
 {%- capture level_1302_label %}{{level_1302_label}}{{i}},{% endcapture -%}
 {%- capture level_1302_data %}{{level_1302_data}}{{refining_total}},{% endcapture -%}
