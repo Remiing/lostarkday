@@ -1,20 +1,24 @@
 level_1302:
-  basic_stone: 0.4    # 파괴석 결정
-  fusion: 14          # 하급 오레하 융화 재료
-  honor_shard: 0.4    # 명예의 파편
-  leap_stone: 21      # 명예의 돌파석
+  destruction_stone: 0.4    # 파괴석 결정
+  guardian_stone: 0         # 수호석 결정
+  fusion: 14                # 하급 오레하 융화 재료
+  honor_shard: 0.4          # 명예의 파편
+  leap_stone: 21            # 명예의 돌파석
 level_1340:
-  basic_stone: 0.4    # 파괴석 결정
-  fusion: 15          # 중급 오레하 융화 재료
-  honor_shard: 0.4    # 명예의 파편
-  leap_stone: 21      # 위대한 명예의 돌파석
+  destruction_stone: 0.4    # 파괴석 결정
+  guardian_stone: 0         # 수호석 결정
+  fusion: 15                # 중급 오레하 융화 재료
+  honor_shard: 0.4          # 명예의 파편
+  leap_stone: 21            # 위대한 명예의 돌파석
 level_1390:
-  basic_stone: 2      # 파괴강석
-  fusion: 32          # 상급 오레하 융화 재료
-  honor_shard: 0.4    # 명예의 파편
-  leap_stone: 47      # 경이로운 명예의 돌파석
+  destruction_stone: 2      # 파괴강석
+  guardian_stone: 0         # 수호강석
+  fusion: 32                # 상급 오레하 융화 재료
+  honor_shard: 0.4          # 명예의 파편
+  leap_stone: 47            # 경이로운 명예의 돌파석
 level_1525:
-  basic_stone: 10     # 정제된 파괴강석
-  fusion: 80          # 최상급 오레하 융화 재료
-  honor_shard: 0.4    # 명예의 파편
-  leap_stone: 66      # 찬란한 명예의 돌파석
+  destruction_stone: 10     # 정제된 파괴강석
+  guardian_stone: 0         # 정제된 수호강석
+  fusion: 80                # 최상급 오레하 융화 재료
+  honor_shard: 0.4          # 명예의 파편
+  leap_stone: 66            # 찬란한 명예의 돌파석
