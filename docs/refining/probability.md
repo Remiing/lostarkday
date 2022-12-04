@@ -6,10 +6,16 @@ nav_order: 1
 ---
 
 # Probability
-{: .fs-9 }
+{: .fs-9 .no_toc }
 
 강화 확률에 따른 데이터
 {: .fs-5 .fw-300 }
+
+## Table of contents
+{: .no_toc .text-delta }
+
+- TOC
+{:toc}
 
 ---
 
@@ -37,22 +43,26 @@ nav_order: 1
 {% endfor %}
 
 ### 평균적으로 누르는 횟수 {{avg | round: 1}} 번
+{: .no_toc }
 
 ---
 
 ### N트만에 성공할 확률
+{: .no_toc }
 
 <canvas id="pb_15_success_this_time" style="box-sizing: border-box; width: 100%;"></canvas>
 
 ---
 
 ### N트안에 성공할 확률
+{: .no_toc }
 
 <canvas id="pb_15_cumulative" style="box-sizing: border-box; width: 100%;"></canvas>
 
 ---
 
 ### 트라이 회차에 따른 확률 데이터
+{: .no_toc }
 
 | 트라이 회차 | 트라이 확률 | N트만에 성공할 확률 | N트안에 성공할 확률 | 장인의 기운 |
 |:-:|:-:|:-:|:-:|:-:|
@@ -86,22 +96,26 @@ nav_order: 1
 {% endfor %}
 
 ### 평균적으로 누르는 횟수 {{avg | round: 1}} 번
+{: .no_toc }
 
 ---
 
 ### N트만에 성공할 확률
+{: .no_toc }
 
 <canvas id="pb_10_success_this_time" style="box-sizing: border-box; width: 100%;"></canvas>
 
 ---
 
 ### N트안에 성공할 확률
+{: .no_toc }
 
 <canvas id="pb_10_cumulative" style="box-sizing: border-box; width: 100%;"></canvas>
 
 ---
 
 ### 트라이 회차에 따른 확률 데이터
+{: .no_toc }
 
 | 트라이 회차 | 트라이 확률 | N트만에 성공할 확률 | N트안에 성공할 확률 | 장인의 기운 |
 |:-:|:-:|:-:|:-:|:-:|
@@ -135,22 +149,26 @@ nav_order: 1
 {% endfor %}
 
 ### 평균적으로 누르는 횟수 {{avg | round: 1}} 번
+{: .no_toc }
 
 ---
 
 ### N트만에 성공할 확률
+{: .no_toc }
 
 <canvas id="pb_5_success_this_time" style="box-sizing: border-box; width: 100%;"></canvas>
 
 ---
 
 ### N트안에 성공할 확률
+{: .no_toc }
 
 <canvas id="pb_5_cumulative" style="box-sizing: border-box; width: 100%;"></canvas>
 
 ---
 
 ### 트라이 회차에 따른 확률 데이터
+{: .no_toc }
 
 | 트라이 회차 | 트라이 확률 | N트만에 성공할 확률 | N트안에 성공할 확률 | 장인의 기운 |
 |:-:|:-:|:-:|:-:|:-:|
@@ -184,22 +202,26 @@ nav_order: 1
 {% endfor %}
 
 ### 평균적으로 누르는 횟수 {{avg | round: 1}} 번
+{: .no_toc }
 
 ---
 
 ### N트만에 성공할 확률
+{: .no_toc }
 
 <canvas id="pb_4_success_this_time" style="box-sizing: border-box; width: 100%; height: 100vh;"></canvas>
 
 ---
 
 ### N트안에 성공할 확률
+{: .no_toc }
 
 <canvas id="pb_4_cumulative" style="box-sizing: border-box; width: 100%; height: 100vh;"></canvas>
 
 ---
 
 ### 트라이 회차에 따른 확률 데이터
+{: .no_toc }
 
 | 트라이 회차 | 트라이 확률 | N트만에 성공할 확률 | N트안에 성공할 확률 | 장인의 기운 |
 |:-:|:-:|:-:|:-:|:-:|
@@ -233,22 +255,26 @@ nav_order: 1
 {% endfor %}
 
 ### 평균적으로 누르는 횟수 {{avg | round: 1}} 번
+{: .no_toc }
 
 ---
 
 ### N트만에 성공할 확률
+{: .no_toc }
 
 <canvas id="pb_3_success_this_time" style="box-sizing: border-box; width: 100%; height: 100vh;"></canvas>
 
 ---
 
 ### N트안에 성공할 확률
+{: .no_toc }
 
 <canvas id="pb_3_cumulative" style="box-sizing: border-box; width: 100%; height: 100vh;"></canvas>
 
 ---
 
 ### 트라이 회차에 따른 확률 데이터
+{: .no_toc }
 
 | 트라이 회차 | 트라이 확률 | N트만에 성공할 확률 | N트안에 성공할 확률 | 장인의 기운 |
 |:-:|:-:|:-:|:-:|:-:|
@@ -282,22 +308,26 @@ nav_order: 1
 {% endfor %}
 
 ### 평균적으로 누르는 횟수 {{avg | round: 1}} 번
+{: .no_toc }
 
 ---
 
 ### N트만에 성공할 확률
+{: .no_toc }
 
 <canvas id="pb_1_5_success_this_time" style="box-sizing: border-box; width: 100%; height: 100vh;"></canvas>
 
 ---
 
 ### N트안에 성공할 확률
+{: .no_toc }
 
 <canvas id="pb_1_5_cumulative" style="box-sizing: border-box; width: 100%; height: 100vh;"></canvas>
 
 ---
 
 ### 트라이 회차에 따른 확률 데이터
+{: .no_toc }
 
 | 트라이 회차 | 트라이 확률 | N트만에 성공할 확률 | N트안에 성공할 확률 | 장인의 기운 |
 |:-:|:-:|:-:|:-:|:-:|
@@ -331,22 +361,26 @@ nav_order: 1
 {% endfor %}
 
 ### 평균적으로 누르는 횟수 {{avg | round: 1}} 번
+{: .no_toc }
 
 ---
 
 ### N트만에 성공할 확률
+{: .no_toc }
 
 <canvas id="pb_1_success_this_time" style="box-sizing: border-box; width: 100%; height: 100vh;"></canvas>
 
 ---
 
 ### N트안에 성공할 확률
+{: .no_toc }
 
 <canvas id="pb_1_cumulative" style="box-sizing: border-box; width: 100%; height: 100vh;"></canvas>
 
 ---
 
 ### 트라이 회차에 따른 확률 데이터
+{: .no_toc }
 
 | 트라이 회차 | 트라이 확률 | N트만에 성공할 확률 | N트안에 성공할 확률 | 장인의 기운 |
 |:-:|:-:|:-:|:-:|:-:|
@@ -379,23 +413,27 @@ nav_order: 1
 {%- capture pb_0_5_cum %}{{pb_0_5_cum}}{{cumulative[i] | times: 100}},{% endcapture -%}
 {% endfor %}
 
-### 평균적으로 누르는 횟수 {{avg}} 번
+### 평균적으로 누르는 횟수 {{avg | round: 1}} 번
+{: .no_toc }
 
 ---
 
 ### N트만에 성공할 확률
+{: .no_toc }
 
 <canvas id="pb_0_5_success_this_time" style="box-sizing: border-box; width: 100%; height: 100vh;"></canvas>
 
 ---
 
 ### N트안에 성공할 확률
+{: .no_toc }
 
 <canvas id="pb_0_5_cumulative" style="box-sizing: border-box; width: 100%; height: 100vh;"></canvas>
 
 ---
 
 ### 트라이 회차에 따른 확률 데이터
+{: .no_toc }
 
 | 트라이 회차 | 트라이 확률 | N트만에 성공할 확률 | N트안에 성공할 확률 | 장인의 기운 |
 |:-:|:-:|:-:|:-:|:-:|
