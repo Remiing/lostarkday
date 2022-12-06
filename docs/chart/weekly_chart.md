@@ -22,8 +22,8 @@ nav_order: 2
 {% assign before_data = site.data.chart[before_data] %}
 {% assign after_data = site.data.chart[after_data] %}
 
-| {::nomarkdown}<p>닉네임</p><p>클래스</p>{:/} | 아이템 레벨 변화 | 강화 수치 변화 |
-|:-|:-:|:-:|
+| {::nomarkdown}<p>닉네임</p><p>클래스</p>{:/} | 아이템 레벨 변화 | 강화 수치 변화 | 기대값 |
+|:-|:-:|:-:|:-:|
 {% assign empty_check = 0 -%}
 {%- for member in member_list -%}
 {%- assign before = before_data | where:"name", member | first -%}
@@ -34,10 +34,15 @@ nav_order: 2
 |{{before.itemLV}} > {{after.itemLV-}}
 |{%- assign before_equip = before.equipmentLV | split: ',' -%}
 {%- assign after_equip = after.equipmentLV | split: ',' -%}
+{%- assign total_gold = 0 -%}
 {%- for i in (0..5) -%}
 {%- assign before_equip_val = before_equip[i] | split: ' ' | first -%}
 {%- assign after_equip_val = after_equip[i] | split: ' ' | first -%}
 {%- if before_equip_val == after_equip_val -%}{%- continue -%}{%- endif -%}
-{::nomarkdown}<p>{{before_equip[i]}} > {{after_equip[i]}}</p>{:/}{% endfor -%}|
+{%- assign before_equip_type = before_equip[i] | split: ' ' | last -%}
+{%- assign after_equip_type = after_equip[i] | split: ' ' | last -%}
+
+{::nomarkdown}<p>{{before_equip_type}} {{before_equip_val}} > {{after_equip_val}}</p>{:/}{% endfor -%}
+|{{ total_gold}}|
 {% endfor %}
 {%- if empty_check == 0 -%}||||{%- endif -%}
