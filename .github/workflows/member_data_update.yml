@@ -23,15 +23,12 @@ jobs:
         python -m pip install --upgrade pip
         if [ -f requirements.txt ]; then pip install -r requirements.txt; fi
         
-    - name: Run crawler.py
+    - name: Run main.py
       run: |
-        python crawler.py
+        python main.py
         
-    - name: memberlist.csv commit and push
-      run: |
-        git config user.name Remiing
-        git config user.email songjm8138@naver.com
-        git add _data
-        git commit -m "data update"
-        git push
-
+    - uses: stefanzweifel/git-auto-commit-action@v4
+      with:
+        file_pattern: '_data/'
+        commit_message: Data update
+        
