@@ -41,10 +41,13 @@ Last Update {{site.data.update_time[-1].update_time}}
 {%- for gem in gems -%}
 {::nomarkdown}<p>{{-gem-}}</p>{:/}
 {%- endfor -%}{{-raw-}}
-|{::nomarkdown}<p>{{member.equipmentLV | split: ' ' | first-}}</p><div class="detail">
-{%- assign equipmentLV = member.equipmentLV | split: ',' -%}
-{%- for equipment in equipmentLV -%}
-<p>{{-equipment-}}</p>
+|{%- assign weapon = member.equipment | split: '/' -%}
+{::nomarkdown}<p>{{weapon[1]-}}</p><div class="detail">
+{%- assign equip = member.equipment | split: ',' -%}
+{%- assign equipName = member.equipment_name | split: ',' -%}
+{%- for i in (0..5) -%}
+{%- assign equipDetail = equip[i] | split: '/' -%}
+<p>{{equipDetail[1]}} {{equipName[i]}} {{equipDetail[3]}}</p>
 {%- endfor -%}</div>{:/}{{-raw-}}
 |{{member.power-}}
 |{{member.vitality-}}|

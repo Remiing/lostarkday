@@ -17,6 +17,8 @@ nav_order: 1
 - TOC
 {:toc}
 
+{% assign avg_try_num = site.data.avg_try_num %}
+
 ---
 
 ## 강화 확률 15%
@@ -33,16 +35,17 @@ nav_order: 1
 {%- assign success_this_time = data | map: 'success_this_time' -%}
 {%- assign cumulative = data | map: 'cumulative' -%}
 
-{%- assign avg = 0 -%}
 {%- assign index = try_num.size | minus: 1 -%}
 {%- for i in (0..index) -%}
-{%- assign avg = try_num[i] | times: success_this_time[i] | plus: avg -%}
 {%- capture pb_15_num %}{{pb_15_num}}{{i | plus: 1}},{% endcapture -%}
 {%- capture pb_15_stt %}{{pb_15_stt}}{{success_this_time[i] | times: 100}},{% endcapture -%}
 {%- capture pb_15_cum %}{{pb_15_cum}}{{cumulative[i] | times: 100}},{% endcapture -%}
 {% endfor %}
 
-### 평균적으로 누르는 횟수 {{avg | round: 1}} 번
+### 평균적으로 누르는 횟수 {{avg_try_num[7].avg_num}}번
+{: .no_toc }
+
+### 최대로 누르는 횟수 {{avg_try_num[7].max_num}}번
 {: .no_toc }
 
 ---
@@ -86,16 +89,17 @@ nav_order: 1
 {%- assign success_this_time = data | map: 'success_this_time' -%}
 {%- assign cumulative = data | map: 'cumulative' -%}
 
-{%- assign avg = 0 -%}
 {%- assign index = try_num.size | minus: 1 -%}
 {%- for i in (0..index) -%}
-{%- assign avg = try_num[i] | times: success_this_time[i] | plus: avg -%}
 {%- capture pb_10_num %}{{pb_10_num}}{{i | plus: 1}},{% endcapture -%}
 {%- capture pb_10_stt %}{{pb_10_stt}}{{success_this_time[i] | times: 100}},{% endcapture -%}
 {%- capture pb_10_cum %}{{pb_10_cum}}{{cumulative[i] | times: 100}},{% endcapture -%}
 {% endfor %}
 
-### 평균적으로 누르는 횟수 {{avg | round: 1}} 번
+### 평균적으로 누르는 횟수 {{avg_try_num[6].avg_num}}번
+{: .no_toc }
+
+### 최대로 누르는 횟수 {{avg_try_num[6].max_num}}번
 {: .no_toc }
 
 ---
@@ -139,16 +143,17 @@ nav_order: 1
 {%- assign success_this_time = data | map: 'success_this_time' -%}
 {%- assign cumulative = data | map: 'cumulative' -%}
 
-{%- assign avg = 0 -%}
 {%- assign index = try_num.size | minus: 1 -%}
 {%- for i in (0..index) -%}
-{%- assign avg = try_num[i] | times: success_this_time[i] | plus: avg -%}
 {%- capture pb_5_num %}{{pb_5_num}}{{i | plus: 1}},{% endcapture -%}
 {%- capture pb_5_stt %}{{pb_5_stt}}{{success_this_time[i] | times: 100}},{% endcapture -%}
 {%- capture pb_5_cum %}{{pb_5_cum}}{{cumulative[i] | times: 100}},{% endcapture -%}
 {% endfor %}
 
-### 평균적으로 누르는 횟수 {{avg | round: 1}} 번
+### 평균적으로 누르는 횟수 {{avg_try_num[5].avg_num}}번
+{: .no_toc }
+
+### 최대로 누르는 횟수 {{avg_try_num[5].max_num}}번
 {: .no_toc }
 
 ---
@@ -192,16 +197,17 @@ nav_order: 1
 {%- assign success_this_time = data | map: 'success_this_time' -%}
 {%- assign cumulative = data | map: 'cumulative' -%}
 
-{%- assign avg = 0 -%}
 {%- assign index = try_num.size | minus: 1 -%}
 {%- for i in (0..index) -%}
-{%- assign avg = try_num[i] | times: success_this_time[i] | plus: avg -%}
 {%- capture pb_4_num %}{{pb_4_num}}{{i | plus: 1}},{% endcapture -%}
 {%- capture pb_4_stt %}{{pb_4_stt}}{{success_this_time[i] | times: 100}},{% endcapture -%}
 {%- capture pb_4_cum %}{{pb_4_cum}}{{cumulative[i] | times: 100}},{% endcapture -%}
 {% endfor %}
 
-### 평균적으로 누르는 횟수 {{avg | round: 1}} 번
+### 평균적으로 누르는 횟수 {{avg_try_num[4].avg_num}}번
+{: .no_toc }
+
+### 최대로 누르는 횟수 {{avg_try_num[4].max_num}}번
 {: .no_toc }
 
 ---
@@ -245,16 +251,17 @@ nav_order: 1
 {%- assign success_this_time = data | map: 'success_this_time' -%}
 {%- assign cumulative = data | map: 'cumulative' -%}
 
-{%- assign avg = 0 -%}
 {%- assign index = try_num.size | minus: 1 -%}
 {%- for i in (0..index) -%}
-{%- assign avg = try_num[i] | times: success_this_time[i] | plus: avg -%}
 {%- capture pb_3_num %}{{pb_3_num}}{{i | plus: 1}},{% endcapture -%}
 {%- capture pb_3_stt %}{{pb_3_stt}}{{success_this_time[i] | times: 100}},{% endcapture -%}
 {%- capture pb_3_cum %}{{pb_3_cum}}{{cumulative[i] | times: 100}},{% endcapture -%}
 {% endfor %}
 
-### 평균적으로 누르는 횟수 {{avg | round: 1}} 번
+### 평균적으로 누르는 횟수 {{avg_try_num[3].avg_num}}번
+{: .no_toc }
+
+### 최대로 누르는 횟수 {{avg_try_num[3].max_num}}번
 {: .no_toc }
 
 ---
@@ -298,16 +305,17 @@ nav_order: 1
 {%- assign success_this_time = data | map: 'success_this_time' -%}
 {%- assign cumulative = data | map: 'cumulative' -%}
 
-{%- assign avg = 0 -%}
 {%- assign index = try_num.size | minus: 1 -%}
 {%- for i in (0..index) -%}
-{%- assign avg = try_num[i] | times: success_this_time[i] | plus: avg -%}
 {%- capture pb_1_5_num %}{{pb_1_5_num}}{{i | plus: 1}},{% endcapture -%}
 {%- capture pb_1_5_stt %}{{pb_1_5_stt}}{{success_this_time[i] | times: 100}},{% endcapture -%}
 {%- capture pb_1_5_cum %}{{pb_1_5_cum}}{{cumulative[i] | times: 100}},{% endcapture -%}
 {% endfor %}
 
-### 평균적으로 누르는 횟수 {{avg | round: 1}} 번
+### 평균적으로 누르는 횟수 {{avg_try_num[2].avg_num}}번
+{: .no_toc }
+
+### 최대로 누르는 횟수 {{avg_try_num[2].max_num}}번
 {: .no_toc }
 
 ---
@@ -351,16 +359,17 @@ nav_order: 1
 {%- assign success_this_time = data | map: 'success_this_time' -%}
 {%- assign cumulative = data | map: 'cumulative' -%}
 
-{%- assign avg = 0 -%}
 {%- assign index = try_num.size | minus: 1 -%}
 {%- for i in (0..index) -%}
-{%- assign avg = try_num[i] | times: success_this_time[i] | plus: avg -%}
 {%- capture pb_1_num %}{{pb_1_num}}{{i | plus: 1}},{% endcapture -%}
 {%- capture pb_1_stt %}{{pb_1_stt}}{{success_this_time[i] | times: 100}},{% endcapture -%}
 {%- capture pb_1_cum %}{{pb_1_cum}}{{cumulative[i] | times: 100}},{% endcapture -%}
 {% endfor %}
 
-### 평균적으로 누르는 횟수 {{avg | round: 1}} 번
+### 평균적으로 누르는 횟수 {{avg_try_num[1].avg_num}}번
+{: .no_toc }
+
+### 최대로 누르는 횟수 {{avg_try_num[1].max_num}}번
 {: .no_toc }
 
 ---
@@ -404,16 +413,17 @@ nav_order: 1
 {% assign success_this_time = data | map: 'success_this_time' %}
 {% assign cumulative = data | map: 'cumulative' %}
 
-{%- assign avg = 0 -%}
 {%- assign index = try_num.size | minus: 1 -%}
 {%- for i in (0..index) -%}
-{%- assign avg = try_num[i] | times: success_this_time[i] | plus: avg -%}
 {%- capture pb_0_5_num %}{{pb_0_5_num}}{{i | plus: 1}},{% endcapture -%}
 {%- capture pb_0_5_stt %}{{pb_0_5_stt}}{{success_this_time[i] | times: 100}},{% endcapture -%}
 {%- capture pb_0_5_cum %}{{pb_0_5_cum}}{{cumulative[i] | times: 100}},{% endcapture -%}
 {% endfor %}
 
-### 평균적으로 누르는 횟수 {{avg | round: 1}} 번
+### 평균적으로 누르는 횟수 {{avg_try_num[0].avg_num}}번
+{: .no_toc }
+
+### 최대로 누르는 횟수 {{avg_try_num[0].max_num}}번
 {: .no_toc }
 
 ---
@@ -455,20 +465,10 @@ var data = {
         label: 'Level',
         data: chart_data,
         backgroundColor: [
-          "rgba(138, 43, 226, 0.2)",
-          "rgba(240, 169, 87, 0.2)",
           "rgba(0, 0, 128, 0.2)",
-          "rgba(128, 0, 128, 0.2)",
-          "rgba(70, 126, 198, 0.2)",
-          "rgba(133, 172, 32, 0.2)"
         ],
         borderColor: [
-          "rgba(138, 43, 226, 1)",
-          "rgba(240, 169, 87, 1)",
           "rgba(0, 0, 128, 1)",
-          "rgba(128, 0, 128, 1)",
-          "rgba(70, 126, 198, 1)",
-          "rgba(133, 172, 32, 1)"
         ],
         borderWidth: 1
       }
@@ -484,6 +484,15 @@ var options = {
     plugins: {
       legend: false, 
       datalabels: {
+        align: 'start', 
+        anchor: 'end', 
+        color: 'black',
+        font: {
+          weight: 'bold'
+        },
+        padding: {
+          right: 10, 
+        },
         formatter: function (value, context) {
             var idx = context.dataIndex;
             return value + '%';

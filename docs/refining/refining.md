@@ -17,16 +17,12 @@ permalink: /docs/refining
 ## 강화 확률에 따른 평균 트라이 횟수
 보조 재료(은총, 축복, 가호, 야금술, 단조술 등)는 사용하지 않고 계산
 
-{% assign data = site.data.refining.refining_15 %}
-{% assign try_num = data | map: 'try_num' %}
-{% assign success_this_time = data | map: 'success_this_time' %}
-{% assign avg = 0 -%}
-{%- for i in (i..try_num.size) -%}
-{%- assign avg = try_num[i] | times: success_this_time[i] | plus: avg | round: 1 -%}
-{%- endfor -%}
-
 | 강화확률 | 평균 트라이 횟수 | 장기백 | 장기백 비율 |
 | :-: | :-: | :-: | :-: |
+| 100% | 1.0번 | 1트 | 0% |
+| 60% | 1.6번 | 5트 | 0.8% |
+| 45% | 2.0번 | 6트 | 2.0% |
+| 30% | 2.8번 | 7트 | 5.8% |
 | 15% | 4.9번 | 11트 | 8.5% |
 | 10% | 6.6번 | 15트 | 8.5% |
 | 5% | 11.4번 | 26트 | 9.7% |
