@@ -11,7 +11,7 @@ def get_characterInfo(characterName):
     soup = BeautifulSoup(response.text, 'html.parser')
     profile = soup.select_one('div.profile-ingame')
     if profile.select_one('div.profile-attention'):
-        print(f'{name} 캐럭터 정보가 없습니다')
+        print(f'{characterName} 캐럭터 정보가 없습니다')
         return
 
     _class = profile.select_one('div.profile-equipment__character > img')['alt']
@@ -31,7 +31,9 @@ def get_characterInfo(characterName):
     stat = ','.join(stat)
 
     card = profile.select('div.profile-card__text > div > ul > li > div.card-effect__title')[-1].text
-    card = ','.join(card.replace(')', '').split(' ('))
+    card = card.replace(')', '').replace(' (', ',').replace('성합계', '')
+    card = re.sub(r' .세트', '', card)
+    print(card)
 
     script = profile.select_one('script').text.replace(';', '').replace('$.Profile = ', '').strip()
     script = json.loads(script)
@@ -118,4 +120,11 @@ def gather_members(members):
     df_members = df_members.sort_values(by='itemLV', ascending=False)
 
     return df_members
+
+
+if __name__ == '__main__':
+    guild_members = load_yaml('../_data/guild_members.yml')
+    guild_members = guild_members['main_character'] + guild_members['sub_character']
+
+    df_members = gather_members(guild_members)
 
