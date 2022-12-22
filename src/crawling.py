@@ -1,9 +1,14 @@
+import os
 import requests
 from bs4 import BeautifulSoup
 import re
 import pandas as pd
 import json
 from src.utils import load_yaml
+# import config
+
+# lark_api_key = 'bearer ' + config.api_key
+lark_api_key = 'bearer ' + os.environ['lark_api_key']
 
 def get_characterInfo(characterName):
     url = 'https://lostark.game.onstove.com/Profile/Character/'
@@ -105,6 +110,110 @@ def get_characterInfo(characterName):
     return character_data
 
 
+def get_material_price():
+    itemPriceList = []
+    itemCodeList = [
+        66102003,       # 파괴석 결정
+        66102004,       # 파괴강석
+        66102005,       # 정제된 파괴강석
+        66102103,       # 수호석 결정
+        66102104,       # 수호강석
+        66102105,       # 정제된 수호강석
+        66110221,       # 명예의 돌파석
+        66110222,       # 위대한 명예의 돌파석
+        66110223,       # 경이로운 명예의 돌파석
+        66110224,       # 찬란한 명예의 돌파석
+        6861007,        # 하급 오레하 융화 재료
+        6861008,        # 중급 오레하 융화 재료
+        6861009,        # 상급 오레하 융화 재료
+        6861011,        # 최상급 오레하 융화 재료
+        66130131,       # 명예의 파편 주머니(소)
+        66130132,       # 명예의 파편 주머니(중)
+        66130133,       # 명예의 파편 주머니(대)
+    ]
+    for itemCode in itemCodeList:
+        url = "https://developer-lostark.game.onstove.com/markets/items/" + str(itemCode)
+        response = requests.get(url, headers={"authorization": lark_api_key})
+        if response.status_code == 200:
+            itemData = json.loads(response.text)[0]
+            itemName = itemData['Name']
+            itemPrice = itemData['Stats'][0]['AvgPrice']
+            print(f'{itemName}: {itemPrice}')
+            data = {'itemName': itemName, 'itemPrice': itemPrice}
+            itemPriceList.append(data)
+        else:
+            print("error")
+
+    df_itemPrice = pd.DataFrame(data=itemPriceList)
+    return df_itemPrice
+
+
+def get_gem_price():
+    gemPriceList = []
+    url = "https://developer-lostark.game.onstove.com/auctions/items"
+    gemList = ["7레벨 멸", "7레벨 홍", "8레벨 멸", "8레벨 홍", "9레벨 멸", "9레벨 홍", "10레벨 멸", "10레벨 홍", ]
+    for gemName in gemList:
+        i = 1
+        scale = 8
+        count = 0
+        price, min_list, max_list, minGem = [], [], [], 0
+        while True:
+            parameters = {
+                "ItemLevelMin": 0,
+                "ItemLevelMax": 1700,
+                "Sort": "BUY_PRICE",
+                "CategoryCode": 210000,
+                "ItemTier": 3,
+                "ItemName": gemName,
+                "PageNo": i,
+                "SortCondition": "ASC"
+            }
+            response = requests.post(url, headers={"authorization": api_key}, data=parameters)
+            if response.status_code == 200:
+                itemData = json.loads(response.text)
+                price = [item["AuctionInfo"]["BuyPrice"] for item in itemData['Items']]
+            else:
+                print("error")
+                break
+
+            if 0 in price and len(set(price)) > 1:
+                price = [i for i in price if i != 0]
+                minGem = min(price)
+                break
+            elif scale == 1:
+                if 0 in price:
+                    minGem = min(max_list)
+                else:
+                    minGem = min(price)
+                break
+            elif 0 not in price:
+                if i == 1:
+                    break
+                max_list = price
+                scale = int(scale / 2)
+                i -= scale
+            elif not max_list:
+                if 0 in price:
+                    min_list = price
+                    i += scale
+            elif max_list:
+                if 0 in price:
+                    min_list = price
+                    scale = int(scale / 2)
+                    i += scale
+
+            count += 1
+
+        gemName = gemName.replace('레벨 ', '')
+        print(f'{gemName} {count} {minGem}')
+        data = {'itemName': gemName, 'itemPrice': minGem}
+        gemPriceList.append(data)
+
+    df_gemPrice = pd.DataFrame(data=gemPriceList)
+
+    return df_gemPrice
+
+
 def gather_members(members):
     member_data_list = []
     global equipSetLevel
@@ -123,8 +232,13 @@ def gather_members(members):
 
 
 if __name__ == '__main__':
-    guild_members = load_yaml('../_data/guild_members.yml')
-    guild_members = guild_members['main_character'] + guild_members['sub_character']
+    # guild_members = load_yaml('../_data/guild_members.yml')
+    # guild_members = guild_members['main_character'] + guild_members['sub_character']
+    #
+    # df_members = gather_members(guild_members)
 
-    df_members = gather_members(guild_members)
+    df_itemPrice = get_material_price()
+    df_gemPrice = get_gem_price()
+    df_materialPrice = pd.concat((df_itemPrice, df_gemPrice), sort=False)
+
 

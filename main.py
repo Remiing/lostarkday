@@ -25,3 +25,8 @@ if __name__ == '__main__':
     log = update_log(filename)
     with open('./_data/update_time.yml', 'a') as file:
         yaml.dump(log, file, default_flow_style=False)
+    df_itemPrice = crawling.get_material_price()
+    df_gemPrice = crawling.get_gem_price()
+    df_materialPrice = pd.concat((df_itemPrice, df_gemPrice), sort=False)
+    df_materialPrice.to_csv('./_data/material_price.csv', index=False)
+
