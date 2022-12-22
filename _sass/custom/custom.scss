@@ -3,8 +3,12 @@ $pink-100: #f967f1;
 $pink-200: #e94ee1;
 $pink-300: #dd2cd4;
 $nav-width: 164px;
-$nav-width-md: 148px;
-$content-width: 1000px;
+$nav-width-md: 164px;
+$content-width: 850px;
+
+body {
+  background-color: $sidebar-color;
+}
 
 .side-bar {
   z-index: 0;
@@ -23,12 +27,14 @@ $content-width: 1000px;
   }
 
   @include mq(lg) {
-    width: calc((100% - #{$nav-width + $content-width}) / 2 + #{$nav-width});
+    width: calc((100% - #{$content-width}) / 2);
     min-width: $nav-width;
   }
 }
 
 .main {
+  background-color: #fff;
+
   @include mq(md) {
     position: relative;
     max-width: $content-width;
@@ -36,9 +42,7 @@ $content-width: 1000px;
   }
 
   @include mq(lg) {
-    margin-left: calc(
-      (100% - #{$nav-width + $content-width}) / 2 + #{$nav-width}
-    );
+    margin-left: calc((100% - #{$content-width}) / 2);
   }
 }
 
