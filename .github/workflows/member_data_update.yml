@@ -24,6 +24,8 @@ jobs:
         if [ -f requirements.txt ]; then pip install -r requirements.txt; fi
         
     - name: Run main.py
+      env:
+          lark_api_key: ${{ secrets.lark_api_key }}
       run: |
         python main.py
         
