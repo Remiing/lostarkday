@@ -4,7 +4,7 @@ class_num:
   Artillerist: 0
   Artist: 0
   Bard: 3
-  Berserker: 2
+  Berserker: 1
   Deadeye: 0
   Deathblade: 1
   Destroyer: 0
@@ -14,31 +14,31 @@ class_num:
   Machinist: 1
   Paladin: 1
   Reaper: 3
-  Scrapper: 3
+  Scrapper: 2
   Shadowhunter: 1
-  Sharpshooter: 1
-  Sorceress: 5
+  Sharpshooter: 0
+  Sorceress: 4
   Soulfist: 1
-  Striker: 2
+  Striker: 1
   Summoner: 0
   Wardancer: 2
 representative_value:
-  average_level: 1563
-  highest_level: 1623
-  lowest_level: 1462
+  average_level: 1571
+  highest_level: 1625
+  lowest_level: 1475
 variance:
   above_1490: 0
   above_1500: 1
   above_1510: 0
   above_1520: 1
   above_1530: 0
-  above_1540: 5
+  above_1540: 3
   above_1550: 3
-  above_1560: 5
+  above_1560: 4
   above_1570: 0
   above_1580: 5
   above_1590: 0
   above_1600: 8
   above_1610: 2
   above_1620: 1
-  under_1490: 4
+  under_1490: 2
