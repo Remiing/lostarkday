@@ -168,7 +168,7 @@ def get_gem_price():
                 "PageNo": i,
                 "SortCondition": "ASC"
             }
-            response = requests.post(url, headers={"authorization": api_key}, data=parameters)
+            response = requests.post(url, headers={"authorization": lark_api_key}, data=parameters)
             if response.status_code == 200:
                 itemData = json.loads(response.text)
                 price = [item["AuctionInfo"]["BuyPrice"] for item in itemData['Items']]
