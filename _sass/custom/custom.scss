@@ -27,7 +27,7 @@ body {
   }
 
   @include mq(lg) {
-    width: calc((100% - #{$content-width}) / 2);
+    width: calc((100% - #{$nav-width + $content-width}) / 2 + #{$nav-width});
     min-width: $nav-width;
   }
 }
@@ -42,7 +42,7 @@ body {
   }
 
   @include mq(lg) {
-    margin-left: calc((100% - #{$content-width}) / 2);
+    margin-left: calc((100% - #{$nav-width + $content-width}) / 2 + #{$nav-width});
   }
 }
 
@@ -130,7 +130,7 @@ td {
   border-radius: 8px;
 }
 
-p:hover + .detail {
+p:hover ~ .detail {
   display: block;
 }
 

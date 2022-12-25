@@ -1,7 +1,7 @@
 ---
 layout: default
 title: Refining
-nav_order: 5
+nav_order: 10
 has_children: true
 permalink: /docs/refining
 ---
