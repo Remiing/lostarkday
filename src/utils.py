@@ -101,6 +101,67 @@ def update_log(filename):
     return [log]
 
 
+def calcStepPrice():
+    stepPrice = []
+
+    df_itemPrice = pd.read_csv('./_data/material_price.csv')
+    df_avg = pd.read_csv('./_data/avg_try_num.csv')
+    df_weapon_step = pd.read_csv('./_data/material/weapon_step.csv')
+    df_armor_step = pd.read_csv('./_data/material/armor_step.csv')
+
+    honor_shard_list = list(df_itemPrice[df_itemPrice['itemName'].str.contains('명예의 파편 주머니')]['itemPrice'])
+    honor_shard_price = round((honor_shard_list[0] / 500 + honor_shard_list[1] / 1000 + honor_shard_list[2] / 1500) / 3, 2)
+
+    for weapon_step, armor_step in zip(df_weapon_step.to_dict('records'), df_armor_step.to_dict('records')):
+        destruction_stone_price, guardian_stone_price, leap_stone_price, fusion_price = 0, 0, 0, 0
+        if weapon_step['level'] == 'level_1302':
+            destruction_stone_price = df_itemPrice[df_itemPrice['itemName'] == '파괴석 결정']['itemPrice'].values[0] / 10
+            guardian_stone_price = df_itemPrice[df_itemPrice['itemName'] == '수호석 결정']['itemPrice'].values[0] / 10
+            leap_stone_price = df_itemPrice[df_itemPrice['itemName'] == '명예의 돌파석']['itemPrice'].values[0]
+            fusion_price = df_itemPrice[df_itemPrice['itemName'] == '하급 오레하 융화 재료']['itemPrice'].values[0]
+        elif weapon_step['level'] == 'level_1340':
+            destruction_stone_price = df_itemPrice[df_itemPrice['itemName'] == '파괴석 결정']['itemPrice'].values[0] / 10
+            guardian_stone_price = df_itemPrice[df_itemPrice['itemName'] == '수호석 결정']['itemPrice'].values[0] / 10
+            leap_stone_price = df_itemPrice[df_itemPrice['itemName'] == '위대한 명예의 돌파석']['itemPrice'].values[0]
+            fusion_price = df_itemPrice[df_itemPrice['itemName'] == '중급 오레하 융화 재료']['itemPrice'].values[0]
+        elif weapon_step['level'] == 'level_1390':
+            destruction_stone_price = df_itemPrice[df_itemPrice['itemName'] == '파괴강석']['itemPrice'].values[0] / 10
+            guardian_stone_price = df_itemPrice[df_itemPrice['itemName'] == '수호강석']['itemPrice'].values[0] / 10
+            leap_stone_price = df_itemPrice[df_itemPrice['itemName'] == '경이로운 명예의 돌파석']['itemPrice'].values[0]
+            fusion_price = df_itemPrice[df_itemPrice['itemName'] == '상급 오레하 융화 재료']['itemPrice'].values[0]
+        elif weapon_step['level'] == 'level_1525':
+            destruction_stone_price = df_itemPrice[df_itemPrice['itemName'] == '정제된 파괴강석']['itemPrice'].values[0] / 10
+            guardian_stone_price = df_itemPrice[df_itemPrice['itemName'] == '정제된 수호강석']['itemPrice'].values[0] / 10
+            leap_stone_price = df_itemPrice[df_itemPrice['itemName'] == '찬란한 명예의 돌파석']['itemPrice'].values[0]
+            fusion_price = df_itemPrice[df_itemPrice['itemName'] == '최상급 오레하 융화 재료']['itemPrice'].values[0]
+
+        prabability_data = df_avg[df_avg['probability'] == weapon_step['probability']].to_dict('records')[0]
+
+        weapon_refining_once = round(weapon_step['destruction_stone'] * destruction_stone_price + weapon_step['leap_stone'] * leap_stone_price + weapon_step['fusion'] * fusion_price + weapon_step['honor_shard'] * honor_shard_price + weapon_step['gold'])
+        weapon_refining_avg = round(weapon_refining_once * prabability_data['avg_num'])
+        weapon_refining_max = round(weapon_refining_once * prabability_data['max_num'])
+        armor_refining_once = round(armor_step['guardian_stone'] * guardian_stone_price + armor_step['leap_stone'] * leap_stone_price + armor_step['fusion'] * fusion_price + armor_step['honor_shard'] * honor_shard_price + armor_step['gold'])
+        armor_refining_avg = round(armor_refining_once * prabability_data['avg_num'])
+        armor_refining_max = round(armor_refining_once * prabability_data['max_num'])
+
+        data = {'level': weapon_step['level'],
+                'step': weapon_step['step'],
+                'weaponOnce': int(weapon_refining_once),
+                'weaponAvg': int(weapon_refining_avg),
+                'weaponMax': int(weapon_refining_max),
+                'armorOnce': int(armor_refining_once),
+                'armorAvg': int(armor_refining_avg),
+                'armorMax': int(armor_refining_max),
+                }
+
+        stepPrice.append(data)
+
+    df_stepPrice = pd.DataFrame(data=stepPrice)
+    df_stepPrice = df_stepPrice.astype({'weaponOnce': int, 'weaponAvg': int, 'weaponMax': int, 'armorOnce': int, 'armorAvg': int, 'armorMax': int, })
+
+    return df_stepPrice
+
+
 def modify_data():
     equipSetLevel = load_yaml('../_data/equipment_set.yml')
     basepath = '../_data/chart/'

@@ -5,10 +5,11 @@ import re
 import pandas as pd
 import json
 from src.utils import load_yaml
-# import config
+from dotenv import load_dotenv
 
-# lark_api_key = 'bearer ' + config.api_key
-lark_api_key = 'bearer ' + os.environ['lark_api_key']
+load_dotenv()
+lark_api_key = 'bearer ' + os.environ.get('lark_api_key')
+
 
 def get_characterInfo(characterName):
     url = 'https://lostark.game.onstove.com/Profile/Character/'

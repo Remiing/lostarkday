@@ -5,7 +5,7 @@ import pandas as pd
 from datetime import datetime, timezone, timedelta
 import yaml
 
-from src.utils import load_yaml, classification, update_log
+from src.utils import load_yaml, classification, update_log, calcStepPrice
 from src import crawling
 
 
@@ -29,4 +29,6 @@ if __name__ == '__main__':
     df_gemPrice = crawling.get_gem_price()
     df_materialPrice = pd.concat((df_itemPrice, df_gemPrice), sort=False)
     df_materialPrice.to_csv('./_data/material_price.csv', index=False)
+    df_stepPrice = calcStepPrice()
+    df_stepPrice.to_csv('./_data/step_price.csv', index=False)
 
