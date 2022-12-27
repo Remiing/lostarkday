@@ -24,13 +24,44 @@ Last Update {{site.data.update_time[-1].update_time}}
 {% for member in members_data -%}
 |{::nomarkdown}<p>{{member.name-}}</p><p>{{member.class-}}</p>{:/}{{-raw-}}
 |{{member.itemLV-}}
-|{%- assign weapon = member.equipment | split: '/' -%}
-{::nomarkdown}<p>{{weapon[1]-}}</p><div class="detail">
-{%- assign equip = member.equipment | split: ',' -%}
-{%- assign equipName = member.equipment_name | split: ',' -%}
-{%- for i in (0..5) -%}
-{%- assign equipDetail = equip[i] | split: '/' -%}
-<p>{{equipDetail[1]}} {{equipName[i]}} {{equipDetail[3]}}</p>
+|{%- capture equipDetail %}{% endcapture -%}
+{%- assign equip_total = 0 -%}
+{%- assign equips = member.equipment | split: ',' -%}
+{%- assign i = 0 -%}
+{%- for equip in equips -%}
+  {%- assign equipPrice = 0 -%}
+  {%- assign equipPart = equip | split: '/' -%}
+  {%- if i == 0 -%}{%- assign equipType = "무기" -%}
+  {%- elsif i == 1 -%}{%- assign equipType = "투구" -%}
+  {%- elsif i == 2 -%}{%- assign equipType = "상의" -%}
+  {%- elsif i == 3 -%}{%- assign equipType = "하의" -%}
+  {%- elsif i == 4 -%}{%- assign equipType = "장갑" -%}
+  {%- elsif i == 5 -%}{%- assign equipType = "어깨" -%}
+  {%- endif -%}
+  {%- assign equipStep = equipPart[1] | abs -%}
+  {%- assign equipLevel = equipPart[2] | remove:'lv' -%}
+  {%- for step_price in site.data.step_price -%}
+    {%- assign step_level = step_price.level | remove:'level_' -%}
+    {%- assign step_num = step_price.step | remove:'step_' | abs -%}
+    {%- if step_level == equipLevel and step_num > equipStep -%}{%- break -%}{%- endif -%}
+    {%- if step_level == '1302' and step_num > 15 -%}{%- continue -%}{%- endif -%}
+    {%- if step_level == '1340' and step_num <= 6 or step_num > 20 -%}{%- continue -%}{%- endif -%}
+    {%- if step_level == '1390' and step_num <= 12 or step_num > 19 -%}{%- continue -%}{%- endif -%}
+    {%- if step_level == '1525' and step_num <= 12 -%}{%- continue -%}{%- endif -%}
+    {%- if i == 0 -%}
+      {%- assign equipPrice = equipPrice | plus: step_price.weaponAvg -%}
+    {%- else -%}
+      {%- assign equipPrice = equipPrice | plus: step_price.armorAvg -%}
+    {%- endif -%}
+  {%- endfor -%}
+  {%- assign equip_total = equip_total | plus: equipPrice -%}
+  {%- capture equipDetail %}{{equipDetail}}{{equipType}} {{equipStep}} {{equipPrice}},{% endcapture -%}
+  {%- assign i = i | plus: 1 -%}
+{%- endfor -%}
+{::nomarkdown}<p>{{-equip_total-}}</p><div class="detail">
+{%- assign equipDetail = equipDetail | split: ',' -%}
+{%- for equip in equipDetail -%}
+<p>{{-equip-}}</p>
 {%- endfor -%}</div>{:/}{{-raw-}}
 |{::nomarkdown}<p>{{member.engraving_simple-}}</p><div class="detail">
 {%- assign engraving_detail = member.engraving_detail | split: ',' -%}
