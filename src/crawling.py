@@ -21,7 +21,7 @@ def get_characterInfo(characterName):
         return
 
     _class = profile.select_one('div.profile-equipment__character > img')['alt']
-    itemLV = profile.select('div.level-info2__expedition > span')[1].text.replace('Lv.', '').replace(',', '')
+    itemLV = profile.select('div.level-info2__item > span')[1].text.replace('Lv.', '').replace(',', '')
     battleLV = profile.select('div.level-info__item > span')[1].text.replace('Lv.', '')
     expeditionLV = profile.select('div.level-info__expedition > span')[1].text.replace('Lv.', '')
     power = profile.select_one('div.profile-ability-basic > ul > li:nth-child(1) > span:nth-child(2)').text
