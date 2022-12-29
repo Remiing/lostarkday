@@ -1,5 +1,5 @@
 class_num:
-  Aeromancer: 0
+  Aeromancer: 1
   Arcanist: 1
   Artillerist: 0
   Artist: 0
@@ -17,13 +17,13 @@ class_num:
   Scrapper: 2
   Shadowhunter: 1
   Sharpshooter: 0
-  Sorceress: 4
+  Sorceress: 3
   Soulfist: 1
   Striker: 1
   Summoner: 0
   Wardancer: 2
 representative_value:
-  average_level: 1572
+  average_level: 1571
   highest_level: 1625
   lowest_level: 1475
 variance:
@@ -32,11 +32,11 @@ variance:
   above_1510: 0
   above_1520: 1
   above_1530: 0
-  above_1540: 3
-  above_1550: 1
-  above_1560: 6
+  above_1540: 2
+  above_1550: 2
+  above_1560: 7
   above_1570: 0
-  above_1580: 5
+  above_1580: 4
   above_1590: 0
   above_1600: 8
   above_1610: 2
