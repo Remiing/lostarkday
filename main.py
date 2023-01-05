@@ -36,7 +36,7 @@ if __name__ == '__main__':
     df_stepPrice = calcStepPrice()
     df_stepPrice.to_csv('./_data/step_price.csv', index=False)
     
-    df_members = pd.read_csv('./_data/member_chart.csv'')
+    df_members = pd.read_csv('./_data/member_chart.csv')
     df_capitalization = crawling.capitalization(df_members)
     df_capitalization.to_csv('./_data/capitalization.csv', index=False)
 
