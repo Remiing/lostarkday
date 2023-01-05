@@ -312,6 +312,7 @@ def capitalization(df_members):
             gem_dict[gemType] = int(gemPrice)
 
     for member in members:
+        print(member)
 
         # equip
         i, equipTotal, equipDetail = 0, 0, []
@@ -345,15 +346,14 @@ def capitalization(df_members):
 
         # gem
         gemTotal, gemDetail = 0, []
-        gems = member['gem_simple'].split(',') if member['gem_simple'] == member['gem_simple'] else []
-        if gems:
-            for gem in gems:
-                gemPart = gem.split(' x')
-                gemType = gemPart[0]
-                gemCount = int(gemPart[1])
-                gemPrice = gem_dict[gemType] * gemCount if gemType in gem_dict else 0
-                gemTotal += gemPrice
-                gemDetail.append(f'{gem} {gemPrice}')
+        gems = member['gem_simple'].split(',') if member['gem_simple'] == member['gem_simple'] and member['gem_simple'] else []
+        for gem in gems:
+            gemPart = gem.split(' x')
+            gemType = gemPart[0]
+            gemCount = int(gemPart[1])
+            gemPrice = gem_dict[gemType] * gemCount if gemType in gem_dict else 0
+            gemTotal += gemPrice
+            gemDetail.append(f'{gem} {gemPrice}')
 
         # acc
         accTotal, accDetail = 0, []
