@@ -3,7 +3,7 @@ class_num:
   Arcanist: 1
   Artillerist: 0
   Artist: 0
-  Bard: 3
+  Bard: 2
   Berserker: 1
   Deadeye: 0
   Deathblade: 1
@@ -11,7 +11,7 @@ class_num:
   Glaivier: 2
   Gunlancer: 1
   Gunslinger: 5
-  Machinist: 1
+  Machinist: 0
   Paladin: 1
   Reaper: 3
   Scrapper: 2
@@ -23,7 +23,7 @@ class_num:
   Summoner: 0
   Wardancer: 2
 representative_value:
-  average_level: 1571
+  average_level: 1572
   highest_level: 1625
   lowest_level: 1475
 variance:
@@ -33,8 +33,8 @@ variance:
   above_1520: 1
   above_1530: 0
   above_1540: 2
-  above_1550: 2
-  above_1560: 7
+  above_1550: 1
+  above_1560: 6
   above_1570: 0
   above_1580: 4
   above_1590: 0
