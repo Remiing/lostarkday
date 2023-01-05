@@ -453,30 +453,11 @@ nav_order: 1
 
 ---
 
-
 <script>
-var ctx = document.getElementById("pb_15_success_this_time");
-
-var chart_data = [{{ pb_15_stt }}];
-var labels = [{{ pb_15_num }}];
-var data = {
-    labels: labels,
-    datasets: [{
-        label: 'Level',
-        data: chart_data,
-        backgroundColor: [
-          "rgba(0, 0, 128, 0.2)",
-        ],
-        borderColor: [
-          "rgba(0, 0, 128, 1)",
-        ],
-        borderWidth: 1
-      }
-    ]
-  };
-var options = {
+var option_base = {
     indexAxis: 'y',
-    responsive: false,
+    responsive: true,
+    aspectRatio: 1,
     events: [], 
     animations: {
         duration: 0
@@ -500,15 +481,34 @@ var options = {
       }
     }
 };
+</script>
+<script>
+var ctx = document.getElementById("pb_15_success_this_time");
+
+var chart_data = [{{ pb_15_stt }}];
+var labels = [{{ pb_15_num }}];
+var data = {
+    labels: labels,
+    datasets: [{
+        label: 'Level',
+        data: chart_data,
+        backgroundColor: "rgba(0, 0, 128, 0.2)",
+        borderColor: "rgba(0, 0, 128, 1)",
+        borderWidth: 1
+      }
+    ]
+  };
+
+var option_pb_15 = { ...option_base};
+option_pb_15.aspectRatio = 2.5;
 
 new Chart(ctx, {
   type: "bar",
   data: data, 
-  options: options, 
+  options: option_pb_15, 
   plugins:[ChartDataLabels],
 });
-</script>
-<script>
+
 var ctx = document.getElementById("pb_15_cumulative");
 
 var chart_data = [{{ pb_15_cum }}];
@@ -518,51 +518,17 @@ var data = {
     datasets: [{
         label: 'Level',
         data: chart_data,
-        backgroundColor: [
-          "rgba(138, 43, 226, 0.2)",
-          "rgba(240, 169, 87, 0.2)",
-          "rgba(0, 0, 128, 0.2)",
-          "rgba(128, 0, 128, 0.2)",
-          "rgba(70, 126, 198, 0.2)",
-          "rgba(133, 172, 32, 0.2)"
-        ],
-        borderColor: [
-          "rgba(138, 43, 226, 1)",
-          "rgba(240, 169, 87, 1)",
-          "rgba(0, 0, 128, 1)",
-          "rgba(128, 0, 128, 1)",
-          "rgba(70, 126, 198, 1)",
-          "rgba(133, 172, 32, 1)"
-        ],
+        backgroundColor: "rgba(0, 0, 128, 0.2)",
+        borderColor: "rgba(0, 0, 128, 1)",
         borderWidth: 1
       }
     ]
   };
-var options = {
-    indexAxis: 'y',
-    responsive: false,
-    events: ['mousemove'], 
-    animations: {
-        duration: 0
-    }, 
-    plugins: {
-      legend: false, 
-      tooltip: {
-        enabled: false
-      },
-      datalabels: {
-        formatter: function (value, context) {
-            var idx = context.dataIndex;
-            return value + '%';
-          },
-      }
-    }
-};
 
 new Chart(ctx, {
   type: "bar",
   data: data, 
-  options: options, 
+  options: option_pb_15, 
   plugins:[ChartDataLabels],
 });
 </script>
@@ -576,52 +542,23 @@ var data = {
     datasets: [{
         label: 'Level',
         data: chart_data,
-        backgroundColor: [
-          "rgba(138, 43, 226, 0.2)",
-          "rgba(240, 169, 87, 0.2)",
-          "rgba(0, 0, 128, 0.2)",
-          "rgba(128, 0, 128, 0.2)",
-          "rgba(70, 126, 198, 0.2)",
-          "rgba(133, 172, 32, 0.2)"
-        ],
-        borderColor: [
-          "rgba(138, 43, 226, 1)",
-          "rgba(240, 169, 87, 1)",
-          "rgba(0, 0, 128, 1)",
-          "rgba(128, 0, 128, 1)",
-          "rgba(70, 126, 198, 1)",
-          "rgba(133, 172, 32, 1)"
-        ],
+        backgroundColor: "rgba(0, 0, 128, 0.2)",
+        borderColor: "rgba(0, 0, 128, 1)",
         borderWidth: 1
       }
     ]
   };
-var options = {
-    indexAxis: 'y',
-    responsive: false,
-    events: [], 
-    animations: {
-        duration: 0
-    }, 
-    plugins: {
-      legend: false, 
-      datalabels: {
-        formatter: function (value, context) {
-            var idx = context.dataIndex;
-            return value + '%';
-          },
-      }
-    }
-};
+
+var option_pb_10 = { ...option_base};
+option_pb_10.aspectRatio = 2;
 
 new Chart(ctx, {
   type: "bar",
   data: data, 
-  options: options, 
+  options: option_pb_10, 
   plugins:[ChartDataLabels],
 });
-</script>
-<script>
+
 var ctx = document.getElementById("pb_10_cumulative");
 
 var chart_data = [{{ pb_10_cum }}];
@@ -631,51 +568,17 @@ var data = {
     datasets: [{
         label: 'Level',
         data: chart_data,
-        backgroundColor: [
-          "rgba(138, 43, 226, 0.2)",
-          "rgba(240, 169, 87, 0.2)",
-          "rgba(0, 0, 128, 0.2)",
-          "rgba(128, 0, 128, 0.2)",
-          "rgba(70, 126, 198, 0.2)",
-          "rgba(133, 172, 32, 0.2)"
-        ],
-        borderColor: [
-          "rgba(138, 43, 226, 1)",
-          "rgba(240, 169, 87, 1)",
-          "rgba(0, 0, 128, 1)",
-          "rgba(128, 0, 128, 1)",
-          "rgba(70, 126, 198, 1)",
-          "rgba(133, 172, 32, 1)"
-        ],
+        backgroundColor: "rgba(0, 0, 128, 0.2)",
+        borderColor: "rgba(0, 0, 128, 1)",
         borderWidth: 1
       }
     ]
   };
-var options = {
-    indexAxis: 'y',
-    responsive: false,
-    events: ['mousemove'], 
-    animations: {
-        duration: 0
-    }, 
-    plugins: {
-      legend: false, 
-      tooltip: {
-        enabled: false
-      },
-      datalabels: {
-        formatter: function (value, context) {
-            var idx = context.dataIndex;
-            return value + '%';
-          },
-      }
-    }
-};
 
 new Chart(ctx, {
   type: "bar",
   data: data, 
-  options: options, 
+  options: option_pb_10, 
   plugins:[ChartDataLabels],
 });
 </script>
@@ -689,52 +592,23 @@ var data = {
     datasets: [{
         label: 'Level',
         data: chart_data,
-        backgroundColor: [
-          "rgba(138, 43, 226, 0.2)",
-          "rgba(240, 169, 87, 0.2)",
-          "rgba(0, 0, 128, 0.2)",
-          "rgba(128, 0, 128, 0.2)",
-          "rgba(70, 126, 198, 0.2)",
-          "rgba(133, 172, 32, 0.2)"
-        ],
-        borderColor: [
-          "rgba(138, 43, 226, 1)",
-          "rgba(240, 169, 87, 1)",
-          "rgba(0, 0, 128, 1)",
-          "rgba(128, 0, 128, 1)",
-          "rgba(70, 126, 198, 1)",
-          "rgba(133, 172, 32, 1)"
-        ],
+        backgroundColor: "rgba(0, 0, 128, 0.2)",
+        borderColor: "rgba(0, 0, 128, 1)",
         borderWidth: 1
       }
     ]
   };
-var options = {
-    indexAxis: 'y',
-    responsive: false,
-    events: [], 
-    animations: {
-        duration: 0
-    }, 
-    plugins: {
-      legend: false, 
-      datalabels: {
-        formatter: function (value, context) {
-            var idx = context.dataIndex;
-            return value + '%';
-          },
-      }
-    }
-};
+
+var option_pb_5 = { ...option_base};
+option_pb_5.aspectRatio = 1.3;
 
 new Chart(ctx, {
   type: "bar",
   data: data, 
-  options: options, 
+  options: option_pb_5, 
   plugins:[ChartDataLabels],
 });
-</script>
-<script>
+
 var ctx = document.getElementById("pb_5_cumulative");
 
 var chart_data = [{{ pb_5_cum }}];
@@ -744,51 +618,17 @@ var data = {
     datasets: [{
         label: 'Level',
         data: chart_data,
-        backgroundColor: [
-          "rgba(138, 43, 226, 0.2)",
-          "rgba(240, 169, 87, 0.2)",
-          "rgba(0, 0, 128, 0.2)",
-          "rgba(128, 0, 128, 0.2)",
-          "rgba(70, 126, 198, 0.2)",
-          "rgba(133, 172, 32, 0.2)"
-        ],
-        borderColor: [
-          "rgba(138, 43, 226, 1)",
-          "rgba(240, 169, 87, 1)",
-          "rgba(0, 0, 128, 1)",
-          "rgba(128, 0, 128, 1)",
-          "rgba(70, 126, 198, 1)",
-          "rgba(133, 172, 32, 1)"
-        ],
+        backgroundColor: "rgba(0, 0, 128, 0.2)",
+        borderColor: "rgba(0, 0, 128, 1)",
         borderWidth: 1
       }
     ]
   };
-var options = {
-    indexAxis: 'y',
-    responsive: false,
-    events: ['mousemove'], 
-    animations: {
-        duration: 0
-    }, 
-    plugins: {
-      legend: false, 
-      tooltip: {
-        enabled: false
-      },
-      datalabels: {
-        formatter: function (value, context) {
-            var idx = context.dataIndex;
-            return value + '%';
-          },
-      }
-    }
-};
 
 new Chart(ctx, {
   type: "bar",
   data: data, 
-  options: options, 
+  options: option_pb_5, 
   plugins:[ChartDataLabels],
 });
 </script>
@@ -802,52 +642,23 @@ var data = {
     datasets: [{
         label: 'Level',
         data: chart_data,
-        backgroundColor: [
-          "rgba(138, 43, 226, 0.2)",
-          "rgba(240, 169, 87, 0.2)",
-          "rgba(0, 0, 128, 0.2)",
-          "rgba(128, 0, 128, 0.2)",
-          "rgba(70, 126, 198, 0.2)",
-          "rgba(133, 172, 32, 0.2)"
-        ],
-        borderColor: [
-          "rgba(138, 43, 226, 1)",
-          "rgba(240, 169, 87, 1)",
-          "rgba(0, 0, 128, 1)",
-          "rgba(128, 0, 128, 1)",
-          "rgba(70, 126, 198, 1)",
-          "rgba(133, 172, 32, 1)"
-        ],
+        backgroundColor: "rgba(0, 0, 128, 0.2)",
+        borderColor: "rgba(0, 0, 128, 1)",
         borderWidth: 1
       }
     ]
   };
-var options = {
-    indexAxis: 'y',
-    responsive: false,
-    events: [], 
-    animations: {
-        duration: 0
-    }, 
-    plugins: {
-      legend: false, 
-      datalabels: {
-        formatter: function (value, context) {
-            var idx = context.dataIndex;
-            return value + '%';
-          },
-      }
-    }
-};
+
+var option_pb_4 = { ...option_base};
+option_pb_4.aspectRatio = 1;
 
 new Chart(ctx, {
   type: "bar",
   data: data, 
-  options: options, 
+  options: option_pb_4, 
   plugins:[ChartDataLabels],
 });
-</script>
-<script>
+
 var ctx = document.getElementById("pb_4_cumulative");
 
 var chart_data = [{{ pb_4_cum }}];
@@ -857,51 +668,17 @@ var data = {
     datasets: [{
         label: 'Level',
         data: chart_data,
-        backgroundColor: [
-          "rgba(138, 43, 226, 0.2)",
-          "rgba(240, 169, 87, 0.2)",
-          "rgba(0, 0, 128, 0.2)",
-          "rgba(128, 0, 128, 0.2)",
-          "rgba(70, 126, 198, 0.2)",
-          "rgba(133, 172, 32, 0.2)"
-        ],
-        borderColor: [
-          "rgba(138, 43, 226, 1)",
-          "rgba(240, 169, 87, 1)",
-          "rgba(0, 0, 128, 1)",
-          "rgba(128, 0, 128, 1)",
-          "rgba(70, 126, 198, 1)",
-          "rgba(133, 172, 32, 1)"
-        ],
+        backgroundColor: "rgba(0, 0, 128, 0.2)",
+        borderColor: "rgba(0, 0, 128, 1)",
         borderWidth: 1
       }
     ]
   };
-var options = {
-    indexAxis: 'y',
-    responsive: false,
-    events: ['mousemove'], 
-    animations: {
-        duration: 0
-    }, 
-    plugins: {
-      legend: false, 
-      tooltip: {
-        enabled: false
-      },
-      datalabels: {
-        formatter: function (value, context) {
-            var idx = context.dataIndex;
-            return value + '%';
-          },
-      }
-    }
-};
 
 new Chart(ctx, {
   type: "bar",
   data: data, 
-  options: options, 
+  options: option_pb_4, 
   plugins:[ChartDataLabels],
 });
 </script>
@@ -915,52 +692,23 @@ var data = {
     datasets: [{
         label: 'Level',
         data: chart_data,
-        backgroundColor: [
-          "rgba(138, 43, 226, 0.2)",
-          "rgba(240, 169, 87, 0.2)",
-          "rgba(0, 0, 128, 0.2)",
-          "rgba(128, 0, 128, 0.2)",
-          "rgba(70, 126, 198, 0.2)",
-          "rgba(133, 172, 32, 0.2)"
-        ],
-        borderColor: [
-          "rgba(138, 43, 226, 1)",
-          "rgba(240, 169, 87, 1)",
-          "rgba(0, 0, 128, 1)",
-          "rgba(128, 0, 128, 1)",
-          "rgba(70, 126, 198, 1)",
-          "rgba(133, 172, 32, 1)"
-        ],
+        backgroundColor: "rgba(0, 0, 128, 0.2)",
+        borderColor: "rgba(0, 0, 128, 1)",
         borderWidth: 1
       }
     ]
   };
-var options = {
-    indexAxis: 'y',
-    responsive: false,
-    events: [], 
-    animations: {
-        duration: 0
-    }, 
-    plugins: {
-      legend: false, 
-      datalabels: {
-        formatter: function (value, context) {
-            var idx = context.dataIndex;
-            return value + '%';
-          },
-      }
-    }
-};
+
+var option_pb_3 = { ...option_base};
+option_pb_3.aspectRatio = 0.8;
 
 new Chart(ctx, {
   type: "bar",
   data: data, 
-  options: options, 
+  options: option_pb_3, 
   plugins:[ChartDataLabels],
 });
-</script>
-<script>
+
 var ctx = document.getElementById("pb_3_cumulative");
 
 var chart_data = [{{ pb_3_cum }}];
@@ -970,51 +718,17 @@ var data = {
     datasets: [{
         label: 'Level',
         data: chart_data,
-        backgroundColor: [
-          "rgba(138, 43, 226, 0.2)",
-          "rgba(240, 169, 87, 0.2)",
-          "rgba(0, 0, 128, 0.2)",
-          "rgba(128, 0, 128, 0.2)",
-          "rgba(70, 126, 198, 0.2)",
-          "rgba(133, 172, 32, 0.2)"
-        ],
-        borderColor: [
-          "rgba(138, 43, 226, 1)",
-          "rgba(240, 169, 87, 1)",
-          "rgba(0, 0, 128, 1)",
-          "rgba(128, 0, 128, 1)",
-          "rgba(70, 126, 198, 1)",
-          "rgba(133, 172, 32, 1)"
-        ],
+        backgroundColor: "rgba(0, 0, 128, 0.2)",
+        borderColor: "rgba(0, 0, 128, 1)",
         borderWidth: 1
       }
     ]
   };
-var options = {
-    indexAxis: 'y',
-    responsive: false,
-    events: ['mousemove'], 
-    animations: {
-        duration: 0
-    }, 
-    plugins: {
-      legend: false, 
-      tooltip: {
-        enabled: false
-      },
-      datalabels: {
-        formatter: function (value, context) {
-            var idx = context.dataIndex;
-            return value + '%';
-          },
-      }
-    }
-};
 
 new Chart(ctx, {
   type: "bar",
   data: data, 
-  options: options, 
+  options: option_pb_3, 
   plugins:[ChartDataLabels],
 });
 </script>
@@ -1028,52 +742,23 @@ var data = {
     datasets: [{
         label: 'Level',
         data: chart_data,
-        backgroundColor: [
-          "rgba(138, 43, 226, 0.2)",
-          "rgba(240, 169, 87, 0.2)",
-          "rgba(0, 0, 128, 0.2)",
-          "rgba(128, 0, 128, 0.2)",
-          "rgba(70, 126, 198, 0.2)",
-          "rgba(133, 172, 32, 0.2)"
-        ],
-        borderColor: [
-          "rgba(138, 43, 226, 1)",
-          "rgba(240, 169, 87, 1)",
-          "rgba(0, 0, 128, 1)",
-          "rgba(128, 0, 128, 1)",
-          "rgba(70, 126, 198, 1)",
-          "rgba(133, 172, 32, 1)"
-        ],
+        backgroundColor: "rgba(0, 0, 128, 0.2)",
+        borderColor: "rgba(0, 0, 128, 1)",
         borderWidth: 1
       }
     ]
   };
-var options = {
-    indexAxis: 'y',
-    responsive: false,
-    events: [], 
-    animations: {
-        duration: 0
-    }, 
-    plugins: {
-      legend: false, 
-      datalabels: {
-        formatter: function (value, context) {
-            var idx = context.dataIndex;
-            return value + '%';
-          },
-      }
-    }
-};
+
+var option_pb_1_5 = { ...option_base};
+option_pb_1_5.aspectRatio = 0.4;
 
 new Chart(ctx, {
   type: "bar",
   data: data, 
-  options: options, 
+  options: option_pb_1_5, 
   plugins:[ChartDataLabels],
 });
-</script>
-<script>
+
 var ctx = document.getElementById("pb_1_5_cumulative");
 
 var chart_data = [{{ pb_1_5_cum }}];
@@ -1083,51 +768,17 @@ var data = {
     datasets: [{
         label: 'Level',
         data: chart_data,
-        backgroundColor: [
-          "rgba(138, 43, 226, 0.2)",
-          "rgba(240, 169, 87, 0.2)",
-          "rgba(0, 0, 128, 0.2)",
-          "rgba(128, 0, 128, 0.2)",
-          "rgba(70, 126, 198, 0.2)",
-          "rgba(133, 172, 32, 0.2)"
-        ],
-        borderColor: [
-          "rgba(138, 43, 226, 1)",
-          "rgba(240, 169, 87, 1)",
-          "rgba(0, 0, 128, 1)",
-          "rgba(128, 0, 128, 1)",
-          "rgba(70, 126, 198, 1)",
-          "rgba(133, 172, 32, 1)"
-        ],
+        backgroundColor: "rgba(0, 0, 128, 0.2)",
+        borderColor: "rgba(0, 0, 128, 1)",
         borderWidth: 1
       }
     ]
   };
-var options = {
-    indexAxis: 'y',
-    responsive: false,
-    events: ['mousemove'], 
-    animations: {
-        duration: 0
-    }, 
-    plugins: {
-      legend: false, 
-      tooltip: {
-        enabled: false
-      },
-      datalabels: {
-        formatter: function (value, context) {
-            var idx = context.dataIndex;
-            return value + '%';
-          },
-      }
-    }
-};
 
 new Chart(ctx, {
   type: "bar",
   data: data, 
-  options: options, 
+  options: option_pb_1_5, 
   plugins:[ChartDataLabels],
 });
 </script>
@@ -1141,52 +792,23 @@ var data = {
     datasets: [{
         label: 'Level',
         data: chart_data,
-        backgroundColor: [
-          "rgba(138, 43, 226, 0.2)",
-          "rgba(240, 169, 87, 0.2)",
-          "rgba(0, 0, 128, 0.2)",
-          "rgba(128, 0, 128, 0.2)",
-          "rgba(70, 126, 198, 0.2)",
-          "rgba(133, 172, 32, 0.2)"
-        ],
-        borderColor: [
-          "rgba(138, 43, 226, 1)",
-          "rgba(240, 169, 87, 1)",
-          "rgba(0, 0, 128, 1)",
-          "rgba(128, 0, 128, 1)",
-          "rgba(70, 126, 198, 1)",
-          "rgba(133, 172, 32, 1)"
-        ],
+        backgroundColor: "rgba(0, 0, 128, 0.2)",
+        borderColor: "rgba(0, 0, 128, 1)",
         borderWidth: 1
       }
     ]
   };
-var options = {
-    indexAxis: 'y',
-    responsive: false,
-    events: [], 
-    animations: {
-        duration: 0
-    }, 
-    plugins: {
-      legend: false, 
-      datalabels: {
-        formatter: function (value, context) {
-            var idx = context.dataIndex;
-            return value + '%';
-          },
-      }
-    }
-};
+
+var option_pb_1 = { ...option_base};
+option_pb_1.aspectRatio = 0.3;
 
 new Chart(ctx, {
   type: "bar",
   data: data, 
-  options: options, 
+  options: option_pb_1, 
   plugins:[ChartDataLabels],
 });
-</script>
-<script>
+
 var ctx = document.getElementById("pb_1_cumulative");
 
 var chart_data = [{{ pb_1_cum }}];
@@ -1196,51 +818,17 @@ var data = {
     datasets: [{
         label: 'Level',
         data: chart_data,
-        backgroundColor: [
-          "rgba(138, 43, 226, 0.2)",
-          "rgba(240, 169, 87, 0.2)",
-          "rgba(0, 0, 128, 0.2)",
-          "rgba(128, 0, 128, 0.2)",
-          "rgba(70, 126, 198, 0.2)",
-          "rgba(133, 172, 32, 0.2)"
-        ],
-        borderColor: [
-          "rgba(138, 43, 226, 1)",
-          "rgba(240, 169, 87, 1)",
-          "rgba(0, 0, 128, 1)",
-          "rgba(128, 0, 128, 1)",
-          "rgba(70, 126, 198, 1)",
-          "rgba(133, 172, 32, 1)"
-        ],
+        backgroundColor: "rgba(0, 0, 128, 0.2)",
+        borderColor: "rgba(0, 0, 128, 1)",
         borderWidth: 1
       }
     ]
   };
-var options = {
-    indexAxis: 'y',
-    responsive: false,
-    events: ['mousemove'], 
-    animations: {
-        duration: 0
-    }, 
-    plugins: {
-      legend: false, 
-      tooltip: {
-        enabled: false
-      },
-      datalabels: {
-        formatter: function (value, context) {
-            var idx = context.dataIndex;
-            return value + '%';
-          },
-      }
-    }
-};
 
 new Chart(ctx, {
   type: "bar",
   data: data, 
-  options: options, 
+  options: option_pb_1, 
   plugins:[ChartDataLabels],
 });
 </script>
@@ -1254,52 +842,23 @@ var data = {
     datasets: [{
         label: 'Level',
         data: chart_data,
-        backgroundColor: [
-          "rgba(138, 43, 226, 0.2)",
-          "rgba(240, 169, 87, 0.2)",
-          "rgba(0, 0, 128, 0.2)",
-          "rgba(128, 0, 128, 0.2)",
-          "rgba(70, 126, 198, 0.2)",
-          "rgba(133, 172, 32, 0.2)"
-        ],
-        borderColor: [
-          "rgba(138, 43, 226, 1)",
-          "rgba(240, 169, 87, 1)",
-          "rgba(0, 0, 128, 1)",
-          "rgba(128, 0, 128, 1)",
-          "rgba(70, 126, 198, 1)",
-          "rgba(133, 172, 32, 1)"
-        ],
+        backgroundColor: "rgba(0, 0, 128, 0.2)",
+        borderColor: "rgba(0, 0, 128, 1)",
         borderWidth: 1
       }
     ]
   };
-var options = {
-    indexAxis: 'y',
-    responsive: false,
-    events: [], 
-    animations: {
-        duration: 0
-    }, 
-    plugins: {
-      legend: false, 
-      datalabels: {
-        formatter: function (value, context) {
-            var idx = context.dataIndex;
-            return value + '%';
-          },
-      }
-    }
-};
+
+var option_pb_0_5 = { ...option_base};
+option_pb_0_5.aspectRatio = 0.15;
 
 new Chart(ctx, {
   type: "bar",
   data: data, 
-  options: options, 
+  options: option_pb_0_5, 
   plugins:[ChartDataLabels],
 });
-</script>
-<script>
+
 var ctx = document.getElementById("pb_0_5_cumulative");
 
 var chart_data = [{{ pb_0_5_cum }}];
@@ -1309,51 +868,17 @@ var data = {
     datasets: [{
         label: 'Level',
         data: chart_data,
-        backgroundColor: [
-          "rgba(138, 43, 226, 0.2)",
-          "rgba(240, 169, 87, 0.2)",
-          "rgba(0, 0, 128, 0.2)",
-          "rgba(128, 0, 128, 0.2)",
-          "rgba(70, 126, 198, 0.2)",
-          "rgba(133, 172, 32, 0.2)"
-        ],
-        borderColor: [
-          "rgba(138, 43, 226, 1)",
-          "rgba(240, 169, 87, 1)",
-          "rgba(0, 0, 128, 1)",
-          "rgba(128, 0, 128, 1)",
-          "rgba(70, 126, 198, 1)",
-          "rgba(133, 172, 32, 1)"
-        ],
+        backgroundColor: "rgba(0, 0, 128, 0.2)",
+        borderColor: "rgba(0, 0, 128, 1)",
         borderWidth: 1
       }
     ]
   };
-var options = {
-    indexAxis: 'y',
-    responsive: false,
-    events: ['mousemove'], 
-    animations: {
-        duration: 0
-    }, 
-    plugins: {
-      legend: false, 
-      tooltip: {
-        enabled: false
-      },
-      datalabels: {
-        formatter: function (value, context) {
-            var idx = context.dataIndex;
-            return value + '%';
-          },
-      }
-    }
-};
 
 new Chart(ctx, {
   type: "bar",
   data: data, 
-  options: options, 
+  options: option_pb_0_5, 
   plugins:[ChartDataLabels],
 });
 </script>

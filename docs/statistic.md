@@ -16,32 +16,32 @@ Day guild information.
 <div markdown="1" style="overflow: auto;">
 <div markdown="1" style="box-sizing: border-box; width: 50%; float: left; padding-right: 1rem; border-right: 1px solid #eeebee">
 
-## 총인원
+### 총인원
 {% for i in site.data.total_info.class_num %}
 {% assign num = num | plus:i[1] %}
 {% endfor %}
 {{num}}
 
-## 최고 평균 최저 레벨
+### 최고 평균 최저 레벨
 
-<canvas id="representative_value" style="box-sizing: border-box; width: 100%; height: 15vh;"></canvas>
+<canvas id="representative_value" style="box-sizing: border-box; width: 100%;"></canvas>
 
-## 레벨대
+### 레벨대
 
-<canvas id="variance" style="box-sizing: border-box; width: 100%; height: 60vh;"></canvas>
+<canvas id="variance" style="box-sizing: border-box; width: 100%;"></canvas>
 
-## 클래스
+### 클래스
 
 <canvas id="class_num" style="box-sizing: border-box; width: 100%; height: 30vh;"></canvas>
 
-## 포지션
+### 포지션
 
 <canvas id="position" style="box-sizing: border-box; width: 100%; height: 15vh;"></canvas>
 
 </div>
 <div markdown="1" style="box-sizing: border-box; width: 50%; float: right; padding-left: 1rem;">
 
-## 직업별
+### 직업별
 
 <canvas id="class_chart" style="box-sizing: border-box; width: 100%; height: 100vh;"></canvas>
 
@@ -83,19 +83,16 @@ var data = {
     datasets: [{
         label: 'Level',
         data: chart_data,
-        backgroundColor: [
-          "rgba(0, 0, 128, 0.2)",
-        ],
-        borderColor: [
-          "rgba(0, 0, 128, 1)",
-        ],
+        backgroundColor: "rgba(0, 0, 128, 0.2)",
+        borderColor: "rgba(0, 0, 128, 1)",
         borderWidth: 1
       }
     ]
   };
 var options = {
     indexAxis: 'y',
-    responsive: false,
+    responsive: true,
+    aspectRatio: 3,
     events: [], 
     animations: {
         duration: 0
@@ -144,19 +141,16 @@ var data = {
     datasets: [{
         label: 'variance',
         data: chart_data,
-        backgroundColor: [
-          "rgba(0, 0, 128, 0.2)",
-        ],
-        borderColor: [
-          "rgba(0, 0, 128, 1)",
-        ],
+        backgroundColor: "rgba(0, 0, 128, 0.2)",
+        borderColor: "rgba(0, 0, 128, 1)",
         borderWidth: 1
       }
     ]
   };
 var options = {
     indexAxis: 'y',
-    responsive: false,
+    responsive: true,
+    aspectRatio: 0.8,
     events: [], 
     animations: {
         duration: 0
@@ -205,7 +199,8 @@ var data = {
   };
 var options = {
     indexAxis: 'y',
-    responsive: false,
+    responsive: true,
+    aspectRatio: 1.7,
     events: [], 
     animations: {
         duration: 0
@@ -253,7 +248,8 @@ var data = {
   };
 var options = {
     indexAxis: 'y',
-    responsive: false,
+    responsive: true,
+    aspectRatio: 4,
     events: [], 
     animations: {
         duration: 0
@@ -279,19 +275,16 @@ var data = {
     datasets: [{
         label: 'variance',
         data: chart_data,
-        backgroundColor: [
-          "rgba(0, 0, 128, 0.2)",
-        ],
-        borderColor: [
-          "rgba(0, 0, 128, 1)",
-        ],
+        backgroundColor: "rgba(0, 0, 128, 0.2)",
+        borderColor: "rgba(0, 0, 128, 1)",
         borderWidth: 1
       }
     ]
   };
 var options = {
     indexAxis: 'y',
-    responsive: false,
+    responsive: true,
+    aspectRatio: 0.5,
     events: [], 
     animations: {
         duration: 0
