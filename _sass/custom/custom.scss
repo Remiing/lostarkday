@@ -151,3 +151,11 @@ p:hover ~ .detail {
     vertical-align: -0.1em;
   }
 }
+
+.indexWrapper {
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
