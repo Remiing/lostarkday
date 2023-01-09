@@ -66,6 +66,6 @@ nav_order: 1
     {%- assign total_gold = total_gold | plus: part_gold -%}
     {::nomarkdown}<p>{{before_equipType}} {{before_equipStep}} > {{after_equipStep}}</p>{:/}{{-raw-}}
   {%- endfor -%}
-  |{{ total_gold }}골드|
+  |{% include numberWithCommas.html number=total_gold %}골드|
 {% endfor %}
 {%- if empty_check == 0 -%}||||{%- endif -%}

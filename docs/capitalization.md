@@ -22,20 +22,21 @@ Last Update {{site.data.update_time[-1].update_time}}
 {% for row in data -%}
 |{{row.name-}}
 |{{row.itemLV-}}
-|{::nomarkdown}<p>{{row.equipTotal}}</p><div class="detail">
+|{::nomarkdown}<p>{% include numberWithCommas.html number=row.equipTotal %}</p><div class="detail">
 {%- assign equipDetail = row.equipDetail | split: ',' -%}
 {%- for equip in equipDetail -%}
 <p>{{equip}}</p>
 {%- endfor -%}</div>{:/}{{-raw-}}
-|{::nomarkdown}<p>{{row.accTotal}}</p><div class="detail">
+|{::nomarkdown}<p>{% include numberWithCommas.html number=row.accTotal %}</p><div class="detail">
 {%- assign accDetail = row.accDetail | split: ',' -%}
-{%- for equip in accDetail -%}
-<p>{{equip}}</p>
+{%- for acc in accDetail -%}
+<p>{{acc}}</p>
 {%- endfor -%}</div>{:/}{{-raw-}}
-|{::nomarkdown}<p>{{row.gemTotal}}</p><div class="detail">
+|{::nomarkdown}<p>{% include numberWithCommas.html number=row.gemTotal %}</p><div class="detail">
 {%- assign gemDetail = row.gemDetail | split: ',' -%}
-{%- for equip in gemDetail -%}
-<p>{{equip}}</p>
+{%- for gem in gemDetail -%}
+<p>{{gem}}</p>
 {%- endfor -%}</div>{:/}{{-raw-}}
-|{{row.equipTotal | plus: row.accTotal | plus: row.gemTotal}}|
+|{%- assign total_gold = row.equipTotal | plus: row.accTotal | plus: row.gemTotal -%}
+{% include numberWithCommas.html number=total_gold %}|
 {% endfor %}
