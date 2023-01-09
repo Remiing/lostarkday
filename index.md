@@ -6,7 +6,7 @@ description: "Day guild information."
 permalink: /
 ---
 
-<div class="indexWrapper" markdown="1">
+<div class="index-wrapper" markdown="1">
 ![](./assets/images/main.png)
 
 
