@@ -5,6 +5,7 @@ $pink-300: #dd2cd4;
 $nav-width: 164px;
 $nav-width-md: 164px;
 $content-width: 850px;
+$header-height: 100px;
 
 body {
   background-color: $sidebar-color;
@@ -66,7 +67,7 @@ body {
   background-color: $sidebar-color;
 
   @include mq(md) {
-    display: flex;
+    display: none;
     justify-content: space-between;
     height: $header-height;
     background-color: $body-background-color;
@@ -89,6 +90,35 @@ body {
 
   @include mq(lg) {
     width: $nav-width;
+  }
+}
+
+.site-nav {
+  display: none;
+
+  &.nav-open {
+    display: block;
+  }
+
+  @include mq(md) {
+    display: block;
+    padding-top: $gutter-spacing-sm;
+    padding-bottom: $gutter-spacing-sm;
+    overflow-y: auto;
+    flex: 1 1 auto;
+  }
+}
+
+.site-header {
+  display: flex;
+  min-height: $header-height;
+  align-items: center;
+
+  @include mq(md) {
+    margin-top: $sp-5;
+    height: $header-height;
+    max-height: $header-height;
+    border-bottom: $border $border-color;
   }
 }
 
