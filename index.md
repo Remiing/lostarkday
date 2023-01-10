@@ -18,6 +18,7 @@ permalink: /
 
 ### 템레벨 랭킹
 {% assign member_data = site.data.member_chart %}
+
 | {::nomarkdown}<p>닉네임</p><p>클래스</p>{:/} | 아이템 |
 |:-|:-|
 {% for i in (0..4) -%}
@@ -26,11 +27,38 @@ permalink: /
 |{{member.itemLV-}}|
 {% endfor %}
 
+
 <a href="https://remiing.github.io/lostarkday/docs/ranking/" class="more">랭킹 더보기 ></a>
 {: .text-right .fs-2 }
 
+
+### 주간 템레벨 변화
+{% assign member_list = site.data.guild_members.main_character | concat: site.data.guild_members.sub_character %}
+{% assign before_data = site.data.update_time[-8].filename | remove: ".csv" %}
+{% assign after_data = site.data.update_time[-1].filename | remove: ".csv" %}
+{% assign before_data = site.data.chart[before_data] %}
+{% assign after_data = site.data.chart[after_data] %}
+
+| {::nomarkdown}<p>닉네임</p><p>클래스</p>{:/} | 아이템 레벨 변화 |
+|:-|:-:|
+{%- assign empty_check = 0 %}
+{% for member in member_list %}
+  {%- assign before = before_data | where:"name", member | first -%}
+  {%- assign after = after_data | where:"name", member | first -%}
+  {%- unless before and after -%}{%- continue -%}{%- endunless -%}
+  {%- if before.itemLV == after.itemLV -%}{%- continue -%}{%- else -%}{%- assign empty_check = 1 -%}{%- endif -%}
+  |{::nomarkdown}<p>{{after.name-}}</p><p>{{after.class-}}</p>{:/}{{-raw-}}
+  |{{before.itemLV}} > {{after.itemLV-}}|
+{% endfor %}
+
+
+<a href="https://remiing.github.io/lostarkday/docs/chart/weekly_chart/" class="more">주간 템레벨 변화 더보기 ></a>
+{: .text-right .fs-2 }
+
+
 ### 캐릭터 가치 환산
 {% assign capitalization_data = site.data.capitalization %}
+
 | 닉네임 | 아이템 | 총합 |
 |:-|:-:|:-:|
 {% for i in (0..4) -%}
@@ -40,6 +68,7 @@ permalink: /
 |{%- assign total_gold = capitalization.equipTotal | plus: capitalization.accTotal | plus: capitalization.gemTotal -%}
 {% include numberWithCommas.html number=total_gold %}|
 {% endfor %}
+
 
 <a href="https://remiing.github.io/lostarkday/docs/capitalization/" class="more">캐릭터 가치 환산 더보기 ></a>
 {: .text-right .fs-2 }
@@ -51,6 +80,7 @@ permalink: /
 
 ### 강화 재료 가격
 {% assign material = site.data.material_price %}
+
 | 재료 | 가격 |
 |:-:|:-:|
 {% assign row = material | where:"itemName", "정제된 파괴강석" | first %}|{{row.itemName-}}|{{row.itemPrice-}}|
@@ -70,6 +100,4 @@ permalink: /
 
 </div>
 
-
-증가량 Top 5
 
