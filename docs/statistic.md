@@ -6,10 +6,10 @@ nav_order: 3
 
 {% assign data = site.data.total_info %}
 
-# Day
+# Statistic
 {: .fs-9 }
 
-Day guild information.
+Day guild statistic.
 {: .fs-6 .fw-300 }
 
 ---
