@@ -202,11 +202,8 @@ p:hover ~ .detail {
   margin: 0 4px;
   overflow: hidden;
   position: relative;
-  -webkit-user-select: none;
   user-select: none;
   vertical-align: middle;
-  width: -webkit-fit-content;
-  width: -moz-fit-content;
   width: fit-content;
 
   .icon-label {
@@ -258,13 +255,13 @@ p:hover ~ .detail {
     margin: 8px auto 4px;
   }
 
-  .copyright{
+  .copyright {
     color: #555;
   }
 }
 
 footer {
-  .footer{
+  .footer {
     padding-top: 50px;
     text-align: center;
   }
