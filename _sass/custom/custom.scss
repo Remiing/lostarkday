@@ -192,7 +192,7 @@ p:hover ~ .detail {
   justify-content: center;
 }
 
-.Button {
+.button {
   align-items: center;
   border-radius: 8px;
   color: #333;
@@ -232,12 +232,21 @@ p:hover ~ .detail {
   width: 32px;
 }
 
-.Button .icon {
+.button .icon {
   img {
     display: inline-block;
     height: auto;
     width: 18px;
   }
+}
+
+.line {
+  background-color: #ccc;
+  display: inline-block;
+  height: 24px;
+  margin: 0 4px;
+  vertical-align: middle;
+  width: 1px;
 }
 
 .footer {

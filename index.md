@@ -7,7 +7,7 @@ permalink: /
 ---
 
 <div class="index-wrapper" markdown="1">
-![](./assets/images/main.png)
+![](./assets/images/2023 HAPPY NEW YEAR.jpg)
 
 
 ![](./assets/images/Day_logo.png)
