@@ -28,7 +28,7 @@ permalink: /
 {% endfor %}
 
 
-<a href="https://remiing.github.io/lostarkday/docs/ranking/" class="more">랭킹 더보기 ></a>
+<a href="{{ '/docs/ranking/' | relative_url }}" class="more">랭킹 더보기 ></a>
 {: .text-right .fs-2 }
 
 
@@ -52,7 +52,7 @@ permalink: /
 {% endfor %}
 
 
-<a href="https://remiing.github.io/lostarkday/docs/chart/weekly_chart/" class="more">주간 템레벨 변화 더보기 ></a>
+<a href="{{ '/docs/chart/weekly_chart/' | relative_url }}" class="more">주간 템레벨 변화 더보기 ></a>
 {: .text-right .fs-2 }
 
 
@@ -70,7 +70,7 @@ permalink: /
 {% endfor %}
 
 
-<a href="https://remiing.github.io/lostarkday/docs/capitalization/" class="more">캐릭터 가치 환산 더보기 ></a>
+<a href="{{ '/docs/capitalization/' | relative_url }}" class="more">캐릭터 가치 환산 더보기 ></a>
 {: .text-right .fs-2 }
 
 </div>

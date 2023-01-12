@@ -47,7 +47,7 @@ Last Update {{site.data.update_time[-1].update_time}}
 {%- assign equipName = member.equipment_name | split: ',' -%}
 {%- for i in (0..5) -%}
 {%- assign equipDetail = equip[i] | split: '/' -%}
-<p>{{equipDetail[1]}} {{equipName[i]}} {{equipDetail[3]}}</p>
+<p>{{equipDetail[1]}} {{equipDetail[3]}} {{equipName[i]}}</p>
 {%- endfor -%}</div>{:/}{{-raw-}}
 |{{member.power-}}
 |{{member.vitality-}}|
