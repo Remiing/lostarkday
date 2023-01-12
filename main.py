@@ -39,6 +39,9 @@ def runtest():
     df_capitalization = crawling.capitalization(df_members)
     df_capitalization.to_csv('./test/capitalization.csv', index=False)
 
+    df_news = crawling.get_news()
+    df_news.to_csv('./test/news.csv', index=False)
+
 
 def run():
     guild_members = load_yaml('./_data/guild_members.yml')
@@ -69,6 +72,9 @@ def run():
 
     df_capitalization = crawling.capitalization(df_members)
     df_capitalization.to_csv('./_data/capitalization.csv', index=False)
+
+    df_news = crawling.get_news()
+    df_news.to_csv('./_data/news.csv', index=False)
 
 
 if __name__ == '__main__':

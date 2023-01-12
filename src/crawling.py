@@ -383,6 +383,19 @@ def capitalization(df_members):
     return df_capitalization
 
 
+def get_news():
+    url = "https://developer-lostark.game.onstove.com/news/events"
+    response = requests.get(url, headers={"authorization": lark_api_key})
+    if response.status_code == 200:
+        news = json.loads(response.text)
+    else:
+        print("error")
+        return
+
+    df_news = pd.DataFrame(data=news)
+    return df_news
+
+
 # if __name__ == '__main__':
     # guild_members = load_yaml('../_data/guild_members.yml')
     # guild_members = guild_members['main_character'] + guild_members['sub_character']
@@ -393,6 +406,7 @@ def capitalization(df_members):
     # df_gemPrice = get_gem_price()
     # df_materialPrice = pd.concat((df_itemPrice, df_gemPrice), sort=False)
     # get_acc_price('귀걸이/고대/71/예리한 둔기+5_아드레날린+3/신속')
+    # get_news()
 
 
 
