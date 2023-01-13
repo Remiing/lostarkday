@@ -14,7 +14,7 @@ permalink: /
 </div>
 
 <div markdown="1" style="overflow: auto;">
-<div markdown="1" style="box-sizing: border-box; width: 60%; float: left; padding-right: 1rem; border-right: 1px solid #eeebee">
+<div class="index-right" markdown="1" style="box-sizing: border-box; width: 60%; float: left; padding-right: 1rem; border-right: 1px solid #eeebee">
 
 ### 템레벨 랭킹
 {% assign member_data = site.data.member_chart %}
@@ -76,7 +76,7 @@ permalink: /
 </div>
 
 
-<div markdown="1" style="box-sizing: border-box; width: 40%; float: right; padding-left: 1rem;">
+<div class="index-right" markdown="1" style="box-sizing: border-box; width: 40%; float: right; padding-left: 1rem;">
 
 ### 강화 재료 가격
 {% assign material = site.data.material_price %}
@@ -94,6 +94,19 @@ permalink: /
 {% assign row = material | where:"itemName", "9홍" | first %}|{{row.itemName-}}|{{row.itemPrice-}}|
 {% assign row = material | where:"itemName", "10멸" | first %}|{{row.itemName-}}|{{row.itemPrice-}}|
 {% assign row = material | where:"itemName", "10홍" | first %}|{{row.itemName-}}|{{row.itemPrice-}}|
+
+
+### 이벤트
+{% assign news = site.data.news %}
+<ul class="event">
+{% for event in news -%}
+<li>
+<a href="{{ event.Link }}" class="list__item--active" target='_blank'>
+  <img src="{{ event.Thumbnail }}" alt="{{ event.Title }}">
+</a>
+</li>
+{% endfor %}
+</ul>
 
 </div>
 

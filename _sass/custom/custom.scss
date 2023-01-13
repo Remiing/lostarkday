@@ -266,3 +266,16 @@ footer {
     text-align: center;
   }
 }
+
+.index-right {
+  ul {
+    list-style: none;
+    padding-left: 0px;
+
+    > li {
+      &::before {
+        content: none;
+      }
+    }
+  }
+}
