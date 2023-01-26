@@ -96,18 +96,6 @@ permalink: /
 {% assign row = material | where:"itemName", "10홍" | first %}|{{row.itemName-}}|{{row.itemPrice-}}|
 
 
-### 이벤트
-{% assign news = site.data.news %}
-<ul class="event">
-{% for event in news -%}
-<li>
-<a href="{{ event.Link }}" class="list__item--active" target='_blank'>
-  <img src="{{ event.Thumbnail }}" alt="{{ event.Title }}">
-</a>
-</li>
-{% endfor %}
-</ul>
-
 </div>
 
 
