@@ -83,6 +83,7 @@ def classification(df):
     class_num['Gunslinger'] = class_list.count('건슬링어')
     class_num['Artist'] = class_list.count('도화가')
     class_num['Aeromancer'] = class_list.count('기상술사')
+    class_num['Slayer'] = class_list.count('슬레이어')
 
     data = {'representative_value': representative_value,
             'variance': variance,
