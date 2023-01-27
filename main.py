@@ -17,7 +17,8 @@ def runtest():
 
     path = './test/chart/'
     KST = timezone(timedelta(days=-1, hours=9))
-    filename = datetime.now(KST).strftime('%y-%m-%d') + '.csv'
+    date = datetime.now(KST).strftime('%y-%m-%d')
+    filename = date + '.csv'
     df_members.to_csv(path + filename, index=False)
     df_members.to_csv('./test/member_chart.csv', index=False)
 
@@ -28,10 +29,13 @@ def runtest():
     with open('./test/update_time.yml', 'a') as file:
         yaml.dump(log, file, default_flow_style=False)
 
-    df_itemPrice = crawling.get_material_price()
-    df_gemPrice = crawling.get_gem_price()
-    df_materialPrice = pd.concat((df_itemPrice, df_gemPrice), sort=False)
-    df_materialPrice.to_csv('./test/material_price.csv', index=False)
+    itemPriceDict = crawling.get_material_price()
+    gemPriceDict = crawling.get_gem_price()
+    priceDict = dict(itemPriceDict, **gemPriceDict)
+    df_todayMaterialPrice = pd.DataFrame(priceDict, index=[date])
+    df_materialPrice = pd.read_csv('./test/material_price.csv', index_col=0)
+    df_materialPrice = df_materialPrice.append(df_todayMaterialPrice)
+    df_materialPrice.to_csv('./test/material_price.csv')
 
     df_stepPrice = calcStepPrice()
     df_stepPrice.to_csv('./test/step_price.csv', index=False)
@@ -51,7 +55,8 @@ def run():
 
     path = './_data/chart/'
     KST = timezone(timedelta(days=-1, hours=9))
-    filename = datetime.now(KST).strftime('%y-%m-%d') + '.csv'
+    date = datetime.now(KST).strftime('%y-%m-%d')
+    filename = date + '.csv'
     df_members.to_csv(path + filename, index=False)
     df_members.to_csv('./_data/member_chart.csv', index=False)
 
@@ -62,19 +67,22 @@ def run():
     with open('./_data/update_time.yml', 'a') as file:
         yaml.dump(log, file, default_flow_style=False)
 
-    df_itemPrice = crawling.get_material_price()
-    df_gemPrice = crawling.get_gem_price()
-    df_materialPrice = pd.concat((df_itemPrice, df_gemPrice), sort=False)
-    df_materialPrice.to_csv('./_data/material_price.csv', index=False)
+    itemPriceDict = crawling.get_material_price()
+    gemPriceDict = crawling.get_gem_price()
+    priceDict = dict(itemPriceDict, **gemPriceDict)
+    df_todayMaterialPrice = pd.DataFrame(priceDict, index=[date])
+    df_materialPrice = pd.read_csv('./_data/material_price.csv', index_col=0)
+    df_materialPrice = df_materialPrice.append(df_todayMaterialPrice)
+    df_materialPrice.to_csv('./_data/material_price.csv')
 
-    df_stepPrice = calcStepPrice()
-    df_stepPrice.to_csv('./_data/step_price.csv', index=False)
-
-    df_capitalization = crawling.capitalization(df_members)
-    df_capitalization.to_csv('./_data/capitalization.csv', index=False)
-
-    df_news = crawling.get_news()
-    df_news.to_csv('./_data/news.csv', index=False)
+    # df_stepPrice = calcStepPrice()
+    # df_stepPrice.to_csv('./_data/step_price.csv', index=False)
+    #
+    # df_capitalization = crawling.capitalization(df_members)
+    # df_capitalization.to_csv('./_data/capitalization.csv', index=False)
+    #
+    # df_news = crawling.get_news()
+    # df_news.to_csv('./_data/news.csv', index=False)
 
 
 if __name__ == '__main__':

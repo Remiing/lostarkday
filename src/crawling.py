@@ -114,7 +114,7 @@ def get_characterInfo(characterName):
 
 
 def get_material_price():
-    itemPriceList = []
+    itemPriceDict = {}
     itemCodeList = [
         66102003,       # 파괴석 결정
         66102004,       # 파괴강석
@@ -142,80 +142,40 @@ def get_material_price():
             itemName = itemData['Name']
             itemPrice = itemData['Stats'][0]['AvgPrice']
             print(f'{itemName}: {itemPrice}')
-            data = {'itemName': itemName, 'itemPrice': itemPrice}
-            itemPriceList.append(data)
+            itemPriceDict[itemName] = itemPrice
         else:
             print("error")
 
-    df_itemPrice = pd.DataFrame(data=itemPriceList)
-    return df_itemPrice
+    return itemPriceDict
 
 
 def get_gem_price():
-    gemPriceList = []
+    gemPriceDict = {}
     url = "https://developer-lostark.game.onstove.com/auctions/items"
     gemList = ["7레벨 멸", "7레벨 홍", "8레벨 멸", "8레벨 홍", "9레벨 멸", "9레벨 홍", "10레벨 멸", "10레벨 홍", ]
     for gemName in gemList:
-        i = 1
-        scale = 8
-        count = 1
-        price, min_list, max_list, minGem = [], [], [], 0
-        while True:
-            parameters = {
-                "ItemLevelMin": 0,
-                "ItemLevelMax": 1700,
-                "Sort": "BUY_PRICE",
-                "CategoryCode": 210000,
-                "ItemTier": 3,
-                "ItemName": gemName,
-                "PageNo": i,
-                "SortCondition": "ASC"
-            }
-            response = requests.post(url, headers={"authorization": lark_api_key}, json=parameters)
-            if response.status_code == 200:
-                itemData = json.loads(response.text)
-                price = [item["AuctionInfo"]["BuyPrice"] for item in itemData['Items']]
-            else:
-                print("error")
-                break
+        parameters = {
+            "ItemLevelMin": 0,
+            "ItemLevelMax": 1700,
+            "Sort": "BUY_PRICE",
+            "CategoryCode": 210000,
+            "ItemTier": 3,
+            "ItemName": gemName,
+            "PageNo": 0,
+            "SortCondition": "ASC"
+        }
+        response = requests.post(url, headers={"authorization": lark_api_key}, json=parameters)
+        if response.status_code == 200:
+            itemData = json.loads(response.text)
+            itemName = gemName.replace('레벨 ', '')
+            itemPrice = itemData['Items'][0]['AuctionInfo']['BuyPrice']
+            print(f'{itemName}: {itemPrice}')
+            gemPriceDict[itemName] = itemPrice
+        else:
+            print("error")
+            break
 
-            if 0 in price and len(set(price)) > 1:
-                price = [i for i in price if i != 0]
-                minGem = min(price)
-                break
-            elif scale == 1:
-                if 0 in price:
-                    minGem = min(max_list)
-                else:
-                    minGem = min(price)
-                break
-            elif 0 not in price:
-                if i == 1:
-                    minGem = min(price)
-                    break
-                max_list = price
-                scale = int(scale / 2)
-                i -= scale
-            elif not max_list:
-                if 0 in price:
-                    min_list = price
-                    i += scale
-            elif max_list:
-                if 0 in price:
-                    min_list = price
-                    scale = int(scale / 2)
-                    i += scale
-
-            count += 1
-
-        gemName = gemName.replace('레벨 ', '')
-        print(f'{gemName} {count} {minGem}')
-        data = {'itemName': gemName, 'itemPrice': minGem}
-        gemPriceList.append(data)
-
-    df_gemPrice = pd.DataFrame(data=gemPriceList)
-
-    return df_gemPrice
+    return gemPriceDict
 
 
 def get_acc_price(accessory_data):
@@ -402,8 +362,9 @@ def get_news():
     #
     # df_members = gather_members(guild_members)
     #
-    # df_itemPrice = get_material_price()
-    # df_gemPrice = get_gem_price()
+    # itemPriceDict = get_material_price()
+    # gemPriceDict = get_gem_price()
+
     # df_materialPrice = pd.concat((df_itemPrice, df_gemPrice), sort=False)
     # get_acc_price('귀걸이/고대/71/예리한 둔기+5_아드레날린+3/신속')
     # get_news()
