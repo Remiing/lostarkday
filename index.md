@@ -79,21 +79,23 @@ permalink: /
 <div class="index-right" markdown="1" style="box-sizing: border-box; width: 40%; float: right; padding-left: 1rem;">
 
 ### 강화 재료 가격
-{% assign material = site.data.material_price %}
+{% assign material = site.data.material_price | last %}
 
 | 재료 | 가격 |
 |:-:|:-:|
-{% assign row = material | where:"itemName", "정제된 파괴강석" | first %}|{{row.itemName-}}|{{row.itemPrice-}}|
-{% assign row = material | where:"itemName", "정제된 수호강석" | first %}|{{row.itemName-}}|{{row.itemPrice-}}|
-{% assign row = material | where:"itemName", "찬란한 명예의 돌파석" | first %}|{{row.itemName-}}|{{row.itemPrice-}}|
-{% assign row = material | where:"itemName", "최상급 오레하 융화 재료" | first %}|{{row.itemName-}}|{{row.itemPrice-}}|
-{% assign row = material | where:"itemName", "명예의 파편 주머니(소)" | first %}|{{row.itemName-}}|{{row.itemPrice-}}|
-{% assign row = material | where:"itemName", "명예의 파편 주머니(중)" | first %}|{{row.itemName-}}|{{row.itemPrice-}}|
-{% assign row = material | where:"itemName", "명예의 파편 주머니(대)" | first %}|{{row.itemName-}}|{{row.itemPrice-}}|
-{% assign row = material | where:"itemName", "9멸" | first %}|{{row.itemName-}}|{{row.itemPrice-}}|
-{% assign row = material | where:"itemName", "9홍" | first %}|{{row.itemName-}}|{{row.itemPrice-}}|
-{% assign row = material | where:"itemName", "10멸" | first %}|{{row.itemName-}}|{{row.itemPrice-}}|
-{% assign row = material | where:"itemName", "10홍" | first %}|{{row.itemName-}}|{{row.itemPrice-}}|
+|정제된 파괴강석|{{material["정제된 파괴강석"]}}|
+|정제된 수호강석|{{material["정제된 수호강석"]}}|
+|찬란한 명예의 돌파석|{{material["찬란한 명예의 돌파석"]}}|
+|최상급 오레하 융화 재료|{{material["최상급 오레하 융화 재료"]}}|
+|명예의 파편 주머니(소)|{{material["명예의 파편 주머니(소)"]}}|
+|명예의 파편 주머니(중)|{{material["명예의 파편 주머니(중)"]}}|
+|명예의 파편 주머니(대)|{{material["명예의 파편 주머니(대)"]}}|
+|7멸|{{material["7멸"]}}|
+|7홍|{{material["7홍"]}}|
+|9멸|{{material["9멸"]}}|
+|9홍|{{material["9홍"]}}|
+|10멸|{{material["10멸"]}}|
+|10홍|{{material["10홍"]}}|
 
 
 </div>
