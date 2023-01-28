@@ -105,36 +105,35 @@ def update_log(filename):
 def calcStepPrice():
     stepPrice = []
 
-    df_itemPrice = pd.read_csv('./_data/material_price.csv')
+    itemPriceDict = pd.read_csv('./_data/material_price.csv', index_col=0).to_dict('records')[-1]
     df_avg = pd.read_csv('./_data/avg_try_num.csv')
     df_weapon_step = pd.read_csv('./_data/material/weapon_step.csv')
     df_armor_step = pd.read_csv('./_data/material/armor_step.csv')
 
-    honor_shard_list = list(df_itemPrice[df_itemPrice['itemName'].str.contains('명예의 파편 주머니')]['itemPrice'])
-    honor_shard_price = round((honor_shard_list[0] / 500 + honor_shard_list[1] / 1000 + honor_shard_list[2] / 1500) / 3, 2)
+    honor_shard_price = round((itemPriceDict['명예의 파편 주머니(소)'] / 500 + itemPriceDict['명예의 파편 주머니(중)'] / 1000 + itemPriceDict['명예의 파편 주머니(대)'] / 1500) / 3, 2)
 
     for weapon_step, armor_step in zip(df_weapon_step.to_dict('records'), df_armor_step.to_dict('records')):
         destruction_stone_price, guardian_stone_price, leap_stone_price, fusion_price = 0, 0, 0, 0
         if weapon_step['level'] == 'level_1302':
-            destruction_stone_price = df_itemPrice[df_itemPrice['itemName'] == '파괴석 결정']['itemPrice'].values[0] / 10
-            guardian_stone_price = df_itemPrice[df_itemPrice['itemName'] == '수호석 결정']['itemPrice'].values[0] / 10
-            leap_stone_price = df_itemPrice[df_itemPrice['itemName'] == '명예의 돌파석']['itemPrice'].values[0]
-            fusion_price = df_itemPrice[df_itemPrice['itemName'] == '하급 오레하 융화 재료']['itemPrice'].values[0]
+            destruction_stone_price = itemPriceDict['파괴석 결정'] / 10
+            guardian_stone_price = itemPriceDict['수호석 결정'] / 10
+            leap_stone_price = itemPriceDict['명예의 돌파석']
+            fusion_price = itemPriceDict['하급 오레하 융화 재료']
         elif weapon_step['level'] == 'level_1340':
-            destruction_stone_price = df_itemPrice[df_itemPrice['itemName'] == '파괴석 결정']['itemPrice'].values[0] / 10
-            guardian_stone_price = df_itemPrice[df_itemPrice['itemName'] == '수호석 결정']['itemPrice'].values[0] / 10
-            leap_stone_price = df_itemPrice[df_itemPrice['itemName'] == '위대한 명예의 돌파석']['itemPrice'].values[0]
-            fusion_price = df_itemPrice[df_itemPrice['itemName'] == '중급 오레하 융화 재료']['itemPrice'].values[0]
+            destruction_stone_price = itemPriceDict['파괴석 결정'] / 10
+            guardian_stone_price = itemPriceDict['수호석 결정'] / 10
+            leap_stone_price = itemPriceDict['위대한 명예의 돌파석']
+            fusion_price = itemPriceDict['중급 오레하 융화 재료']
         elif weapon_step['level'] == 'level_1390':
-            destruction_stone_price = df_itemPrice[df_itemPrice['itemName'] == '파괴강석']['itemPrice'].values[0] / 10
-            guardian_stone_price = df_itemPrice[df_itemPrice['itemName'] == '수호강석']['itemPrice'].values[0] / 10
-            leap_stone_price = df_itemPrice[df_itemPrice['itemName'] == '경이로운 명예의 돌파석']['itemPrice'].values[0]
-            fusion_price = df_itemPrice[df_itemPrice['itemName'] == '상급 오레하 융화 재료']['itemPrice'].values[0]
+            destruction_stone_price = itemPriceDict['파괴강석'] / 10
+            guardian_stone_price = itemPriceDict['수호강석'] / 10
+            leap_stone_price = itemPriceDict['경이로운 명예의 돌파석']
+            fusion_price = itemPriceDict['상급 오레하 융화 재료']
         elif weapon_step['level'] == 'level_1525':
-            destruction_stone_price = df_itemPrice[df_itemPrice['itemName'] == '정제된 파괴강석']['itemPrice'].values[0] / 10
-            guardian_stone_price = df_itemPrice[df_itemPrice['itemName'] == '정제된 수호강석']['itemPrice'].values[0] / 10
-            leap_stone_price = df_itemPrice[df_itemPrice['itemName'] == '찬란한 명예의 돌파석']['itemPrice'].values[0]
-            fusion_price = df_itemPrice[df_itemPrice['itemName'] == '최상급 오레하 융화 재료']['itemPrice'].values[0]
+            destruction_stone_price = itemPriceDict['정제된 파괴강석'] / 10
+            guardian_stone_price = itemPriceDict['정제된 수호강석'] / 10
+            leap_stone_price = itemPriceDict['찬란한 명예의 돌파석']
+            fusion_price = itemPriceDict['최상급 오레하 융화 재료']
 
         prabability_data = df_avg[df_avg['probability'] == weapon_step['probability']].to_dict('records')[0]
 

@@ -265,11 +265,7 @@ def capitalization(df_members):
     members = df_members.to_dict('records')
     step_price = pd.read_csv('./_data/step_price.csv')
     step_price = step_price.to_dict('records')
-    df_itemPrice = pd.read_csv('./_data/material_price.csv')
-    gem_dict = {}
-    for gemType, gemPrice in zip(list(df_itemPrice['itemName']), list(df_itemPrice['itemPrice'])):
-        if '멸' in gemType or '홍' in gemType:
-            gem_dict[gemType] = int(gemPrice)
+    gemPriceDict = pd.read_csv('./_data/material_price.csv', index_col=0).to_dict('records')[-1]
 
     for member in members:
         print(member)
@@ -311,7 +307,7 @@ def capitalization(df_members):
             gemPart = gem.split(' x')
             gemType = gemPart[0]
             gemCount = int(gemPart[1])
-            gemPrice = gem_dict[gemType] * gemCount if gemType in gem_dict else 0
+            gemPrice = gemPriceDict[gemType] * gemCount if gemType in gemPriceDict else 0
             gemTotal += gemPrice
             gemDetail.append(f'{gem} {gemPrice}')
 
