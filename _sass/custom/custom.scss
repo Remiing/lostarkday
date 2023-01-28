@@ -267,7 +267,19 @@ footer {
   }
 }
 
+.index-left {
+  box-sizing: border-box;
+  width: 60%;
+  float: left;
+  padding: 0 1rem 0;
+}
+
 .index-right {
+  box-sizing: border-box; 
+  width: 40%; 
+  float: right; 
+  padding: 0 1rem 0; 
+
   ul {
     list-style: none;
     padding-left: 0;

@@ -14,12 +14,12 @@ permalink: /
 </div>
 
 <div markdown="1" style="overflow: auto;">
-<div class="index-right" markdown="1" style="box-sizing: border-box; width: 60%; float: left; padding-right: 1rem; border-right: 1px solid #eeebee">
+<div class="index-left" markdown="1">
 
 ### 템레벨 랭킹
 {% assign member_data = site.data.member_chart %}
 
-| {::nomarkdown}<p>닉네임</p><p>클래스</p>{:/} | 아이템 |
+| {::nomarkdown}<p>닉네임</p><p>클래스</p>{:/} | 아이템 레벨 |
 |:-|:-|
 {% for i in (0..4) -%}
 {%- assign member = member_data[i] -%}
@@ -76,7 +76,7 @@ permalink: /
 </div>
 
 
-<div class="index-right" markdown="1" style="box-sizing: border-box; width: 40%; float: right; padding-left: 1rem;">
+<div class="index-right" markdown="1">
 
 ### 강화 재료 가격
 {% assign material = site.data.material_price | last %}
