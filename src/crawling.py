@@ -268,22 +268,15 @@ def capitalization(df_members):
     gemPriceDict = pd.read_csv('./_data/material_price.csv', index_col=0).to_dict('records')[-1]
 
     for member in members:
-        print(member)
 
         # equip
-        i, equipTotal, equipDetail = 0, 0, []
+        i, equipTotal, equipPart = 0, 0, []
         equips = member['equipment'].split(',')
         for equip in equips:
             equipPrice = 0
-            equipPart = equip.split('/')
-            if i == 0: equipType = "무기"
-            elif i == 1: equipType = "투구"
-            elif i == 2: equipType = "상의"
-            elif i == 3: equipType = "하의"
-            elif i == 4: equipType = "장갑"
-            else: equipType = "어깨"
-            equipStep = int(equipPart[1])
-            equipLevel = equipPart[2].replace('lv', '')
+            equipDetail = equip.split('/')
+            equipStep = int(equipDetail[1])
+            equipLevel = equipDetail[2].replace('lv', '')
             for step in step_price:
                 step_level = step['level'].replace('level_', '')
                 step_num = int(step['step'].replace('step_', ''))
@@ -297,44 +290,46 @@ def capitalization(df_members):
                 else:
                     equipPrice += step['armorAvg']
             equipTotal += equipPrice
-            equipDetail.append(f'{equipType} {equipStep} {equipPrice}')
+            equipPart.append(equipPrice)
             i += 1
 
         # gem
-        gemTotal, gemDetail = 0, []
+        gemTotal, gemPart = 0, []
         gems = member['gem_simple'].split(',') if member['gem_simple'] == member['gem_simple'] and member['gem_simple'] else []
         for gem in gems:
-            gemPart = gem.split(' x')
-            gemType = gemPart[0]
-            gemCount = int(gemPart[1])
-            gemPrice = gemPriceDict[gemType] * gemCount if gemType in gemPriceDict else 0
+            gemType,  gemCount = gem.split(' x')
+            gemPrice = gemPriceDict[gemType] * int(gemCount) if gemType in gemPriceDict else 0
             gemTotal += gemPrice
-            gemDetail.append(f'{gem} {gemPrice}')
+            gemPart.append(gemPrice)
 
         # acc
-        accTotal, accDetail = 0, []
+        accTotal, accPart = 0, []
         accs = member['accessory'].split(',')
         for acc in accs:
             accPrice = get_acc_price(acc)
             accTotal += accPrice
-            accDetail.append(f'{acc} {accPrice}')
+            accPart.append(accPrice)
 
-        gemDetail = ','.join(gemDetail)
-        equipDetail = ','.join(equipDetail)
-        accDetail = ','.join(accDetail)
+        gemPart = ','.join(map(str, gemPart))
+        equipPart = ','.join(map(str, equipPart))
+        accPart = ','.join(map(str, accPart))
+        total = accTotal + gemTotal + equipTotal
+
         data = {
             'name': member['name'],
-            'itemLV': member['itemLV'],
+            'total': total,
             'accTotal': accTotal,
-            'accDetail': accDetail,
+            'accPart': accPart,
             'gemTotal': gemTotal,
-            'gemDetail': gemDetail,
+            'gemPart': gemPart,
             'equipTotal': equipTotal,
-            'equipDetail': equipDetail,
+            'equipPart': equipPart,
         }
         capitalization_data.append(data)
         print(f'{data["name"]} accTotal:{data["accTotal"]} gemTotal:{data["gemTotal"]} equipTotal:{data["equipTotal"]}')
     df_capitalization = pd.DataFrame(data=capitalization_data)
+    df_capitalization = df_capitalization.astype({'total': int, 'accTotal': int, 'gemTotal': int, 'equipTotal': int, 'accPart': str, 'gemPart': str, 'equipPart': str})
+    df_capitalization = df_capitalization.sort_values(by='total', ascending=False)
 
     return df_capitalization
 
