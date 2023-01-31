@@ -17,11 +17,10 @@ Last Update {{site.data.update_time[-1].update_time}}
 
 {% assign data = site.data.capitalization %}
 
-| 닉네임 | 아이템 | 장비 | 악세 | 보석 | 총합 |
-|:-|:-:|:-:|:-:|:-:|:-:|
+| 닉네임 | 장비 | 악세 | 보석 | 총합 |
+|:-|:-:|:-:|:-:|:-:|
 {% for row in data -%}
 |{{row.name-}}
-|{{row.itemLV-}}
 |{::nomarkdown}<p>{% include numberWithCommas.html number=row.equipTotal %}</p><div class="detail">
 {%- assign equipDetail = row.equipDetail | split: ',' -%}
 {%- for equip in equipDetail -%}
