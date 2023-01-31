@@ -24,7 +24,7 @@ class_num:
   Summoner: 0
   Wardancer: 2
 representative_value:
-  average_level: 1575
+  average_level: 1576
   highest_level: 1625
   lowest_level: 1475
 variance:
@@ -35,9 +35,9 @@ variance:
   above_1530: 0
   above_1540: 2
   above_1550: 1
-  above_1560: 5
+  above_1560: 4
   above_1570: 0
-  above_1580: 5
+  above_1580: 6
   above_1590: 1
   above_1600: 6
   above_1610: 4
