@@ -348,7 +348,7 @@ def get_news():
     return df_news
 
 
-def update_accdict(df_members):
+def update_accdict(df_members, df_baseAccDict):
     accList = []
     for accs in df_members['accessory'].values.tolist():
         acc = accs.split(',')
@@ -361,6 +361,7 @@ def update_accdict(df_members):
         accPrice = get_acc_price(acc)
         if accPrice == 0:
             print(f'{acc} 매물없음')
+            print('---------------------------------')
             continue
 
         accessory_data = acc.split('/')
@@ -386,12 +387,13 @@ def update_accdict(df_members):
         print(accData)
         print('---------------------------------')
     df_accDict = pd.DataFrame(data=accDict)
-    df_accDict = df_accDict.sort_values(by='date', ascending=False)
-    df_accDict = df_accDict.drop_duplicates(['category', 'grade', 'quality', 'nature1', 'nature2', 'engraving1', 'engraving2'])
-    df_accDict = df_accDict.astype({'category': str, 'grade': str, 'quality': int, 'nature1': str, 'nature2': str, 'engraving1': str, 'engraving2': str, 'price': str, 'date': str})
-    df_accDict = df_accDict.sort_values(by=['grade', 'quality', 'nature2', 'category'], ascending=[True, False, False, True])
+    df_baseAccDict = df_baseAccDict.append(df_accDict)
+    df_baseAccDict = df_baseAccDict.sort_values(by='date', ascending=False)
+    df_baseAccDict = df_baseAccDict.drop_duplicates(['category', 'grade', 'quality', 'nature1', 'nature2', 'engraving1', 'engraving2'])
+    df_baseAccDict = df_baseAccDict.astype({'category': str, 'grade': str, 'quality': int, 'nature1': str, 'nature2': str, 'engraving1': str, 'engraving2': str, 'price': str, 'date': str})
+    df_baseAccDict = df_baseAccDict.sort_values(by=['grade', 'quality', 'nature2', 'category', 'nature1'], ascending=[True, False, False, True, False])
 
-    return df_accDict
+    return df_baseAccDict
 
 
 # if __name__ == '__main__':
