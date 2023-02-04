@@ -218,6 +218,35 @@ def modify_data():
         df_members.to_csv(basepath + file, index=False)
 
 
+def split_accessory(accessory_data):
+    accessory_data = accessory_data.split('/')
+    accType = accessory_data[0]
+    accGrade = accessory_data[1]
+    accQuality = int(accessory_data[2])
+    accQuality = accQuality // 10 * 10 if accQuality != 100 else 90
+    accEngraving1, accEngraving2 = accessory_data[3].split('_')
+    accEng1_option, accEng1_value = accEngraving1.split('+')
+    accEng2_option, accEng2_value = accEngraving2.split('+')
+    accNature1 = accessory_data[4]
+    accNature2 = accessory_data[5] if len(accessory_data) > 5 else ''
+
+    accessory_data_dict = {
+        'accType': accType,
+        'accGrade': accGrade,
+        'accQuality': accQuality,
+        'accEngraving1': accEngraving1,
+        'accEngraving2': accEngraving2,
+        'accEngraving1_option': accEng1_option,
+        'accEngraving1_value': accEng1_value,
+        'accEngraving2_option': accEng2_option,
+        'accEngraving2_value': accEng2_value,
+        'accNature1': accNature1,
+        'accNature2': accNature2,
+    }
+
+    return accessory_data_dict
+
+
 if __name__ == '__main__':
     modify_data()
 

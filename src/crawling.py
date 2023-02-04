@@ -5,7 +5,7 @@ from bs4 import BeautifulSoup
 import re
 import pandas as pd
 import json
-from src.utils import load_yaml
+from src.utils import load_yaml, split_accessory
 from dotenv import load_dotenv
 from src import auction_dict
 from datetime import datetime, timezone, timedelta
@@ -264,9 +264,9 @@ def gather_members(members):
 def capitalization(df_members):
     capitalization_data = []
     members = df_members.to_dict('records')
-    step_price = pd.read_csv('./_data/step_price.csv')
-    step_price = step_price.to_dict('records')
+    step_price = pd.read_csv('./_data/step_price.csv').to_dict('records')
     gemPriceDict = pd.read_csv('./_data/material_price.csv', index_col=0).to_dict('records')[-1]
+    df_baseAccDict = pd.read_csv('./_data/accessory_dict.csv', keep_default_na=False)
 
     for member in members:
 
@@ -307,7 +307,19 @@ def capitalization(df_members):
         accTotal, accPart = 0, []
         accs = member['accessory'].split(',')
         for acc in accs:
-            accPrice = get_acc_price(acc)
+            accData = split_accessory(acc)
+            cd1 = df_baseAccDict['category'] == accData['accType']
+            cd2 = df_baseAccDict['grade'] == accData['accGrade']
+            cd3 = df_baseAccDict['quality'] == accData['accQuality']
+            cd4 = df_baseAccDict['nature1'] == accData['accNature1']
+            cd5 = df_baseAccDict['nature2'] == accData['accNature2']
+            cd6 = df_baseAccDict['engraving1'] == accData['accEngraving1']
+            cd7 = df_baseAccDict['engraving2'] == accData['accEngraving2']
+            accPrice = df_baseAccDict[cd1 & cd2 & cd3 & cd4 & cd5 & cd6 & cd7]['price'].values
+            if accPrice.size > 0:
+                accPrice = accPrice[0]
+            else:
+                accPrice = 0
             accTotal += accPrice
             accPart.append(accPrice)
 

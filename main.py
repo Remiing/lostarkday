@@ -40,15 +40,15 @@ def runtest():
     # df_stepPrice = calcStepPrice()
     # df_stepPrice.to_csv('./test/step_price.csv', index=False)
 
-    # df_capitalization = crawling.capitalization(df_members)
-    # df_capitalization.to_csv('./test/capitalization.csv', index=False)
-    #
     # df_news = crawling.get_news()
     # df_news.to_csv('./test/news.csv', index=False)
 
-    df_baseAccDict = pd.read_csv('./_data/accessory_dict.csv', keep_default_na=False)
-    df_accDict = crawling.update_accdict(df_members, df_baseAccDict)
-    df_accDict.to_csv('./test/accessory_dict.csv', index=False)
+    # df_baseAccDict = pd.read_csv('./_data/accessory_dict.csv', keep_default_na=False)
+    # df_accDict = crawling.update_accdict(df_members, df_baseAccDict)
+    # df_accDict.to_csv('./test/accessory_dict.csv', index=False)
+
+    df_capitalization = crawling.capitalization(df_members)
+    df_capitalization.to_csv('./test/capitalization.csv', index=False)
 
 
 def run():
@@ -82,15 +82,15 @@ def run():
     df_stepPrice = calcStepPrice()
     df_stepPrice.to_csv('./_data/step_price.csv', index=False)
 
-    # df_capitalization = crawling.capitalization(df_members)
-    # df_capitalization.to_csv('./_data/capitalization.csv', index=False)
-
     # df_news = crawling.get_news()
     # df_news.to_csv('./_data/news.csv', index=False)
 
     df_baseAccDict = pd.read_csv('./_data/accessory_dict.csv', keep_default_na=False)
     df_accDict = crawling.update_accdict(df_members, df_baseAccDict)
     df_accDict.to_csv('./_data/accessory_dict.csv', index=False)
+
+    df_capitalization = crawling.capitalization(df_members)
+    df_capitalization.to_csv('./_data/capitalization.csv', index=False)
 
 
 if __name__ == '__main__':
