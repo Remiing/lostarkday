@@ -48,7 +48,8 @@ Day guild statistic.
 |전사|![](../../assets/images/class_images/emblem_berserker.png){{data.class_num.Berserker-}}
 |![](../../assets/images/class_images/emblem_destroyer.png){{data.class_num.Destroyer-}}
 |![](../../assets/images/class_images/emblem_warlord.png){{data.class_num.Gunlancer-}}
-|![](../../assets/images/class_images/emblem_holyknight.png){{data.class_num.Paladin-}}||
+|![](../../assets/images/class_images/emblem_holyknight.png){{data.class_num.Paladin-}}
+|![](../../assets/images/class_images/emblem_berserker_female.png){{data.class_num.Slayer-}}|
 |마법사|![](../../assets/images/class_images/emblem_arcana.png){{data.class_num.Arcanist-}}
 |![](../../assets/images/class_images/emblem_summoner.png){{data.class_num.Summoner-}}
 |![](../../assets/images/class_images/emblem_bard.png){{data.class_num.Bard-}}
