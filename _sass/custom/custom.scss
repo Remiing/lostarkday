@@ -155,7 +155,9 @@ td {
   display: none;
   position: absolute;
   white-space: nowrap;
-  transform: translate(-10%);
+  left: 50%;
+  transform: translate(-50%);
+  margin:0 auto;
   padding: 8px;
   font-size: 11px;
   text-align: left;
@@ -166,6 +168,10 @@ td {
 
 p:hover ~ .detail {
   display: block;
+}
+
+.td-relative {
+  position: relative;
 }
 
 .class-table {

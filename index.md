@@ -19,13 +19,13 @@ permalink: /
 ### 템레벨 랭킹
 {% assign member_data = site.data.member_chart %}
 
-| 순위 | {::nomarkdown}<p>닉네임</p><p>클래스</p>{:/} | 아이템 레벨 |
+| # | 닉네임 | 아이템 레벨 |
 |:-:|:-|:-|
 {% assign ranking = 1 -%}
 {% for i in (0..4) -%}
 {%- assign member = member_data[i] -%}
 |{{ranking}}{%- assign ranking = ranking | plus: 1 -%}
-|{::nomarkdown}<p>{{member.name-}}</p><p>{{member.class-}}</p>{:/}{{-raw-}}
+|{{member.name-}}
 |{{member.itemLV-}}|
 {% endfor %}
 
@@ -41,7 +41,7 @@ permalink: /
 {% assign before_data = site.data.chart[before_data] %}
 {% assign after_data = site.data.chart[after_data] %}
 
-| 순위 | {::nomarkdown}<p>닉네임</p><p>클래스</p>{:/} | 아이템 레벨 변화 |
+| # | 닉네임 | 아이템 레벨 변화 |
 |:-:|:-|:-:|
 {% assign ranking = 1 -%}
 {% for member in member_list %}
@@ -50,7 +50,7 @@ permalink: /
   {%- unless before and after -%}{%- continue -%}{%- endunless -%}
   {%- if before.itemLV == after.itemLV -%}{%- continue -%}{%- else -%}{%- assign empty_check = 1 -%}{%- endif -%}
   |{{ranking}}{%- assign ranking = ranking | plus: 1 -%}
-  |{::nomarkdown}<p>{{after.name-}}</p><p>{{after.class-}}</p>{:/}{{-raw-}}
+  |{{after.name-}}
   |{{before.itemLV}} > {{after.itemLV-}}|
 {% endfor %}
 
@@ -62,7 +62,7 @@ permalink: /
 ### 캐릭터 가치 환산
 {% assign capitalization_data = site.data.capitalization %}
 
-| 순위 | 닉네임 | 가치 |
+| # | 닉네임 | 가치 |
 |:-:|:-|:-:|
 {% assign ranking = 1 -%}
 {% for i in (0..4) -%}

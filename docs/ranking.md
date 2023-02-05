@@ -24,11 +24,11 @@ Last Update {{site.data.update_time[-1].update_time}}
 |{::nomarkdown}<p>{{member.name-}}</p><p>{{member.class-}}</p>{:/}{{-raw-}}
 |{{member.itemLV-}}
 |{{member.expeditionLV-}}
-|{::nomarkdown}<p>{{member.engraving_simple-}}</p><div class="detail">
+|{::nomarkdown}<div class="td-relative"><p>{{member.engraving_simple-}}</p><div class="detail">
 {%- assign engraving_detail = member.engraving_detail | split: ',' -%}
 {%- for engraving in engraving_detail -%}
 <p>{{-engraving-}}</p>
-{%- endfor -%}</div>{:/}{{-raw-}}
+{%- endfor -%}</div></div>{:/}{{-raw-}}
 |{%- assign stats = member.stat | split: ',' -%}
 {%- for stat in stats -%}
 {::nomarkdown}<p>{{-stat-}}</p>{:/}
@@ -42,13 +42,13 @@ Last Update {{site.data.update_time[-1].update_time}}
 {::nomarkdown}<p>{{-gem-}}</p>{:/}
 {%- endfor -%}{{-raw-}}
 |{%- assign weapon = member.equipment | split: '/' -%}
-{::nomarkdown}<p>{{weapon[1]-}}</p><div class="detail">
+{::nomarkdown}<div class="td-relative"><p>{{weapon[1]-}}</p><div class="detail">
 {%- assign equip = member.equipment | split: ',' -%}
 {%- assign equipName = member.equipment_name | split: ',' -%}
 {%- for i in (0..5) -%}
 {%- assign equipDetail = equip[i] | split: '/' -%}
 <p>{{equipDetail[1]}} {{equipDetail[3]}} {{equipName[i]}}</p>
-{%- endfor -%}</div>{:/}{{-raw-}}
+{%- endfor -%}</div></div>{:/}{{-raw-}}
 |{{member.power-}}
 |{{member.vitality-}}|
 {% endfor %}
