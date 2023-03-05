@@ -4,7 +4,7 @@ class_num:
   Artillerist: 0
   Artist: 0
   Bard: 2
-  Berserker: 1
+  Berserker: 0
   Deadeye: 0
   Deathblade: 1
   Destroyer: 0
@@ -37,7 +37,7 @@ variance:
   above_1550: 0
   above_1560: 4
   above_1570: 0
-  above_1580: 8
+  above_1580: 7
   above_1590: 0
   above_1600: 2
   above_1610: 7
