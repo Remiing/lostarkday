@@ -10,7 +10,7 @@ class_num:
   Destroyer: 0
   Glaivier: 2
   Gunlancer: 1
-  Gunslinger: 5
+  Gunslinger: 4
   Machinist: 0
   Paladin: 1
   Reaper: 3
@@ -24,8 +24,8 @@ class_num:
   Summoner: 0
   Wardancer: 2
 representative_value:
-  average_level: 1586
-  highest_level: 1635
+  average_level: 1592
+  highest_level: 1638
   lowest_level: 1475
 variance:
   above_1490: 0
@@ -38,8 +38,8 @@ variance:
   above_1560: 3
   above_1570: 0
   above_1580: 5
-  above_1590: 2
+  above_1590: 1
   above_1600: 2
   above_1610: 4
-  above_1620: 7
-  under_1490: 2
+  above_1620: 8
+  under_1490: 1
